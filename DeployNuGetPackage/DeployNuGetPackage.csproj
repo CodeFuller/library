@@ -71,10 +71,6 @@
       <Project>{5846b671-b762-4c2b-ba55-1cc573dc4b11}</Project>
       <Name>CF.Patterns</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CF.Scrum\CF.Scrum.csproj">
-      <Project>{3967ffda-e0ef-4ed6-926a-93cafc2b442f}</Project>
-      <Name>CF.Scrum</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
