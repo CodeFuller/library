@@ -16,6 +16,13 @@ namespace CF.Core
 			}
 		}
 
+		public static TValue SafeGet<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key)
+		{
+			TValue value;
+			dict.TryGetValue(key, out value);
+			return value;
+		}
+
 		public static void SafeAdd<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key, TValue value)
 		{
 			if (dict.ContainsKey(key))
