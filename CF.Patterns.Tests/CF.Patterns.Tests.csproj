@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5846B671-B762-4C2B-BA55-1CC573DC4B11}</ProjectGuid>
+    <ProjectGuid>{5417EFBB-F5EF-4C30-9571-5522D51A9170}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CF.Patterns</RootNamespace>
-    <AssemblyName>CF.Patterns</AssemblyName>
+    <RootNamespace>CF.Patterns.Tests</RootNamespace>
+    <AssemblyName>CF.Patterns.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,28 +31,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.2.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.2.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncLazy.cs" />
-    <Compile Include="CacheAsync.cs" />
-    <Compile Include="Internal\WeakReferenceDictionary.cs" />
-    <Compile Include="Internal\WeakReferenceMap.cs" />
-    <Compile Include="MultilayerEventArgs.cs" />
-    <Compile Include="MultilayerEventManager.cs" />
+    <Compile Include="MultilayerEventManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CF.Core\CF.Core.csproj">
-      <Project>{d31250e4-f1f8-41c8-91c9-c1c32aff6d14}</Project>
-      <Name>CF.Core</Name>
+    <ProjectReference Include="..\CF.Patterns\CF.Patterns.csproj">
+      <Project>{5846b671-b762-4c2b-ba55-1cc573dc4b11}</Project>
+      <Name>CF.Patterns</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

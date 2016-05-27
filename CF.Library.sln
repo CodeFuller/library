@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Extensions.Wpf", "CF.Ext
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployNuGetPackage", "DeployNuGetPackage\DeployNuGetPackage.csproj", "{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Patterns.Tests", "CF.Patterns.Tests\CF.Patterns.Tests.csproj", "{5417EFBB-F5EF-4C30-9571-5522D51A9170}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5417EFBB-F5EF-4C30-9571-5522D51A9170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5417EFBB-F5EF-4C30-9571-5522D51A9170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5417EFBB-F5EF-4C30-9571-5522D51A9170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5417EFBB-F5EF-4C30-9571-5522D51A9170}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,6 +23,20 @@ namespace CF.Core
 			return value;
 		}
 
+		public static TValue ProvideValue<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key) where TValue : new()
+		{
+			lock (dict)
+			{
+				TValue value;
+				if (!dict.TryGetValue(key, out value))
+				{
+					value = new TValue();
+					dict.Add(key, value);
+				}
+				return value;
+			}
+		}
+
 		public static void SafeAdd<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key, TValue value)
 		{
 			if (dict.ContainsKey(key))

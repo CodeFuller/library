@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CF.Patterns")]
-[assembly: AssemblyDescription("CF.Patterns.dll")]
+[assembly: AssemblyTitle("CF.Patterns.Tests")]
+[assembly: AssemblyDescription("CF.Patterns.Tests.dll")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CodeFuller")]
-[assembly: AssemblyProduct("CF.Patterns")]
+[assembly: AssemblyProduct("CF.Patterns.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8ffe0c21-211b-411b-b053-c9e033fd33ab")]
+[assembly: Guid("5417efbb-f5ef-4c30-9571-5522d51a9170")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -34,4 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.1.*")]
 
-[assembly: InternalsVisibleTo("CF.Patterns.Tests")]
