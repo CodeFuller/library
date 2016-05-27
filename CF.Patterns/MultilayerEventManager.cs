@@ -93,6 +93,11 @@ namespace CF.Patterns
 		
 		public static void TriggerEvent<TEventArgs>(object sender, TEventArgs e) where TEventArgs : MultilayerEventArgs
 		{
+			//	Handlers should not be called under lock
+			//	Otherwise deadlock could happen because some handlers could switch to UI thread and trigger other events
+			//	That's why handlers sequence is built under lock but handlers are called outside the lock
+			var handlers = new List<Tuple<object, LayerEventHandler>>();
+
 			lock (Parents)
 			lock (Handlers)
 			{
@@ -110,11 +115,7 @@ namespace CF.Patterns
 						LayerEventHandler handler;
 						if (eventHandlers.TryGetValue(target, out handler) && handler != null)
 						{
-							handler(target, sender, e);
-							if (e.Handled)
-							{
-								break;
-							}
+							handlers.Add(new Tuple<object, LayerEventHandler>(target, handler));
 						}
 
 						if (eventParents == null)
@@ -130,6 +131,15 @@ namespace CF.Patterns
 							}
 						}
 					}
+				}
+			}
+
+			foreach (var handler in handlers)
+			{
+				handler.Item2(handler.Item1, sender, e);
+				if (e.Handled)
+				{
+					break;
 				}
 			}
 		}
