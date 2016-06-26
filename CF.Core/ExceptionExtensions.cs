@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CF.Core
 {
+	/// <summary>
+	/// Holder for Exception extension methods
+	/// </summary>
 	public static class ExceptionExtensions
 	{
 		/// <summary>

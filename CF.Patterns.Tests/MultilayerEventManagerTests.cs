@@ -92,7 +92,7 @@ namespace CF.Patterns.Tests
 			var layer1 = new Layer1();
 			MultilayerEventManager.RegisterHandler<Layer1, FakeEventArgs>(layer1, (t, s, e) => t.OnEvent(s, e));
 
-			MultilayerEventManager.UnRegisterHandler<FakeEventArgs>(layer1);
+			MultilayerEventManager.UnregisterHandler<FakeEventArgs>(layer1);
 
 			Assert.IsTrue(MultilayerEventManager.Handlers.Count == 0);
 		}
@@ -104,7 +104,7 @@ namespace CF.Patterns.Tests
 			var layer2 = new Layer2();
 			MultilayerEventManager.RegisterLowerLayer<FakeEventArgs>(layer1, layer2);
 
-			MultilayerEventManager.UnRegisterInstance(layer2);
+			MultilayerEventManager.UnregisterInstance(layer2);
 
 			Assert.IsTrue(MultilayerEventManager.Parents.Count == 0);
 		}
@@ -116,7 +116,7 @@ namespace CF.Patterns.Tests
 			var layer2 = new Layer2();
 			MultilayerEventManager.RegisterLowerLayer<FakeEventArgs>(layer1, layer2);
 
-			MultilayerEventManager.UnRegisterInstance(layer1);
+			MultilayerEventManager.UnregisterInstance(layer1);
 
 			Assert.IsTrue(MultilayerEventManager.Parents.Count == 0);
 		}
@@ -127,7 +127,7 @@ namespace CF.Patterns.Tests
 			var layer1 = new Layer1();
 			MultilayerEventManager.RegisterHandler<Layer1, FakeEventArgs>(layer1, (t, s, e) => t.OnEvent(s, e));
 
-			MultilayerEventManager.UnRegisterInstance(layer1);
+			MultilayerEventManager.UnregisterInstance(layer1);
 
 			Assert.IsTrue(MultilayerEventManager.Handlers.Count == 0);
 		}
@@ -277,8 +277,8 @@ namespace CF.Patterns.Tests
 			() => MultilayerEventManager.RegisterLowerLayer<FakeEventArgs2>(new Layer1(), new Layer2()),
 			() => MultilayerEventManager.RegisterLowerLayer<FakeEventArgs2>(new Layer1(), typeof(Layer2)),
 			() => MultilayerEventManager.RegisterHandler<Layer1, FakeEventArgs2>(new Layer1(), (t, s, e) => {}),
-			() => MultilayerEventManager.UnRegisterHandler<FakeEventArgs2>(new Layer1()),
-			() => MultilayerEventManager.UnRegisterInstance(new Layer1()),
+			() => MultilayerEventManager.UnregisterHandler<FakeEventArgs2>(new Layer1()),
+			() => MultilayerEventManager.UnregisterInstance(new Layer1()),
 			() => MultilayerEventManager.TriggerEvent(new Layer1(), new FakeEventArgs2()),
 		};
 

@@ -13,6 +13,10 @@ using log4net.Util;
 
 namespace CF.Extensions
 {
+	/// <summary>
+	/// Provides convenient way of writing log messages
+	/// It doesn't require any setup calls and could be used out of the box
+	/// </summary>
 	public static class Logger
 	{
 		private static ILog log;
@@ -32,33 +36,51 @@ namespace CF.Extensions
 			set { log = value; }
 		}
 
+		/// <summary>
+		/// Logs error message for given exception
+		/// </summary>
 		public static void Error(Exception exc)
 		{
 			Log.Error(exc);
 		}
+		/// <summary>
+		/// Logs error message
+		/// </summary>
 		public static void Error(string format, params object[] args)
 		{
 			Log.ErrorFormat(format, args);
 		}
+		/// <summary>
+		/// Logs warning message
+		/// </summary>
 		public static void Warning(string format, params object[] args)
 		{
 			Log.WarnFormat(format, args);
 		}
+		/// <summary>
+		/// Logs info message
+		/// </summary>
 		public static void Info(string format, params object[] args)
 		{
 			Log.InfoFormat(format, args);
 		}
+		/// <summary>
+		/// Logs debug message
+		/// </summary>
 		public static void Debug(string format, params object[] args)
 		{
 			Log.DebugFormat(format, args);
 		}
 
+		/// <summary>
+		/// Logs trace message
+		/// </summary>
 		/// <remarks>
-		/// This method doesn't actually work because of insufficient log level configuration (failed to configure log4net properly for dumping trace or verbose entries)
+		/// This method doesn't work currently because of insufficient log level configuration (failed to configure log4net properly for dumping trace or verbose entries)
 		/// </remarks>
 		public static void Trace(string format, params object[] args)
 		{
-			Log.Logger.Log(MethodBase.GetCurrentMethod().DeclaringType, Level.Trace, String.Format(format, args), null);
+			throw new NotImplementedException();
 		}
 
 		private static void InitializeLog()

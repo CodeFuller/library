@@ -6,20 +6,32 @@ using System.Threading.Tasks;
 
 namespace CF.Patterns
 {
+	/// <summary>
+	/// Cache class that supports asynchronous value factory
+	/// </summary>
 	public class CacheAsync<TKey, TValue>
 	{
 		private readonly Dictionary<TKey, TValue> cache;
 
+		/// <summary>
+		/// Constructor
+		/// </summary>
 		public CacheAsync()
 		{
 			cache = new Dictionary<TKey, TValue>();
 		}
 
+		/// <summary>
+		/// Constructor
+		/// </summary>
 		public CacheAsync(IEqualityComparer<TKey> comparer)
 		{
 			cache = new Dictionary<TKey, TValue>(comparer);
 		}
 
+		/// <summary>
+		/// Gets value from the cache or loads it asynchronously with provided value factory
+		/// </summary>
 		public async Task<TValue> GetValue(TKey key, Func<Task<TValue>> valueFactory)
 		{
 			//	Searching in the cache
@@ -37,7 +49,7 @@ namespace CF.Patterns
 			return value;
 		}
 
-		bool TryGetValue(TKey key, out TValue value)
+		private bool TryGetValue(TKey key, out TValue value)
 		{
 			lock (cache)
 			{
@@ -52,7 +64,7 @@ namespace CF.Patterns
 		/// It's possible that this method is called when this data already exist in the cache
 		/// In this case it should override existing value
 		/// </remarks>
-		void SetValue(TKey key, TValue value)
+		private void SetValue(TKey key, TValue value)
 		{
 			lock (cache)
 			{

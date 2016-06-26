@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace CF.Core
 {
-	//  Copy/Paste from IM project (that is copy/pasted from http://blogs.msdn.com/b/pfxteam/archive/2010/11/21/10094564.aspx)
+	/// <summary>
+	/// Holder for Task extension methods
+	/// </summary>
+	/// <remarks>
+	/// Copy/Paste from IM project (that is copy/pasted from http://blogs.msdn.com/b/pfxteam/archive/2010/11/21/10094564.aspx)
+	/// </remarks>
 	public static class TaskExtensions
 	{
 		/// <summary>Creates a task that represents the completion of a follow-up function when a task completes.</summary>

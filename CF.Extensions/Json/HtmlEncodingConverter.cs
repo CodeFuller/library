@@ -7,19 +7,17 @@ using Newtonsoft.Json;
 
 namespace CF.Extensions.Json
 {
-	/// <remarks>
-	/// http://stackoverflow.com/questions/19971494/how-to-deserialize-a-unix-timestamp-μs-to-a-datetime
-	/// </remarks>
-	public class DateTimeConverter : Newtonsoft.Json.JsonConverter
+	/// <summary>
+	/// Implementation of JsonConverter that performs HTML encoding/decoding for the data
+	/// </summary>
+	public class HtmlEncodingConverter : Newtonsoft.Json.JsonConverter
 	{
-		private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-
 		/// <summary>
 		/// Determines whether this instance can convert the specified object type
 		/// </summary>
 		public override bool CanConvert(Type objectType)
 		{
-			return objectType == typeof(DateTime);
+			return objectType == typeof(String);
 		}
 
 		/// <summary>
@@ -27,7 +25,7 @@ namespace CF.Extensions.Json
 		/// </summary>
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
-			return epoch.AddSeconds((long)reader.Value);
+			return System.Web.HttpUtility.HtmlDecode((string)reader.Value);
 		}
 
 		/// <summary>
@@ -35,7 +33,7 @@ namespace CF.Extensions.Json
 		/// </summary>
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 		{
-			writer.WriteRawValue(((DateTime)value - epoch).TotalSeconds.ToString());
+			writer.WriteRawValue(System.Web.HttpUtility.HtmlEncode((string)value));
 		}
 	}
 }

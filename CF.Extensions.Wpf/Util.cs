@@ -7,8 +7,14 @@ using System.Windows;
 
 namespace CF.Extensions.Wpf
 {
+	/// <summary>
+	/// Holder for util WPF methods
+	/// </summary>
 	public static class Util
 	{
+		/// <summary>
+		/// Shows message box and logs it together with user choice
+		/// </summary>
 		public static MessageBoxResult ShowLoggedMessageBox(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon)
 		{
 			var separator = "---------------------------";

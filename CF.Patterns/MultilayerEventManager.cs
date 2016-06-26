@@ -10,6 +10,9 @@ using CF.Patterns.Internal;
 
 namespace CF.Patterns
 {
+	/// <summary>
+	/// Class for convenient subscribing and processing of events in deep hierarchies
+	/// </summary>
 	public static class MultilayerEventManager
 	{
 		internal delegate void LayerEventHandler(object target, object sender, MultilayerEventArgs e);
@@ -20,6 +23,9 @@ namespace CF.Patterns
 		internal static readonly Dictionary<Type, WeakReferenceDictionary<LayerEventHandler>> Handlers = new Dictionary<Type, WeakReferenceDictionary<LayerEventHandler>>();
 		internal static int CallsAfterLastDeadReferencesRemoving = 0;
 
+		/// <summary>
+		/// Registers the relationship between upper and lower layer
+		/// </summary>
 		public static void RegisterLowerLayer<TEventArgs>(object currentLayer, object lowerLayer)
 		{
 			lock (Parents)
@@ -29,6 +35,9 @@ namespace CF.Patterns
 			}
 		}
 
+		/// <summary>
+		/// Serves for batch relationshiop registration between two layers for set of events
+		/// </summary>
 		public static void RegisterLowerLayerForEvents(object currentLayer, object lowerLayer, params Type[] eventTypes)
 		{
 			lock (Parents)
@@ -41,6 +50,9 @@ namespace CF.Patterns
 			}
 		}
 
+		/// <summary>
+		/// Registers the handler for the specific event
+		/// </summary>
 		public static void RegisterHandler<TTarget, TEventArgs>(TTarget target, Action<TTarget, object, TEventArgs> handler) where TEventArgs : MultilayerEventArgs
 		{
 			lock (Handlers)
@@ -50,7 +62,10 @@ namespace CF.Patterns
 			}
 		}
 
-		public static void UnRegisterHandler<TEventArgs>(object target)
+		/// <summary>
+		/// Unregisters the handler for the specific event
+		/// </summary>
+		public static void UnregisterHandler<TEventArgs>(object target)
 		{
 			lock (Handlers)
 			{
@@ -70,7 +85,10 @@ namespace CF.Patterns
 			}
 		}
 
-		public static void UnRegisterInstance(object target)
+		/// <summary>
+		/// Unregisters all relationships and handlers for specific object
+		/// </summary>
+		public static void UnregisterInstance(object target)
 		{
 			lock (Parents)
 			lock (Handlers)
@@ -90,7 +108,10 @@ namespace CF.Patterns
 				TrimDictionaries();
 			}
 		}
-		
+
+		/// <summary>
+		/// Launches the chain of handlers calls for specific event, from lower to upper layer
+		/// </summary>
 		public static void TriggerEvent<TEventArgs>(object sender, TEventArgs e) where TEventArgs : MultilayerEventArgs
 		{
 			//	Handlers should not be called under lock
@@ -144,6 +165,9 @@ namespace CF.Patterns
 			}
 		}
 
+		/// <summary>
+		/// Clears all relationship and handlers information
+		/// </summary>
 		public static void Clear()
 		{
 			lock (Parents)
