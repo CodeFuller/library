@@ -11,7 +11,7 @@ using CF.Patterns.Internal;
 namespace CF.Patterns
 {
 	/// <summary>
-	/// Class for convenient subscribing and processing of events in deep hierarchies
+	/// Class for convenient subscribing and processing of events in multilayer applications
 	/// </summary>
 	public static class MultilayerEventManager
 	{
