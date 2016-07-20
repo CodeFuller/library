@@ -80,7 +80,8 @@ namespace CF.Extensions
 		/// </remarks>
 		public static void Trace(string format, params object[] args)
 		{
-			throw new NotImplementedException();
+			//	throw new NotImplementedException();
+			Log.DebugFormat(format, args);
 		}
 
 		private static void InitializeLog()
