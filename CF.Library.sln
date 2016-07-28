@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Extensions", "CF.Extensions\CF.Extensions.csproj", "{0921F96D-54D6-4613-91D6-BD8486302B2A}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployNuGetPackage", "DeployNuGetPackage\DeployNuGetPackage.csproj", "{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Patterns.Tests", "CF.Patterns.Tests\CF.Patterns.Tests.csproj", "{5417EFBB-F5EF-4C30-9571-5522D51A9170}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Tests", "CF.Library.Tests\CF.Library.Tests.csproj", "{779B3699-B8F6-4D37-A848-F6E73F67FEF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{5417EFBB-F5EF-4C30-9571-5522D51A9170}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5417EFBB-F5EF-4C30-9571-5522D51A9170}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5417EFBB-F5EF-4C30-9571-5522D51A9170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{779B3699-B8F6-4D37-A848-F6E73F67FEF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779B3699-B8F6-4D37-A848-F6E73F67FEF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779B3699-B8F6-4D37-A848-F6E73F67FEF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779B3699-B8F6-4D37-A848-F6E73F67FEF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

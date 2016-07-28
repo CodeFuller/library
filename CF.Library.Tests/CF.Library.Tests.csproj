@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D31250E4-F1F8-41C8-91C9-C1C32AFF6D14}</ProjectGuid>
+    <ProjectGuid>{779B3699-B8F6-4D37-A848-F6E73F67FEF7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CF.Core</RootNamespace>
-    <AssemblyName>CF.Core</AssemblyName>
+    <RootNamespace>CF.Library.Tests</RootNamespace>
+    <AssemblyName>CF.Library.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,8 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\CF.Core.XML</DocumentationFile>
-    <WarningsAsErrors>CS1591</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,35 +28,33 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <WarningsAsErrors>CS1591</WarningsAsErrors>
-    <DocumentationFile>bin\Release\CF.Core.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectionExtensions.cs" />
-    <Compile Include="DateTimeExtensions.cs" />
-    <Compile Include="ExceptionExtensions.cs" />
-    <Compile Include="Exceptions\ApiCallFailedException.cs" />
-    <Compile Include="Exceptions\BasicException.cs" />
-    <Compile Include="Exceptions\InternalErrorException.cs" />
-    <Compile Include="Exceptions\MultipleObjectsFoundException.cs" />
-    <Compile Include="Exceptions\ObjectNotFoundException.cs" />
-    <Compile Include="Exceptions\SystemCallFailedException.cs" />
-    <Compile Include="Exceptions\UnexpectedEnumValueException.cs" />
-    <Compile Include="Exceptions\UnexpectedServerDataException.cs" />
+    <Compile Include="CF.Core\RandomExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomExtensions.cs" />
-    <Compile Include="TaskExtensions.cs" />
-    <Compile Include="TypeExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CF.Core\CF.Core.csproj">
+      <Project>{d31250e4-f1f8-41c8-91c9-c1c32aff6d14}</Project>
+      <Name>CF.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
