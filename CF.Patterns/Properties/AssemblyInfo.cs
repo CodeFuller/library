@@ -34,4 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.1.*")]
 
-[assembly: InternalsVisibleTo("CF.Patterns.Tests")]
+[assembly: InternalsVisibleTo("CF.Library.Tests")]

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using CF.Core;
 
-namespace CF.Library.Tests.CF.Core
+namespace CF.Library.Tests
 {
 	class RandomLowerBound : Random
 	{

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CF.Core\RandomExtensionsTests.cs" />
+    <Compile Include="CF.Patterns\MultilayerEventManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,7 +56,12 @@
       <Project>{d31250e4-f1f8-41c8-91c9-c1c32aff6d14}</Project>
       <Name>CF.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CF.Patterns\CF.Patterns.csproj">
+      <Project>{5846b671-b762-4c2b-ba55-1cc573dc4b11}</Project>
+      <Name>CF.Patterns</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
