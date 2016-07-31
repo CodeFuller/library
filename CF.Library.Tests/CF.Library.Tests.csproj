@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CF.Core\RandomExtensionsTests.cs" />
+    <Compile Include="CF.Core\StringExtensionsTests.cs" />
     <Compile Include="CF.Patterns\MultilayerEventManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
