@@ -53,6 +53,12 @@
     <Compile Include="ExceptionExtensions.cs" />
     <Compile Include="Exceptions\ApiCallFailedException.cs" />
     <Compile Include="Exceptions\BasicException.cs" />
+    <Compile Include="Exceptions\Database\BasicDbException.cs" />
+    <Compile Include="Exceptions\Database\ExtraDbDataException.cs" />
+    <Compile Include="Exceptions\Database\NoFetchedDbDataException.cs" />
+    <Compile Include="Exceptions\Database\UnexpectedDbAffectedRowsException.cs" />
+    <Compile Include="Exceptions\Database\UnexpectedDbDataException.cs" />
+    <Compile Include="Exceptions\Database\UnexpectedDbDataTypeException.cs" />
     <Compile Include="Exceptions\InternalErrorException.cs" />
     <Compile Include="Exceptions\MultipleObjectsFoundException.cs" />
     <Compile Include="Exceptions\ObjectNotFoundException.cs" />
