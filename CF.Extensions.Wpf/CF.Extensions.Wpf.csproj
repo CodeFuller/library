@@ -22,6 +22,8 @@
     <WarningLevel>4</WarningLevel>
     <WarningsAsErrors>CS1591</WarningsAsErrors>
     <DocumentationFile>bin\Debug\CF.Extensions.Wpf.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\CodeFuller.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

@@ -229,7 +229,7 @@ namespace CF.Library.Tests
 		[Repeat(TestRepeatsNumber)]
 		public void NextStringWithoutArguments_ForUsualRandomGenerator_ReturnsRandomString()
 		{
-			string rnd = random.NextString();
+			random.NextString();
 			//	No any Assert, just checking that method doesn't throw
 		}
 		[Test]
@@ -348,19 +348,19 @@ namespace CF.Library.Tests
 		[Repeat(TestRepeatsNumber)]
 		public void NextUri_ForUsualRandomGenerator_ReturnsValidUri()
 		{
-			Uri rnd = random.NextUri();
+			random.NextUri();
 			//	No any Assert, just checking that method doesn't throw
 		}
 		[Test]
 		public void NextUri_ForLowerBoundRandomGenerator_ReturnsValidUri()
 		{
-			Uri rnd = lowerRandom.NextUri();
+			lowerRandom.NextUri();
 			//	No any Assert, just checking that method doesn't throw
 		}
 		[Test]
 		public void NextUri_ForUpperBoundRandomGenerator_ReturnsValidUri()
 		{
-			Uri rnd = upperRandom.NextUri();
+			upperRandom.NextUri();
 			//	No any Assert, just checking that method doesn't throw
 		}
 
