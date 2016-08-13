@@ -32,6 +32,7 @@ namespace CF.Patterns
 		/// <summary>
 		/// Gets value from the cache or loads it asynchronously with provided value factory
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "Need possibility to have asynchronous value factory")]
 		public async Task<TValue> GetValue(TKey key, Func<Task<TValue>> valueFactory)
 		{
 			//	Searching in the cache

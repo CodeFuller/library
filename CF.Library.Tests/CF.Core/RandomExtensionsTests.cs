@@ -27,6 +27,11 @@ namespace CF.Library.Tests
 
 		public override void NextBytes(byte[] buffer)
 		{
+			if (buffer == null)
+			{
+				throw new ArgumentNullException(nameof(buffer));
+			}
+
 			for (var i = 0; i < buffer.Length; ++i)
 			{
 				buffer[i] = byte.MinValue;
@@ -55,7 +60,7 @@ namespace CF.Library.Tests
 		{
 			if (maxValue < 1)
 			{
-				throw new ArgumentException();
+				throw new ArgumentOutOfRangeException(nameof(maxValue));
 			}
 			return maxValue - 1;
 		}
@@ -64,13 +69,18 @@ namespace CF.Library.Tests
 		{
 			if (maxValue < 1)
 			{
-				throw new ArgumentException();
+				throw new ArgumentOutOfRangeException(nameof(maxValue));
 			}
 			return maxValue - 1;
 		}
 
 		public override void NextBytes(byte[] buffer)
 		{
+			if (buffer == null)
+			{
+				throw new ArgumentNullException(nameof(buffer));
+			}
+
 			for (var i = 0; i < buffer.Length; ++i)
 			{
 				buffer[i] = byte.MaxValue;

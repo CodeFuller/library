@@ -26,6 +26,7 @@ namespace CF.Patterns
 		/// <summary>
 		/// Registers the relationship between upper and lower layer
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Registration is performed for whole event type, not for specific object")]
 		public static void RegisterLowerLayer<TEventArgs>(object currentLayer, object lowerLayer)
 		{
 			lock (Parents)
@@ -40,6 +41,11 @@ namespace CF.Patterns
 		/// </summary>
 		public static void RegisterLowerLayerForEvents(object currentLayer, object lowerLayer, params Type[] eventTypes)
 		{
+			if (eventTypes == null)
+			{
+				throw new ArgumentNullException(nameof(eventTypes));
+			}
+
 			lock (Parents)
 			{
 				CollectDeadReferences();
@@ -65,6 +71,7 @@ namespace CF.Patterns
 		/// <summary>
 		/// Unregisters the handler for the specific event
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Unregistration is performed for whole event type, not for specific object")]
 		public static void UnregisterHandler<TEventArgs>(object target)
 		{
 			lock (Handlers)

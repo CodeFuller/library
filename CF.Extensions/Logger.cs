@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 using System.IO;
 using System.Reflection;
@@ -10,6 +11,7 @@ using log4net.Layout;
 using log4net.Config;
 using log4net.Repository;
 using log4net.Util;
+using static System.FormattableString;
 
 namespace CF.Extensions
 {
@@ -32,8 +34,6 @@ namespace CF.Extensions
 
 				return log;
 			}
-
-			set { log = value; }
 		}
 
 		/// <summary>
@@ -48,28 +48,28 @@ namespace CF.Extensions
 		/// </summary>
 		public static void Error(string format, params object[] args)
 		{
-			Log.ErrorFormat(format, args);
+			Log.ErrorFormat(CultureInfo.InvariantCulture, format, args);
 		}
 		/// <summary>
 		/// Logs warning message
 		/// </summary>
 		public static void Warning(string format, params object[] args)
 		{
-			Log.WarnFormat(format, args);
+			Log.WarnFormat(CultureInfo.InvariantCulture, format, args);
 		}
 		/// <summary>
 		/// Logs info message
 		/// </summary>
 		public static void Info(string format, params object[] args)
 		{
-			Log.InfoFormat(format, args);
+			Log.InfoFormat(CultureInfo.InvariantCulture, format, args);
 		}
 		/// <summary>
 		/// Logs debug message
 		/// </summary>
 		public static void Debug(string format, params object[] args)
 		{
-			Log.DebugFormat(format, args);
+			Log.DebugFormat(CultureInfo.InvariantCulture, format, args);
 		}
 
 		/// <summary>
@@ -81,7 +81,7 @@ namespace CF.Extensions
 		public static void Trace(string format, params object[] args)
 		{
 			//	throw new NotImplementedException();
-			Log.DebugFormat(format, args);
+			Log.DebugFormat(CultureInfo.InvariantCulture, format, args);
 		}
 
 		private static void InitializeLog()
@@ -99,7 +99,7 @@ namespace CF.Extensions
 			var exeFilename = System.Reflection.Assembly.GetEntryAssembly().Location;
 			var directoryPath = Path.GetDirectoryName(exeFilename);
 			var rawName = Path.GetFileNameWithoutExtension(exeFilename);
-			var logFilenamePattern = String.Format("{0}\\logs\\{1}-%date{{yyyy_MM_dd_HH_mm_ss}}.log", directoryPath, rawName);
+			var logFilenamePattern = Invariant($"{directoryPath}\\logs\\{rawName}-%date{{yyyy_MM_dd_HH_mm_ss}}.log");
 
 			appender.File = (new PatternString(logFilenamePattern)).Format();
 			appender.AppendToFile = false;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.FormattableString;
 
 namespace CF.Core
 {
@@ -19,6 +20,7 @@ namespace CF.Core
 		/// <summary>
 		/// Returns a non-negative random long number.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", Justification = "Name is selected similarly to other Random class methods (e.g. NextDouble)")]
 		public static long NextLong(this Random rnd)
 		{
 			return rnd.NextLong(long.MaxValue);
@@ -27,6 +29,7 @@ namespace CF.Core
 		/// <summary>
 		/// Returns a non-negative random long number that is less than the specified maximum.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", Justification = "Name is selected similarly to other Random class methods (e.g. NextDouble)")]
 		public static long NextLong(this Random rnd, long maxValue)
 		{
 			return rnd.NextLong(0, maxValue);
@@ -35,13 +38,19 @@ namespace CF.Core
 		/// <summary>
 		/// Returns a non-negative random long number within a specified range.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", Justification = "Name is selected similarly to other Random class methods (e.g. NextDouble)")]
 		public static long NextLong(this Random rnd, long minValue, long maxValue)
 		{
+			if (rnd == null)
+			{
+				throw new ArgumentNullException(nameof(rnd));
+			}
 			if (minValue > maxValue)
 			{
-				throw new ArgumentOutOfRangeException();
+				throw new ArgumentOutOfRangeException(Invariant($"{nameof(minValue)} > {nameof(maxValue)}"));
 			}
-			else if (minValue == maxValue)
+
+			if (minValue == maxValue)
 			{
 				return minValue;
 			}
@@ -81,9 +90,21 @@ namespace CF.Core
 		/// </summary>
 		public static string NextString(this Random rnd, string charSet, int minLength, int maxLength)
 		{
-			if (minLength < 0 || maxLength < 0 || minLength > maxLength)
+			if (rnd == null)
 			{
-				throw new ArgumentOutOfRangeException();
+				throw new ArgumentNullException(nameof(rnd));
+			}
+			if (minLength < 0)
+			{
+				throw new ArgumentOutOfRangeException(nameof(minLength));
+			}
+			if (maxLength < 0)
+			{
+				throw new ArgumentOutOfRangeException(nameof(maxLength));
+			}
+			if (minLength > maxLength)
+			{
+				throw new ArgumentOutOfRangeException(Invariant($"{nameof(minLength)} > {nameof(maxLength)}"));
 			}
 
 			return new string(Enumerable.Repeat(charSet, rnd.Next(minLength, maxLength)).
@@ -103,7 +124,7 @@ namespace CF.Core
 		/// </summary>
 		public static Uri NextUri(this Random rnd)
 		{
-			return new Uri($"http://{GenerateDomainPart(rnd)}.{GenerateDomainPart(rnd)}.{GenerateDomainPart(rnd)}/{rnd.NextString()}");
+			return new Uri(Invariant($"http://{GenerateDomainPart(rnd)}.{GenerateDomainPart(rnd)}.{GenerateDomainPart(rnd)}/{rnd.NextString()}"));
 		}
 
 		private static string GenerateDomainPart(Random rnd)

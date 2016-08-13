@@ -87,7 +87,7 @@ namespace CF.Patterns.Tests
 		}
 
 		[Test]
-		public void UnRegisterHandler_ForSingleLayer_RemovesHandler()
+		public void UnregisterHandler_ForSingleLayer_RemovesHandler()
 		{
 			var layer1 = new Layer1();
 			MultilayerEventManager.RegisterHandler<Layer1, FakeEventArgs>(layer1, (t, s, e) => t.OnEvent(s, e));
@@ -98,7 +98,7 @@ namespace CF.Patterns.Tests
 		}
 
 		[Test]
-		public void UnRegisterInstance_ForLowerLayer_RemovesParentRelationship()
+		public void UnregisterInstance_ForLowerLayer_RemovesParentRelationship()
 		{
 			var layer1 = new Layer1();
 			var layer2 = new Layer2();
@@ -110,7 +110,7 @@ namespace CF.Patterns.Tests
 		}
 
 		[Test]
-		public void UnRegisterInstance_ForUpperLayer_RemovesParentRelationship()
+		public void UnregisterInstance_ForUpperLayer_RemovesParentRelationship()
 		{
 			var layer1 = new Layer1();
 			var layer2 = new Layer2();
@@ -122,7 +122,7 @@ namespace CF.Patterns.Tests
 		}
 
 		[Test]
-		public void UnRegisterInstance_WhenCalled_RemovesHandler()
+		public void UnregisterInstance_WhenCalled_RemovesHandler()
 		{
 			var layer1 = new Layer1();
 			MultilayerEventManager.RegisterHandler<Layer1, FakeEventArgs>(layer1, (t, s, e) => t.OnEvent(s, e));
@@ -154,7 +154,7 @@ namespace CF.Patterns.Tests
 		}
 
 		[Test]
-		public void TriggerEvent_For2ndLayerOnTwoLayers_CallsCorrectHandler()
+		public void TriggerEvent_ForSecondLayerOnTwoLayers_CallsCorrectHandler()
 		{
 			var layer1 = new Layer1();
 			var layer2 = new Layer2();
@@ -168,7 +168,7 @@ namespace CF.Patterns.Tests
 		}
 
 		[Test]
-		public void TriggerEvent_For1stLayerOnTwoLayers_CallsCorrectHandler()
+		public void TriggerEvent_ForFirstLayerOnTwoLayers_CallsCorrectHandler()
 		{
 			var layer1 = new Layer1();
 			var layer2 = new Layer2();
@@ -258,6 +258,11 @@ namespace CF.Patterns.Tests
 		[Test, TestCaseSource(nameof(MethodsWhichCall_RemoveDeadReferences))]
 		public void ModificationMethods_WhenCalledEnoughTimes_RemoveDeadReferences(Action testedMethodCall)
 		{
+			if (testedMethodCall == null)
+			{
+				throw new ArgumentNullException(nameof(testedMethodCall));
+			}
+
 			WeakReference layer1Ref;
 			WeakReference layer2Ref;
 			FillDeadReferencesTestData(out layer1Ref, out layer2Ref);
@@ -272,6 +277,7 @@ namespace CF.Patterns.Tests
 			Assert.IsFalse(MultilayerEventManager.Handlers.ContainsKey(typeof(FakeEventArgs)));
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields", Justification = "This field is used by NUnit framework as test data source")]
 		private static readonly Action[] MethodsWhichCall_RemoveDeadReferences =
 		{
 			() => MultilayerEventManager.RegisterLowerLayer<FakeEventArgs2>(new Layer1(), new Layer2()),
@@ -299,6 +305,7 @@ namespace CF.Patterns.Tests
 			MultilayerEventManager.RegisterHandler<Layer2, FakeEventArgs>(layer2, (t, s, e) => t.OnEvent(s, e));
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2001:AvoidCallingProblematicMethods", Justification = "Call to GC.Collect() is required to test releasing of weakly referenced objects")]
 		private void ForceGC()
 		{
 			GC.Collect();

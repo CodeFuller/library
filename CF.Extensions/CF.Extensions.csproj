@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
     <WarningsAsErrors>CS1591</WarningsAsErrors>
     <DocumentationFile>bin\Release\CF.Extensions.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\CodeFuller.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">

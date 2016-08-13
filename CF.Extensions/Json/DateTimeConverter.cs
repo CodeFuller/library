@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,11 @@ namespace CF.Extensions.Json
 		/// </summary>
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
+			if (reader == null)
+			{
+				throw new ArgumentNullException(nameof(reader));
+			}
+
 			return epoch.AddSeconds((long)reader.Value);
 		}
 
@@ -35,7 +41,12 @@ namespace CF.Extensions.Json
 		/// </summary>
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 		{
-			writer.WriteRawValue(((DateTime)value - epoch).TotalSeconds.ToString());
+			if (writer == null)
+			{
+				throw new ArgumentNullException(nameof(writer));
+			}
+
+			writer.WriteRawValue(((DateTime)value - epoch).TotalSeconds.ToString(CultureInfo.InvariantCulture));
 		}
 	}
 }

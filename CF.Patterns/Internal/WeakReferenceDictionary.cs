@@ -69,7 +69,7 @@ namespace CF.Patterns.Internal
 			return Items.FindIndex(it => EqualItems(it, obj));
 		}
 
-		private bool EqualItems(Tuple<WeakReference, TValue> item, object obj)
+		private static bool EqualItems(Tuple<WeakReference, TValue> item, object obj)
 		{
 			return ReferenceEquals(item.Item1.Target, obj);
 		}

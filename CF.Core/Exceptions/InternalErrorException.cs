@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace CF.Core.Exceptions
 	/// <summary>
 	/// The exception that is thrown when some internal error occurs in the program
 	/// </summary>
+	[Serializable]
 	public class InternalErrorException : BasicException
 	{
 		/// <summary>
@@ -21,8 +23,25 @@ namespace CF.Core.Exceptions
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public InternalErrorException(string message, params object[] args)
-			: base(String.Format(message, args))
+		/// <param name="message"></param>
+		public InternalErrorException(string message)
+			: base(message)
+		{
+		}
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public InternalErrorException(string message, Exception innerException)
+			: base(message, innerException)
+		{
+		}
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		protected InternalErrorException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}

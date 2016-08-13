@@ -26,6 +26,7 @@ namespace CF.Patterns
 		/// <summary>
 		/// Constructor
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Justification = "Need possibility to have asynchronous value factory")]
 		public AsyncLazy(Func<Task<T>> taskFactory) :
 			base(() => Task.Factory.StartNew(taskFactory).Unwrap())
 		{
@@ -34,6 +35,7 @@ namespace CF.Patterns
 		/// <summary>
 		/// Accessor for TaskAwaiter of kept task
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "Mimic of Task.GetAwaiter()")]
 		public TaskAwaiter<T> GetAwaiter()
 		{
 			return Value.GetAwaiter();

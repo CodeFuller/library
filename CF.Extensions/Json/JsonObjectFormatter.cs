@@ -15,10 +15,10 @@ namespace CF.Extensions.Json
 		/// <summary>
 		/// Is used for human-friendly dump of any object
 		/// </summary>
-		public static string ToJson(this object obj)
+		public static string ToJson(this object value)
 		{
 			JavaScriptSerializer serializer = new JavaScriptSerializer();
-			return serializer.Serialize(obj);
+			return serializer.Serialize(value);
 		}
 	}
 }

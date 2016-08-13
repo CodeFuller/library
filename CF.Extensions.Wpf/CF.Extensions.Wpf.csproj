@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
     <WarningsAsErrors>CS1591</WarningsAsErrors>
     <DocumentationFile>bin\Release\CF.Extensions.Wpf.XML</DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\CodeFuller.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -51,7 +53,7 @@
     <Compile Include="InactivityDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReactivationDetectedEventArgs.cs" />
-    <Compile Include="Util.cs" />
+    <Compile Include="WpfHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CF.Core\CF.Core.csproj">

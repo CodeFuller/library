@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
     <WarningsAsErrors>CS1591</WarningsAsErrors>
     <DocumentationFile>bin\Release\CF.Core.XML</DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\CodeFuller.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

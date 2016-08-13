@@ -16,6 +16,11 @@ namespace CF.Core
 		/// </summary>
 		public static void FillDefaultValue<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key) where TValue : new()
 		{
+			if (dict == null)
+			{
+				throw new ArgumentNullException(nameof(dict));
+			}
+
 			if (!dict.ContainsKey(key))
 			{
 				dict.Add(key, new TValue());
@@ -28,6 +33,11 @@ namespace CF.Core
 		/// </summary>
 		public static TValue SafeGet<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key)
 		{
+			if (dict == null)
+			{
+				throw new ArgumentNullException(nameof(dict));
+			}
+
 			TValue value;
 			dict.TryGetValue(key, out value);
 			return value;
@@ -39,6 +49,11 @@ namespace CF.Core
 		/// </summary>
 		public static TValue ProvideValue<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key) where TValue : new()
 		{
+			if (dict == null)
+			{
+				throw new ArgumentNullException(nameof(dict));
+			}
+
 			lock (dict)
 			{
 				TValue value;
@@ -57,6 +72,11 @@ namespace CF.Core
 		/// </summary>
 		public static void SafeAdd<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key, TValue value)
 		{
+			if (dict == null)
+			{
+				throw new ArgumentNullException(nameof(dict));
+			}
+
 			if (dict.ContainsKey(key))
 			{
 				dynamic v1 = dict[key];

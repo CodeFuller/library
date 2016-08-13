@@ -18,6 +18,7 @@ namespace CF.Core
 		/// <param name="task">The task.</param>
 		/// <param name="next">The function to run when the task completes.</param>
 		/// <returns>The task that represents the completion of both the task and the function.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "All exceptions are caught by design")]
 		public static Task<TResult> Then<TResult>(this Task task, Func<TResult> next)
 		{
 			if (task == null) throw new ArgumentNullException("task");
@@ -45,6 +46,7 @@ namespace CF.Core
 		/// <param name="task">The task.</param>
 		/// <param name="next">The function to run when the task completes.</param>
 		/// <returns>The task that represents the completion of both the task and the function.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "All exceptions are caught by design")]
 		public static Task<TNewResult> Then<TResult, TNewResult>(this Task<TResult> task, Func<TResult, TNewResult> next)
 		{
 			if (task == null) throw new ArgumentNullException("task");

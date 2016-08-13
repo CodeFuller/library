@@ -25,6 +25,11 @@ namespace CF.Extensions.Json
 		/// </summary>
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
+			if (reader == null)
+			{
+				throw new ArgumentNullException(nameof(reader));
+			}
+
 			return System.Web.HttpUtility.HtmlDecode((string)reader.Value);
 		}
 
@@ -33,6 +38,11 @@ namespace CF.Extensions.Json
 		/// </summary>
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
 		{
+			if (writer == null)
+			{
+				throw new ArgumentNullException(nameof(writer));
+			}
+
 			writer.WriteRawValue(System.Web.HttpUtility.HtmlEncode((string)value));
 		}
 	}

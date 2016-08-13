@@ -10,7 +10,7 @@ namespace CF.Extensions.Wpf
 	/// <summary>
 	/// Holder for util WPF methods
 	/// </summary>
-	public static class Util
+	public static class WpfHelpers
 	{
 		/// <summary>
 		/// Shows message box and logs it together with user choice

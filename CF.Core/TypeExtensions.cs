@@ -53,9 +53,10 @@ namespace CF.Core
 		public static void Serialize<T>(this T obj, string fileName)
 		{
 			IFormatter formatter = new BinaryFormatter();
-			var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
-			formatter.Serialize(stream, obj);
-			stream.Close();
+			using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
+			{
+				formatter.Serialize(stream, obj);
+			}
 		}
 
 		/// <summary>
@@ -64,11 +65,11 @@ namespace CF.Core
 		public static T Deserialize<T>(string fileName)
 		{
 			var formatter = new BinaryFormatter();
-			Stream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
-			T obj = (T)formatter.Deserialize(stream);
-			stream.Close();
-
-			return obj;
+			using (Stream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+			{
+				T obj = (T)formatter.Deserialize(stream);
+				return obj;
+			}
 		}
 	}
 }

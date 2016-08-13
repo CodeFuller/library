@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace CF.Core.Exceptions
 	/// <summary>
 	/// Base class for all exceptions in CF.Library
 	/// </summary>
+	[Serializable]
 	public class BasicException : Exception
 	{
 		/// <summary>
@@ -21,8 +23,24 @@ namespace CF.Core.Exceptions
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public BasicException(string message, params object[] args)
-			: base(String.Format(message, args))
+		public BasicException(string message)
+			: base(message)
+		{
+		}
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		public BasicException(string message, Exception innerException)
+			: base(message, innerException)
+		{
+		}
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		protected BasicException(SerializationInfo info, StreamingContext context)
+			: base(info, context)
 		{
 		}
 	}
