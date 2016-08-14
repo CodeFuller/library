@@ -55,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DbConnectionFactory.cs" />
+    <Compile Include="Database\IDbConnectionFactory.cs" />
+    <Compile Include="Database\IDbTraits.cs" />
     <Compile Include="Json\DateTimeConverter.cs" />
     <Compile Include="Json\HtmlEncodingConverter.cs" />
     <Compile Include="Json\JsonObjectFormatter.cs" />
