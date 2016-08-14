@@ -30,7 +30,7 @@ namespace CF.Extensions.Wpf
 	/// </summary>
 	public class InactivityDetector : IDisposable
 	{
-		private Timer tickTimer = new Timer();
+		private readonly Timer tickTimer = new Timer();
 
 		private bool deactivated;
 
@@ -177,11 +177,9 @@ namespace CF.Extensions.Wpf
 		{
 			if (disposing)
 			{
-				// free managed resources
 				if (tickTimer != null)
 				{
 					tickTimer.Dispose();
-					tickTimer = null;
 				}
 			}
 		}
