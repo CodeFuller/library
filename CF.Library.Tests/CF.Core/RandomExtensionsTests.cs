@@ -349,19 +349,25 @@ namespace CF.Library.Tests
 		public void NextUri_ForUsualRandomGenerator_ReturnsValidUri()
 		{
 			random.NextUri();
+
 			//	No any Assert, just checking that method doesn't throw
+			Assert.Pass();
 		}
 		[Test]
 		public void NextUri_ForLowerBoundRandomGenerator_ReturnsValidUri()
 		{
 			lowerRandom.NextUri();
+
 			//	No any Assert, just checking that method doesn't throw
+			Assert.Pass();
 		}
 		[Test]
 		public void NextUri_ForUpperBoundRandomGenerator_ReturnsValidUri()
 		{
 			upperRandom.NextUri();
+
 			//	No any Assert, just checking that method doesn't throw
+			Assert.Pass();
 		}
 
 		#endregion
