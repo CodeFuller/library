@@ -15,14 +15,14 @@ namespace CF.Database.PostgreSql
 	public class DbTraits : IDbTraits
 	{
 		/// <summary>
-		/// Implementation of ISpecificDbAdapter.PrepareConnection()
+		/// Implementation of IDbTraits.PrepareConnection()
 		/// </summary>
 		public void PrepareConnection(IDbConnection connection)
 		{
 		}
 
 		/// <summary>
-		/// Implementation of ISpecificDbAdapter.GetParameterId()
+		/// Implementation of IDbTraits.GetParameterId()
 		/// </summary>
 		public string GetParameterId(int index, string name)
 		{
@@ -30,7 +30,7 @@ namespace CF.Database.PostgreSql
 		}
 
 		/// <summary>
-		/// Implementation of ISpecificDbAdapter.SerializeValue()
+		/// Implementation of IDbTraits.SerializeValue()
 		/// </summary>
 		public object SerializeValue(object value)
 		{
@@ -44,7 +44,7 @@ namespace CF.Database.PostgreSql
 		}
 
 		/// <summary>
-		/// Implementation of ISpecificDbAdapter.DeserializeValue()
+		/// Implementation of IDbTraits.DeserializeValue().
 		/// </summary>
 		public object DeserializeValue(object data, Type outputType)
 		{
@@ -72,7 +72,15 @@ namespace CF.Database.PostgreSql
 		}
 
 		/// <summary>
-		/// Implementation of ISpecificDbAdapter.MapEnum()
+		/// Implementation of IDbTraits.DeserializeValue&lt;Tgt;().
+		/// </summary>
+		public T DeserializeValue<T>(object data)
+		{
+			return (T) DeserializeValue(data, typeof(T));
+		}
+
+		/// <summary>
+		/// Implementation of IDbTraits.MapEnum()
 		/// </summary>
 		public void MapEnum<TEnum>(IDbConnection connection) where TEnum : struct
 		{
@@ -83,6 +91,22 @@ namespace CF.Database.PostgreSql
 			}
 
 			pgSqlConnection.MapEnum<TEnum>();
+		}
+
+		/// <summary>
+		/// Implementation of IDbTraits.AddParameterValueToCommand()
+		/// </summary>
+		public void AddParameterValueToCommand(IDbCommand command, string columnName, object value)
+		{
+			if (command == null)
+			{
+				throw new ArgumentNullException(nameof(command));
+			}
+
+			var param = command.CreateParameter();
+			param.ParameterName = columnName;
+			param.Value = SerializeValue(value);
+			command.Parameters.Add(param);
 		}
 	}
 }

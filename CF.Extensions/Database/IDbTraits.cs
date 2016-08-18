@@ -33,9 +33,19 @@ namespace CF.Extensions.Database
 		object DeserializeValue(object data, Type outputType);
 
 		/// <summary>
-		/// Maps a CLR enum type to native database enum type
+		/// Converts DB object to CLR object.
+		/// </summary>
+		T DeserializeValue<T>(object data);
+
+		/// <summary>
+		/// Maps a CLR enum type to native database enum type.
 		/// </summary>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Justification = "Registration is performed for whole enum type, not for specific value")]
 		void MapEnum<TEnum>(IDbConnection connection) where TEnum : struct;
+
+		/// <summary>
+		/// Adds parameter with value to the command.
+		/// </summary>
+		void AddParameterValueToCommand(IDbCommand command, string columnName, object value);
 	}
 }
