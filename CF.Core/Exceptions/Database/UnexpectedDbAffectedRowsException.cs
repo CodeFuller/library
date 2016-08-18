@@ -16,16 +16,6 @@ namespace CF.Core.Exceptions.Database
 	public class UnexpectedDbAffectedRowsException : BasicDbException
 	{
 		/// <summary>
-		/// Expected number of affected rows.
-		/// </summary>
-		public int Expected { get; set; }
-
-		/// <summary>
-		/// Actual number of affected rows.
-		/// </summary>
-		public int Affected { get; set; }
-
-		/// <summary>
 		/// Constructor
 		/// </summary>
 		public UnexpectedDbAffectedRowsException()
@@ -59,27 +49,17 @@ namespace CF.Core.Exceptions.Database
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public UnexpectedDbAffectedRowsException(string sqlQuery, int expected, int affected)
-			: this(Invariant($"Bad number of affected rows: {affected} != {expected} for '{sqlQuery}'"))
+		public UnexpectedDbAffectedRowsException(string sqlQuery, int affected)
+			: this(Invariant($"Bad number of affected rows: {affected} for '{sqlQuery}'"))
 		{
-			Expected = expected;
-			Affected = affected;
 		}
 
 		/// <summary>
-		/// Implementation for ISerializable.GetObjectData()
+		/// Constructor
 		/// </summary>
-		public override void GetObjectData(SerializationInfo info, StreamingContext context)
+		public UnexpectedDbAffectedRowsException(string sqlQuery, int expected, int affected)
+			: this(Invariant($"Bad number of affected rows: {affected} != {expected} for '{sqlQuery}'"))
 		{
-			if (info == null)
-			{
-				throw new ArgumentNullException(nameof(info));
-			}
-
-			info.AddValue(nameof(Expected), Expected);
-			info.AddValue(nameof(Affected), Affected);
-
-			base.GetObjectData(info, context);
 		}
 	}
 }
