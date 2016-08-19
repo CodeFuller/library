@@ -59,10 +59,6 @@
       <Project>{d31250e4-f1f8-41c8-91c9-c1c32aff6d14}</Project>
       <Name>CF.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CF.Database.PostgreSql\CF.Database.PostgreSql.csproj">
-      <Project>{24fb117e-c75d-46e9-8376-717d90a67013}</Project>
-      <Name>CF.Database.PostgreSql</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CF.Extensions.Wpf\CF.Extensions.Wpf.csproj">
       <Project>{23a873cf-232d-45ed-930f-2d0a4d804d7c}</Project>
       <Name>CF.Extensions.Wpf</Name>
