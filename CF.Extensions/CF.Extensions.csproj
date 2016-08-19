@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DataReaderExtensions.cs" />
     <Compile Include="Database\DbConnectionFactory.cs" />
     <Compile Include="Database\DbCommandExtensions.cs" />
     <Compile Include="Database\IDbConnectionFactory.cs" />
@@ -68,6 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CF.Core\CF.Core.csproj">
+      <Project>{D31250E4-F1F8-41C8-91C9-C1C32AFF6D14}</Project>
+      <Name>CF.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

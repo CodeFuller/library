@@ -34,6 +34,10 @@
     <CodeAnalysisRuleSet>..\..\CodeFuller.Tests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -50,6 +54,7 @@
   <ItemGroup>
     <Compile Include="CF.Core\RandomExtensionsTests.cs" />
     <Compile Include="CF.Core\StringExtensionsTests.cs" />
+    <Compile Include="CF.Extensions\Database\DataReaderExtensionsTests.cs" />
     <Compile Include="CF.Patterns\MultilayerEventManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,6 +65,10 @@
     <ProjectReference Include="..\CF.Core\CF.Core.csproj">
       <Project>{d31250e4-f1f8-41c8-91c9-c1c32aff6d14}</Project>
       <Name>CF.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CF.Extensions\CF.Extensions.csproj">
+      <Project>{0921f96d-54d6-4613-91d6-bd8486302b2a}</Project>
+      <Name>CF.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\CF.Patterns\CF.Patterns.csproj">
       <Project>{5846b671-b762-4c2b-ba55-1cc573dc4b11}</Project>

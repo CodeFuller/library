@@ -56,6 +56,7 @@
     <Compile Include="Exceptions\Database\BasicDbException.cs" />
     <Compile Include="Exceptions\Database\ExtraDbDataException.cs" />
     <Compile Include="Exceptions\Database\NoFetchedDbDataException.cs" />
+    <Compile Include="Exceptions\Database\ScalarDbDataExpectedException.cs" />
     <Compile Include="Exceptions\Database\UnexpectedDbAffectedRowsException.cs" />
     <Compile Include="Exceptions\Database\UnexpectedDbDataException.cs" />
     <Compile Include="Exceptions\Database\UnexpectedDbDataTypeException.cs" />

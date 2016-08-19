@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CF.Extensions.Database
 {
 	/// <summary>
-	/// Holder for IDbCommand interface extension methods.
+	/// Holder for IDbCommand extension methods.
 	/// </summary>
 	public static class DbCommandExtensions
 	{
