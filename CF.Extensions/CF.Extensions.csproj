@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DbConnectionFactory.cs" />
+    <Compile Include="Database\DbCommandExtensions.cs" />
     <Compile Include="Database\IDbConnectionFactory.cs" />
     <Compile Include="Database\IDbTraits.cs" />
     <Compile Include="Json\DateTimeConverter.cs" />
