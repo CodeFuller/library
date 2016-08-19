@@ -20,8 +20,6 @@ namespace CF.Extensions.Database
 			connection.Open();
 			//Logger.Info("Connected successfully");
 
-			CreateDbTraits().PrepareConnection(connection);
-
 			return connection;
 		}
 
