@@ -229,13 +229,15 @@ namespace CF.Library.Tests
 		public void NextStringWithoutArguments_ForUsualRandomGenerator_ReturnsRandomString()
 		{
 			random.NextString();
+
 			//	No any Assert, just checking that method doesn't throw
+			Assert.Pass();
 		}
 		[Test]
 		public void NextStringWithoutArguments_ForLowerBoundRandomGenerator_ReturnsEmptyString()
 		{
 			string rnd = lowerRandom.NextString();
-			Assert.IsEmpty(rnd);
+			Assert.AreEqual(rnd.Length, 1);
 		}
 		[Test]
 		public void NextStringWithoutArguments_ForUpperBoundRandomGenerator_ReturnsNonEmptyString()

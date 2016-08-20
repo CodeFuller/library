@@ -62,11 +62,15 @@ namespace CF.Core
 		}
 
 		/// <summary>
-		/// Returns random string of length between 0 and 256 characters.
+		/// Returns random string of length between 1 and 256 characters.
 		/// </summary>
+		/// <remarks>
+		/// As far as this method is usually used by Unit Tests it never returns empty string.
+		/// Use NextString(int minLength) override if empty string should present among return values.
+		/// </remarks>
 		public static string NextString(this Random rnd)
 		{
-			return rnd.NextString(0);
+			return rnd.NextString(1);
 		}
 
 		/// <summary>
