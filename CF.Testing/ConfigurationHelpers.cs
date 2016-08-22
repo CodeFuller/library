@@ -18,5 +18,16 @@ namespace CF.Testing
 			config.Save(ConfigurationSaveMode.Modified);
 			ConfigurationManager.RefreshSection(sectionName);
 		}
+
+		/// <summary>
+		/// Removes specified configuration section.
+		/// </summary>
+		public static void RemoveConfigurationSection(string sectionName)
+		{
+			Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			config.Sections.Remove(sectionName);
+			config.Save(ConfigurationSaveMode.Modified);
+			ConfigurationManager.RefreshSection(sectionName);
+		}
 	}
 }
