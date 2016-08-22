@@ -65,6 +65,10 @@
       <Project>{5846b671-b762-4c2b-ba55-1cc573dc4b11}</Project>
       <Name>CF.Patterns</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CF.Testing\CF.Testing.csproj">
+      <Project>{43392ab1-fa59-47f4-9a1c-734c1e6d5471}</Project>
+      <Name>CF.Testing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
