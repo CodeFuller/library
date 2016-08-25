@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using CF.Patterns;
 using NUnit.Framework;
 
 namespace CF.Patterns.Tests

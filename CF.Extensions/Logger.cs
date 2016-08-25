@@ -2,14 +2,11 @@
 using System.Globalization;
 using System.Text;
 using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using log4net;
 using log4net.Core;
 using log4net.Appender;
 using log4net.Layout;
 using log4net.Config;
-using log4net.Repository;
 using log4net.Util;
 using static System.FormattableString;
 

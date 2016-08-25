@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using CF.Core.Exceptions;
-using CF.Core.Exceptions.Database;
 
 namespace CF.Core.Exceptions.Database
 {

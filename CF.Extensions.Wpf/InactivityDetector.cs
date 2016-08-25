@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
-using System.Windows;
-using System.Windows.Input;
 using System.Runtime.InteropServices;
 using CF.Core.Exceptions;
-using CF.Extensions;
 
 namespace CF.Extensions.Wpf
 {

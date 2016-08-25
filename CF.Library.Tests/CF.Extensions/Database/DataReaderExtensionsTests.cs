@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
-using System.Threading.Tasks;
 using CF.Core.Exceptions.Database;
-using NUnit.Framework.Internal;
 using CF.Extensions.Database;
 using NSubstitute;
 using NUnit.Framework;
