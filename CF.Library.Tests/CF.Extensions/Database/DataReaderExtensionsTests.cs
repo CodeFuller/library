@@ -121,7 +121,7 @@ namespace CF.Library.Tests.CF.Extensions.Database
 
 			int returnedValue = reader.ReadScalar<int>();
 
-			Assert.AreEqual(returnedValue, testValue);
+			Assert.AreEqual(testValue, returnedValue);
 		}
 	}
 }

@@ -121,19 +121,19 @@ namespace CF.Library.Tests
 		public void NextLongWithoutArguments_ForUsualRandomGenerator_ReturnsNonNegativeNumber()
 		{
 			long rnd = random.NextLong();
-			Assert.That(rnd >= 0);
+			Assert.GreaterOrEqual(rnd, 0);
 		}
 		[Test]
 		public void NextLongWithoutArguments_ForLowerBoundRandomGenerator_ReturnsNonNegativeNumber()
 		{
 			long rnd = lowerRandom.NextLong();
-			Assert.That(rnd == 0);
+			Assert.AreEqual(0, rnd);
 		}
 		[Test]
 		public void NextLongWithoutArguments_ForUpperBoundRandomGenerator_ReturnsNonNegativeNumber()
 		{
 			long rnd = upperRandom.NextLong();
-			Assert.That(rnd >= 0);
+			Assert.GreaterOrEqual(rnd, 0);
 		}
 
 		[TestCase(1)]
@@ -143,8 +143,8 @@ namespace CF.Library.Tests
 		public void NextLongWithOneArgument_ForUsualRandomGenerator_ReturnsNonNegativeNumberLessThanGivenNumber(long maxValue)
 		{
 			long rnd = random.NextLong(maxValue);
-			Assert.That(rnd >= 0);
-			Assert.That(rnd < maxValue);
+			Assert.GreaterOrEqual(rnd, 0);
+			Assert.Less(rnd, maxValue);
 		}
 		[TestCase(1)]
 		[TestCase(100)]
@@ -152,8 +152,8 @@ namespace CF.Library.Tests
 		public void NextLongWithOneArgument_ForLowerBoundRandomGenerator_ReturnsNonNegativeNumberLessThanGivenNumber(long maxValue)
 		{
 			long rnd = lowerRandom.NextLong(maxValue);
-			Assert.That(rnd >= 0);
-			Assert.That(rnd < maxValue);
+			Assert.GreaterOrEqual(rnd, 0);
+			Assert.Less(rnd, maxValue);
 		}
 		[TestCase(1)]
 		[TestCase(100)]
@@ -161,14 +161,14 @@ namespace CF.Library.Tests
 		public void NextLongWithOneArgument_ForUpperBoundRandomGenerator_ReturnsNonNegativeNumberLessThanGivenNumber(long maxValue)
 		{
 			long rnd = upperRandom.NextLong(maxValue);
-			Assert.That(rnd >= 0);
-			Assert.That(rnd < maxValue);
+			Assert.GreaterOrEqual(rnd, 0);
+			Assert.Less(rnd, maxValue);
 		}
 		[Test]
 		public void NextLongWithOneArgument_ForMaxValueEqualToZero_ReturnsZero()
 		{
 			long rnd = random.NextLong(0);
-			Assert.That(rnd == 0);
+			Assert.AreEqual(0, rnd);
 		}
 		[Test]
 		public void NextLongWithOneArgument_ForMaxValueLowerThanZero_ThrowsArgumentOutOfRangeException()
@@ -184,8 +184,8 @@ namespace CF.Library.Tests
 		public void NextLongWithTwoArguments_ForUsualRandomGenerator_ReturnsNumberInGivenRange(long minValue, long maxValue)
 		{
 			long rnd = random.NextLong(minValue, maxValue);
-			Assert.That(rnd >= minValue);
-			Assert.That(rnd < maxValue);
+			Assert.GreaterOrEqual(rnd, minValue);
+			Assert.Less(rnd, maxValue);
 		}
 		[TestCase(0, 1)]
 		[TestCase(100, 200)]
@@ -194,8 +194,8 @@ namespace CF.Library.Tests
 		public void NextLongWithTwoArguments_ForLowerBoundRandomGenerator_ReturnsNumberInGivenRange(long minValue, long maxValue)
 		{
 			long rnd = lowerRandom.NextLong(minValue, maxValue);
-			Assert.That(rnd >= minValue);
-			Assert.That(rnd < maxValue);
+			Assert.GreaterOrEqual(rnd, minValue);
+			Assert.Less(rnd, maxValue);
 		}
 		[TestCase(0, 1)]
 		[TestCase(-200, -100)]
@@ -203,8 +203,8 @@ namespace CF.Library.Tests
 		public void NextLongWithTwoArguments_ForUpperBoundRandomGenerator_ReturnsNumberInGivenRange(long minValue, long maxValue)
 		{
 			long rnd = upperRandom.NextLong(minValue, maxValue);
-			Assert.That(rnd >= minValue);
-			Assert.That(rnd < maxValue);
+			Assert.GreaterOrEqual(rnd, minValue);
+			Assert.Less(rnd, maxValue);
 		}
 		[TestCase(10)]
 		[TestCase(0)]
@@ -212,7 +212,7 @@ namespace CF.Library.Tests
 		public void NextLongWithTwoArguments_ForMinValueEqualToMaxValue_ReturnsMinValue(long value)
 		{
 			long rnd = random.NextLong(value, value);
-			Assert.That(value == rnd);
+			Assert.AreEqual(value, rnd);
 		}
 		[Test]
 		public void NextLongWithTwoArguments_ForMinValueGreaterThanMaxValue_ThrowsArgumentOutOfRangeException()
@@ -237,7 +237,7 @@ namespace CF.Library.Tests
 		public void NextStringWithoutArguments_ForLowerBoundRandomGenerator_ReturnsEmptyString()
 		{
 			string rnd = lowerRandom.NextString();
-			Assert.AreEqual(rnd.Length, 1);
+			Assert.AreEqual(1, rnd.Length);
 		}
 		[Test]
 		public void NextStringWithoutArguments_ForUpperBoundRandomGenerator_ReturnsNonEmptyString()
@@ -252,21 +252,21 @@ namespace CF.Library.Tests
 		public void NextStringWithOneArgument_ForUsualRandomGenerator_ReturnsRandomStringLongerThanGivenLength(int minLength)
 		{
 			string rnd = random.NextString(minLength);
-			Assert.That(rnd.Length >= minLength);
+			Assert.GreaterOrEqual(rnd.Length, minLength);
 		}
 		[TestCase(0)]
 		[TestCase(10)]
 		public void NextStringWithOneArgument_ForLowerBoundRandomGenerator_ReturnsRandomStringOfGivenLength(int minLength)
 		{
 			string rnd = lowerRandom.NextString(minLength);
-			Assert.That(rnd.Length == minLength);
+			Assert.AreEqual(minLength, rnd.Length);
 		}
 		[TestCase(0)]
 		[TestCase(10)]
 		public void NextStringWithOneArgument_ForUpperBoundRandomGenerator_ReturnsRandomStringLongerThanGivenLength(int minLength)
 		{
 			string rnd = upperRandom.NextString(minLength);
-			Assert.That(rnd.Length >= minLength);
+			Assert.GreaterOrEqual(rnd.Length, minLength);
 		}
 		[Test]
 		public void NextStringWithOneArgument_ForNegativeMinLength_ThrowsArgumentOutOfRangeException()
@@ -282,8 +282,8 @@ namespace CF.Library.Tests
 		public void NextStringWithTwoArguments_ForUsualRandomGenerator_ReturnsStringWithLengthInGivenRange(int minLength, int maxLength)
 		{
 			string rnd = random.NextString(minLength, maxLength);
-			Assert.That(rnd.Length >= minLength);
-			Assert.That(rnd.Length < maxLength);
+			Assert.GreaterOrEqual(rnd.Length, minLength);
+			Assert.Less(rnd.Length, maxLength);
 		}
 		[TestCase(0, 1)]
 		[TestCase(0, 10)]
@@ -292,7 +292,7 @@ namespace CF.Library.Tests
 		public void NextStringWithTwoArguments_ForLowerBoundRandomGenerator_ReturnsStringWithLengthInGivenRange(int minLength, int maxLength)
 		{
 			string rnd = lowerRandom.NextString(minLength, maxLength);
-			Assert.That(rnd.Length == minLength);
+			Assert.AreEqual(minLength, rnd.Length);
 		}
 		[TestCase(0, 1)]
 		[TestCase(0, 10)]
@@ -301,8 +301,8 @@ namespace CF.Library.Tests
 		public void NextStringWithTwoArguments_ForUpperBoundRandomGenerator_ReturnsStringWithLengthInGivenRange(int minLength, int maxLength)
 		{
 			string rnd = upperRandom.NextString(minLength, maxLength);
-			Assert.That(rnd.Length >= minLength);
-			Assert.That(rnd.Length < maxLength);
+			Assert.GreaterOrEqual(rnd.Length, minLength);
+			Assert.Less(rnd.Length, maxLength);
 		}
 		[Test]
 		public void NextStringWithTwoArguments_ForMinLengthGreaterThanMaxLength_ThrowsArgumentOutOfRangeException()

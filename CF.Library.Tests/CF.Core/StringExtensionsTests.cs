@@ -14,7 +14,7 @@ namespace CF.Library.Tests.CF.Core
 
 			sb.AppendDelimited("SomeString", "; ");
 
-			Assert.AreEqual(sb.ToString(), "SomeString");
+			Assert.AreEqual("SomeString", sb.ToString());
 		}
 
 		[Test]
@@ -25,7 +25,7 @@ namespace CF.Library.Tests.CF.Core
 			sb.AppendDelimited("SomeString1", "; ");
 			sb.AppendDelimited("SomeString2", "; ");
 
-			Assert.AreEqual(sb.ToString(), "SomeString1; SomeString2");
+			Assert.AreEqual("SomeString1; SomeString2", sb.ToString());
 		}
 	}
 }
