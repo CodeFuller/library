@@ -3,19 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Extensions", "CF.Extensions\CF.Extensions.csproj", "{0921F96D-54D6-4613-91D6-BD8486302B2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Core", "CF.Library.Core\CF.Library.Core.csproj", "{D31250E4-F1F8-41C8-91C9-C1C32AFF6D14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Core", "CF.Core\CF.Core.csproj", "{D31250E4-F1F8-41C8-91C9-C1C32AFF6D14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Patterns", "CF.Library.Patterns\CF.Library.Patterns.csproj", "{5846B671-B762-4C2B-BA55-1CC573DC4B11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Patterns", "CF.Patterns\CF.Patterns.csproj", "{5846B671-B762-4C2B-BA55-1CC573DC4B11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Wpf", "CF.Library.Wpf\CF.Library.Wpf.csproj", "{23A873CF-232D-45ED-930F-2D0A4D804D7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Extensions.Wpf", "CF.Extensions.Wpf\CF.Extensions.Wpf.csproj", "{23A873CF-232D-45ED-930F-2D0A4D804D7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.UnitTests", "CF.Library.UnitTests\CF.Library.UnitTests.csproj", "{779B3699-B8F6-4D37-A848-F6E73F67FEF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployNuGetPackage", "DeployNuGetPackage\DeployNuGetPackage.csproj", "{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Testing", "CF.Library.Testing\CF.Library.Testing.csproj", "{43392AB1-FA59-47F4-9A1C-734C1E6D5471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Tests", "CF.Library.Tests\CF.Library.Tests.csproj", "{779B3699-B8F6-4D37-A848-F6E73F67FEF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployNuGetPackages", "DeployNuGetPackages\DeployNuGetPackages.csproj", "{E20EBF99-6CAB-4A96-B1F0-E684681F2C8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Testing", "CF.Testing\CF.Testing.csproj", "{43392AB1-FA59-47F4-9A1C-734C1E6D5471}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Logging", "CF.Library.Logging\CF.Library.Logging.csproj", "{4A3764F8-18DF-4F5A-983E-E56B1668851F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Json", "CF.Library.Json\CF.Library.Json.csproj", "{0FA59EB9-DCFD-44C3-892F-D4F568509FE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Database", "CF.Library.Database\CF.Library.Database.csproj", "{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0921F96D-54D6-4613-91D6-BD8486302B2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0921F96D-54D6-4613-91D6-BD8486302B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0921F96D-54D6-4613-91D6-BD8486302B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0921F96D-54D6-4613-91D6-BD8486302B2A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D31250E4-F1F8-41C8-91C9-C1C32AFF6D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D31250E4-F1F8-41C8-91C9-C1C32AFF6D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D31250E4-F1F8-41C8-91C9-C1C32AFF6D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,10 +39,6 @@ Global
 		{23A873CF-232D-45ED-930F-2D0A4D804D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23A873CF-232D-45ED-930F-2D0A4D804D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23A873CF-232D-45ED-930F-2D0A4D804D7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C9DB3D8-A435-4CE2-8248-715BCA21B20B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{779B3699-B8F6-4D37-A848-F6E73F67FEF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{779B3699-B8F6-4D37-A848-F6E73F67FEF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{779B3699-B8F6-4D37-A848-F6E73F67FEF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,22 @@ Global
 		{43392AB1-FA59-47F4-9A1C-734C1E6D5471}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43392AB1-FA59-47F4-9A1C-734C1E6D5471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43392AB1-FA59-47F4-9A1C-734C1E6D5471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E20EBF99-6CAB-4A96-B1F0-E684681F2C8C}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{E20EBF99-6CAB-4A96-B1F0-E684681F2C8C}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{E20EBF99-6CAB-4A96-B1F0-E684681F2C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20EBF99-6CAB-4A96-B1F0-E684681F2C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A3764F8-18DF-4F5A-983E-E56B1668851F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3764F8-18DF-4F5A-983E-E56B1668851F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3764F8-18DF-4F5A-983E-E56B1668851F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3764F8-18DF-4F5A-983E-E56B1668851F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA59EB9-DCFD-44C3-892F-D4F568509FE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA59EB9-DCFD-44C3-892F-D4F568509FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA59EB9-DCFD-44C3-892F-D4F568509FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA59EB9-DCFD-44C3-892F-D4F568509FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

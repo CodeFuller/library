@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProjectGuid>{E20EBF99-6CAB-4A96-B1F0-E684681F2C8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\NuGet\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <NuGetExecutable>"d:\bin\dotNet\NuGet.exe"</NuGetExecutable>
+    <NuGetPackCommand>$(NugetExecutable) pack -OutputDirectory $(OutputPath) -Build -Properties Configuration=Release</NuGetPackCommand>
+    <NuGetDeployDir>d:\Dropbox\NuGet</NuGetDeployDir>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="CF_Library_Core">
+    <Exec Command="$(NuGetPackCommand) ..\CF.Library.Core\CF.Library.Core.csproj" />
+  </Target>
+  <Target Name="CF_Library_Database">
+    <Exec Command="$(NuGetPackCommand) ..\CF.Library.Database\CF.Library.Database.csproj" />
+  </Target>
+  <Target Name="CF_Library_Json">
+    <Exec Command="$(NuGetPackCommand) ..\CF.Library.Json\CF.Library.Json.csproj" />
+  </Target>
+  <Target Name="CF_Library_Logging">
+    <Exec Command="$(NuGetPackCommand) ..\CF.Library.Logging\CF.Library.Logging.csproj" />
+  </Target>
+  <Target Name="CF_Library_Patterns">
+    <Exec Command="$(NuGetPackCommand) ..\CF.Library.Patterns\CF.Library.Patterns.csproj" />
+  </Target>
+  <Target Name="CF_Library_Testing">
+    <Exec Command="$(NuGetPackCommand) ..\CF.Library.Testing\CF.Library.Testing.csproj" />
+  </Target>
+  <Target Name="CF_Library_Wpf">
+    <Exec Command="$(NuGetPackCommand) ..\CF.Library.Wpf\CF.Library.Wpf.csproj" />
+  </Target>
+
+  <Target Name="Pack" DependsOnTargets="CF_Library_Core; CF_Library_Database; CF_Library_Json; CF_Library_Logging; CF_Library_Patterns; CF_Library_Testing; CF_Library_Wpf" />
+  <Target Name="Deploy" DependsOnTargets="Pack">
+    <ItemGroup>
+        <OutputNuGetFiles Include="$(OutputPath)\*.nupkg" />
+    </ItemGroup>
+    <Move SourceFiles="@(OutputNuGetFiles)" DestinationFolder="$(NuGetDeployDir)" />
+  </Target>
+</Project>
