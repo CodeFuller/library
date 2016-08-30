@@ -51,6 +51,7 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="CF.Library.Core\CollectionExtensionsTests.cs" />
+    <Compile Include="CF.Library.Core\FileLoggerTests.cs" />
     <Compile Include="CF.Library.Core\RandomExtensionsTests.cs" />
     <Compile Include="CF.Library.Core\StringExtensionsTests.cs" />
     <Compile Include="CF.Library.Database\DataReaderExtensionsTests.cs" />

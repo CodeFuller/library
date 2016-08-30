@@ -14,11 +14,7 @@ namespace CF.Library.Database
 		{
 			IDbConnection connection = CreateConnectionInstance();
 			connection.ConnectionString = connectionString;
-
-			//	CF TEMP: Enable logging (Problems with tests)
-			//Logger.Info("Opening connection to [{0}]...", connectionString);
 			connection.Open();
-			//Logger.Info("Connected successfully");
 
 			return connection;
 		}

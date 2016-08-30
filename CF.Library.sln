@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Json", "CF.Libra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.Database", "CF.Library.Database\CF.Library.Database.csproj", "{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Library.IntegrationTests", "CF.Library.IntegrationTests\CF.Library.IntegrationTests.csproj", "{505B7718-F091-4964-9985-CE27654B3D97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,7 +50,6 @@ Global
 		{43392AB1-FA59-47F4-9A1C-734C1E6D5471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43392AB1-FA59-47F4-9A1C-734C1E6D5471}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E20EBF99-6CAB-4A96-B1F0-E684681F2C8C}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{E20EBF99-6CAB-4A96-B1F0-E684681F2C8C}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{E20EBF99-6CAB-4A96-B1F0-E684681F2C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A3764F8-18DF-4F5A-983E-E56B1668851F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4A3764F8-18DF-4F5A-983E-E56B1668851F}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -62,6 +63,10 @@ Global
 		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Release|Any CPU.Build.0 = Release|Any CPU
+		{505B7718-F091-4964-9985-CE27654B3D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{505B7718-F091-4964-9985-CE27654B3D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{505B7718-F091-4964-9985-CE27654B3D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{505B7718-F091-4964-9985-CE27654B3D97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
