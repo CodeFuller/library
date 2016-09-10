@@ -67,6 +67,12 @@ namespace CF.Library.Core.Facades
 		void CreateDirectory(string path);
 
 		/// <summary>
+		/// Returns executable file name of current process.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "The method is not suitable for converting into property")]
+		string GetProcessExecutableFileName();
+
+		/// <summary>
 		/// Returns directory where assembly of executing process is placed.
 		/// </summary>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "The method is not suitable for converting into property")]
@@ -108,12 +114,20 @@ namespace CF.Library.Core.Facades
 		}
 
 		/// <summary>
+		/// Implementation for IFileSystemFacade.GetProcessExecutableFilename().
+		/// </summary>
+		public string GetProcessExecutableFileName()
+		{
+			Assembly assembly = Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly();
+			return assembly.Location;
+		}
+
+		/// <summary>
 		/// Implementation for IFileSystemFacade.GetProcessDirectory().
 		/// </summary>
 		public string GetProcessDirectory()
 		{
-			Assembly assembly = Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly();
-			return Path.GetDirectoryName(assembly.Location);
+			return Path.GetDirectoryName(GetProcessExecutableFileName());
 		}
 
 		/// <summary>

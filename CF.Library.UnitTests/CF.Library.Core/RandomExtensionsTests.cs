@@ -103,7 +103,7 @@ namespace CF.Library.UnitTests.CF.Library.Core
 		private Random lowerRandom;
 		private Random upperRandom;
 
-		[OneTimeSetUp]
+		[TestFixtureSetUp]
 		public void Init()
 		{
 			random = new Random();

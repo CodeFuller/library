@@ -10,7 +10,7 @@ using static CF.Library.Core.FormattableStringExtensions;
 namespace CF.Library.Core
 {
 	/// <summary>
-	/// 
+	/// Interface for generic logger.
 	/// </summary>
 	public interface ILogger
 	{
@@ -25,59 +25,68 @@ namespace CF.Library.Core
 	/// </summary>
 	public class FileLogger : ILogger, IDisposable
 	{
+		internal const int DefaultRollSize = 16*1024*1024;
+
 		private const int MaxTriesForDuplicatedFileNames = 10;
 
 		private const string FileNameDateTimePattern = "yyyy_MM_dd - HH_mm_ss";
 		private const string FirstLogFileSuffix = " - START";
 		private const string LogFileExtension = ".log";
 
-		private readonly IFileSystemFacade fileSystemFacade;
+		private readonly LockableValue<IFileSystemFacade> fileSystemFacade = new LockableValue<IFileSystemFacade>(new FileSystemFacade());
+		private readonly LockableValue<IClock> clock = new LockableValue<IClock>(new SystemClock());
+
 		private IStreamWriterFacade currFile;
 
-		private readonly IClock clock;
-
-		private readonly string logDir;
-		private readonly string logName;
+		private string logDir;
+		private string logName;
 		private readonly int rollSize;
 
 		private readonly string pid = Invariant($"{Process.GetCurrentProcess().Id}");
 
 		/// <summary>
+		/// Property injection for IFileSystemFacade.
+		/// </summary>
+		public IFileSystemFacade FileSystemFacade
+		{
+			get { return fileSystemFacade.Value; }
+			set { fileSystemFacade.Value = value; }
+		}
+
+		/// <summary>
+		/// Property injection for IClock.
+		/// </summary>
+		public IClock Clock
+		{
+			get { return clock.Value; }
+			set { clock.Value = value; }
+		}
+
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		public FileLogger()
+		{
+			rollSize = DefaultRollSize;
+		}
+
+		/// <summary>
 		/// Constructor.
 		/// </summary>
 		public FileLogger(string logName, int rollSize)
-			: this(GetDefaultLogDir(new FileSystemFacade()), logName, rollSize)
 		{
+			this.logName = logName;
+			this.rollSize = rollSize;
 		}
 
 		/// <summary>
 		/// Constructor.
 		/// </summary>
 		public FileLogger(string logDir, string logName, int rollSize)
-			: this(new FileSystemFacade(), new SystemClock(), logDir, logName, rollSize)
 		{
-		}
-
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public FileLogger(IFileSystemFacade fileSystemFacade, IClock clock, string logName, int rollSize)
-			: this(fileSystemFacade, clock, GetDefaultLogDir(fileSystemFacade), logName, rollSize)
-		{
-		}
-
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public FileLogger(IFileSystemFacade fileSystemFacade, IClock clock, string logDir, string logName, int rollSize)
-		{
-			this.fileSystemFacade = fileSystemFacade;
-			this.clock = clock;
 			this.logDir = logDir;
 			this.logName = logName;
 			this.rollSize = rollSize;
-
-			currFile = OpenNextFile(true);
 		}
 
 		/// <summary>
@@ -85,9 +94,33 @@ namespace CF.Library.Core
 		/// </summary>
 		public void Write(string message)
 		{
+			OpenIfRequired();
+
 			RollIfRequired();
 
 			currFile.Write(message);
+		}
+
+		private void OpenIfRequired()
+		{
+			//	First write?
+			if (currFile == null)
+			{
+				fileSystemFacade.Lock();
+				clock.Lock();
+
+				if (logDir == null)
+				{
+					logDir = GetDefaultLogDir(FileSystemFacade);
+				}
+
+				if (logName == null)
+				{
+					logName = GetDefaultLogName(FileSystemFacade);
+				}
+
+				currFile = OpenNextFile(true);
+			}
 		}
 
 		private void RollIfRequired()
@@ -106,14 +139,14 @@ namespace CF.Library.Core
 
 		private IStreamWriterFacade OpenNextFile(string fileName)
 		{
-			return fileSystemFacade.CreateStreamWriter(fileName, true, Encoding.UTF8, true);
+			return FileSystemFacade.CreateStreamWriter(fileName, true, Encoding.UTF8, true);
 		}
 
 		private string GenerateFileName(bool firstFile)
 		{
-			if (firstFile && !fileSystemFacade.DirectoryExists(logDir))
+			if (firstFile && !FileSystemFacade.DirectoryExists(logDir))
 			{
-				fileSystemFacade.CreateDirectory(logDir);
+				FileSystemFacade.CreateDirectory(logDir);
 			}
 
 			StringBuilder logFileNamePart = BuildLogFileNamePart(firstFile);
@@ -121,7 +154,7 @@ namespace CF.Library.Core
 			for (int i = 0; i < MaxTriesForDuplicatedFileNames; ++i)
 			{
 				string currFileName = BuildFullLogFilePath(logFileNamePart.ToString(), i);
-				if (!fileSystemFacade.FileExists(currFileName))
+				if (!FileSystemFacade.FileExists(currFileName))
 				{
 					return currFileName;
 				}
@@ -134,7 +167,7 @@ namespace CF.Library.Core
 
 		private StringBuilder BuildLogFileNamePart(bool firstFile)
 		{
-			string timestampPart = clock.Now.ToString(FileNameDateTimePattern, CultureInfo.InvariantCulture);
+			string timestampPart = Clock.Now.ToString(FileNameDateTimePattern, CultureInfo.InvariantCulture);
 			StringBuilder logFileNamePart = new StringBuilder(Invariant($"{logName} - {timestampPart} - {pid}"));
 			if (firstFile)
 			{
@@ -159,6 +192,11 @@ namespace CF.Library.Core
 		private static string GetDefaultLogDir(IFileSystemFacade fileSystemFacade)
 		{
 			return Path.Combine(fileSystemFacade.GetProcessDirectory(), "logs");
+		}
+
+		private static string GetDefaultLogName(IFileSystemFacade fileSystemFacade)
+		{
+			return Path.GetFileNameWithoutExtension(fileSystemFacade.GetProcessExecutableFileName());
 		}
 
 		/// <summary>
