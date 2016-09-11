@@ -21,9 +21,17 @@ namespace CF.Library.Core
 	}
 
 	/// <summary>
+	/// Interface for logger that writes messages to the file.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1040:AvoidEmptyInterfaces", Justification = "Interface does not add new members to base interface but conceptually represents more narrow set of possible implementations.")]
+	public interface IFileLogger : ILogger
+	{
+	}
+
+	/// <summary>
 	/// Simple file logger with support of rolling by size.
 	/// </summary>
-	public class FileLogger : ILogger, IDisposable
+	public class FileLogger : IFileLogger, IDisposable
 	{
 		internal const int DefaultRollSize = 16*1024*1024;
 
