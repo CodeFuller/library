@@ -49,6 +49,8 @@
     <Compile Include="Attributes\ExcludeFromlTestCoverageBasicAttribute.cs" />
     <Compile Include="Attributes\ExcludeFromTestCoverageAttribute.cs" />
     <Compile Include="Attributes\ExcludeFromUnitTestCoverageAttribute.cs" />
+    <Compile Include="DI\ConstructorArgument.cs" />
+    <Compile Include="DI\IInstanceCreator.cs" />
     <Compile Include="Facades\FileSystemFacade.cs" />
     <Compile Include="Facades\IClock.cs" />
     <Compile Include="CollectionExtensions.cs" />
