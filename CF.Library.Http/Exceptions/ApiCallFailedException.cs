@@ -2,8 +2,9 @@
 using System.Globalization;
 using System.Net.Http;
 using System.Runtime.Serialization;
+using CF.Library.Core.Exceptions;
 
-namespace CF.Library.Core.Exceptions
+namespace CF.Library.Http.Exceptions
 {
 	/// <summary>
 	/// The exception that is thrown when API call fails

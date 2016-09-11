@@ -21,6 +21,9 @@
   <Target Name="CF_Library_Database">
     <Exec Command="$(NuGetPackCommand) ..\CF.Library.Database\CF.Library.Database.csproj" />
   </Target>
+  <Target Name="CF_Library_Http">
+    <Exec Command="$(NuGetPackCommand) ..\CF.Library.Http\CF.Library.Http.csproj" />
+  </Target>
   <Target Name="CF_Library_Json">
     <Exec Command="$(NuGetPackCommand) ..\CF.Library.Json\CF.Library.Json.csproj" />
   </Target>
@@ -37,7 +40,7 @@
     <Exec Command="$(NuGetPackCommand) ..\CF.Library.Wpf\CF.Library.Wpf.csproj" />
   </Target>
 
-  <Target Name="Pack" DependsOnTargets="CF_Library_Core; CF_Library_Database; CF_Library_Json; CF_Library_Logging; CF_Library_Patterns; CF_Library_Testing; CF_Library_Wpf" />
+  <Target Name="Pack" DependsOnTargets="CF_Library_Core; CF_Library_Database; CF_Library_Http; CF_Library_Json; CF_Library_Logging; CF_Library_Patterns; CF_Library_Testing; CF_Library_Wpf" />
   <Target Name="Deploy" DependsOnTargets="Pack">
     <ItemGroup>
         <OutputNuGetFiles Include="$(OutputPath)\*.nupkg" />
