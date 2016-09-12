@@ -12,6 +12,7 @@ namespace CF.Library.IntegrationTests
 	public class FileLoggerTests
 	{
 		[Test]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Object is disposed by called method")]
 		public void Write_ForValidFileLogger_WritesDataToLogFile()
 		{
 			//	Arrange
@@ -27,6 +28,7 @@ namespace CF.Library.IntegrationTests
 		}
 
 		[Test]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:DisposeObjectsBeforeLosingScope", Justification = "Object is disposed by called method")]
 		public void FileLogger_WhenLogDirIsNotProvided_UsesDefaultLogDirectory()
 		{
 			//	Arrange
@@ -37,6 +39,10 @@ namespace CF.Library.IntegrationTests
 
 			string logDir = Path.Combine((new FileSystemFacade()).GetProcessDirectory(), "logs");
 			PerformFileLoggerIntegrationTest(logger, logDir);
+
+			//	Cleanup
+
+			Directory.Delete(logDir, true);
 		}
 
 		private void PerformFileLoggerIntegrationTest(FileLogger logger, string logDir)
