@@ -66,6 +66,7 @@
     <Compile Include="FormattableStringExtensions.cs" />
     <Compile Include="Interfaces\IBootstrapper.cs" />
     <Compile Include="LockableValue.cs" />
+    <Compile Include="ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomExtensions.cs" />
     <Compile Include="StringExtensions.cs" />
