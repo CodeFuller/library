@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace CF.Library.Core
+namespace CF.Library.Core.Extensions
 {
 	/// <summary>
 	/// Holder for Exception extension methods

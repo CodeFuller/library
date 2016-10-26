@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CF.Library.Core
+namespace CF.Library.Core.Extensions
 {
 	/// <summary>
 	/// Holder for collection extension methods

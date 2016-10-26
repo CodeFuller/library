@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace CF.Library.Core
+namespace CF.Library.Core.Extensions
 {
 	/// <summary>
 	/// Holder for String and StringBuilder classes extension methods.

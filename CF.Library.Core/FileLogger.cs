@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using CF.Library.Core.Facades;
 using static System.FormattableString;
-using static CF.Library.Core.FormattableStringExtensions;
+using static CF.Library.Core.Extensions.FormattableStringExtensions;
 
 namespace CF.Library.Core
 {

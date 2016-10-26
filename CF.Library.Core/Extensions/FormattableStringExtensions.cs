@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace CF.Library.Core
+namespace CF.Library.Core.Extensions
 {
 	/// <summary>
 	/// Holder for FormattableString class extension methods.

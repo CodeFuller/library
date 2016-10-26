@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CF.Library.Core
+namespace CF.Library.Core.Extensions
 {
 	/// <summary>
 	/// Holder for Object extension methods.
