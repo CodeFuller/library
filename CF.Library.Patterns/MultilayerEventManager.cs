@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using CF.Library.Core;
 using CF.Library.Patterns.Internal;
+using CF.Library.Core.Extensions;
 
 namespace CF.Library.Patterns
 {

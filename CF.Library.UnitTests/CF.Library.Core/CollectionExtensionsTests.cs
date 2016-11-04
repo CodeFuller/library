@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CF.Library.Core;
+using CF.Library.Core.Extensions;
 using NUnit.Framework;
 
 namespace CF.Library.UnitTests.CF.Library.Core

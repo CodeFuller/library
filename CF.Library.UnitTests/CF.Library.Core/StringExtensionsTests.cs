@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using CF.Library.Core;
+using CF.Library.Core.Extensions;
 using NUnit.Framework;
 
 namespace CF.Library.UnitTests.CF.Library.Core
