@@ -51,6 +51,7 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="DataReaderExtensions.cs" />
+    <Compile Include="DbAssert.cs" />
     <Compile Include="DbCommandExtensions.cs" />
     <Compile Include="DbConnectionFactory.cs" />
     <Compile Include="Exceptions\BasicDbException.cs" />

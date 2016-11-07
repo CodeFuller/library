@@ -37,30 +37,6 @@ namespace CF.Library.UnitTests.CF.Library.Database
 		}
 
 		[Test]
-		public void AssertNoMoreData_CalledForNullObject_ThrowsArgumentNullException()
-		{
-			Assert.Throws<ArgumentNullException>(() => DataReaderExtensions.AssertNoMoreData(null));
-		}
-
-		[Test]
-		public void AssertNoMoreData_CalledForReaderWithoutData_PassesSuccessfully()
-		{
-			IDataReader reader = Substitute.For<IDataReader>();
-			reader.Read().Returns(false);
-
-			Assert.DoesNotThrow(() => reader.AssertNoMoreData());
-		}
-
-		[Test]
-		public void AssertNoMoreData_CalledForReaderWithData_ThrowsExtraDbDataException()
-		{
-			IDataReader reader = Substitute.For<IDataReader>();
-			reader.Read().Returns(true);
-
-			Assert.Throws<ExtraDbDataException>(() => reader.AssertNoMoreData());
-		}
-
-		[Test]
 		public void ReadScalar_CalledForNullObject_ThrowsArgumentNullException()
 		{
 			Assert.Throws<ArgumentNullException>(() => DataReaderExtensions.ReadScalar<int>(null));

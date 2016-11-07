@@ -26,22 +26,6 @@ namespace CF.Library.Database
 		}
 
 		/// <summary>
-		/// Asserts that there is no more data in the reader.
-		/// </summary>
-		public static void AssertNoMoreData(this IDataReader reader)
-		{
-			if (reader == null)
-			{
-				throw new ArgumentNullException(nameof(reader));
-			}
-
-			if (reader.Read())
-			{
-				throw new ExtraDbDataException();
-			}
-		}
-
-		/// <summary>
 		/// Reads scalar value and asserts that actually scalar was returned.
 		/// </summary>
 		public static T ReadScalar<T>(this IDataReader reader)
@@ -60,7 +44,7 @@ namespace CF.Library.Database
 
 			T value = (T)reader.GetValue(0);
 
-			reader.AssertNoMoreData();
+			DbAssert.NoMoreData(reader);
 
 			return value;
 		}
