@@ -43,7 +43,7 @@ namespace CF.Library.Database
 
 			var parameter = command.CreateParameter();
 			parameter.ParameterName = parameterName;
-			parameter.Value = value;
+			parameter.Value = value ?? DBNull.Value;
 			command.Parameters.Add(parameter);
 		}
 	}
