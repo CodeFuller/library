@@ -63,6 +63,9 @@
     <Compile Include="Exceptions\SystemCallFailedException.cs" />
     <Compile Include="Exceptions\UnexpectedEnumValueException.cs" />
     <Compile Include="Exceptions\UnexpectedServerDataException.cs" />
+    <Compile Include="Facades\TimerFacade.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FileLogger.cs" />
     <Compile Include="Extensions\FormattableStringExtensions.cs" />
     <Compile Include="Interfaces\IBootstrapper.cs" />
