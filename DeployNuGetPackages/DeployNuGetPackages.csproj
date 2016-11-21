@@ -36,11 +36,14 @@
   <Target Name="CF_Library_Testing">
     <Exec Command="$(NuGetPackCommand) ..\CF.Library.Testing\CF.Library.Testing.csproj" />
   </Target>
+  <Target Name="CF_Library_Unity">
+    <Exec Command="$(NuGetPackCommand) ..\CF.Library.Unity\CF.Library.Unity.csproj" />
+  </Target>
   <Target Name="CF_Library_Wpf">
     <Exec Command="$(NuGetPackCommand) ..\CF.Library.Wpf\CF.Library.Wpf.csproj" />
   </Target>
 
-  <Target Name="Pack" DependsOnTargets="CF_Library_Core; CF_Library_Database; CF_Library_Http; CF_Library_Json; CF_Library_Logging; CF_Library_Patterns; CF_Library_Testing; CF_Library_Wpf" />
+  <Target Name="Pack" DependsOnTargets="CF_Library_Core; CF_Library_Database; CF_Library_Http; CF_Library_Json; CF_Library_Logging; CF_Library_Patterns; CF_Library_Testing; CF_Library_Unity; CF_Library_Wpf" />
   <Target Name="Deploy" DependsOnTargets="Pack">
     <ItemGroup>
         <OutputNuGetFiles Include="$(OutputPath)\*.nupkg" />
