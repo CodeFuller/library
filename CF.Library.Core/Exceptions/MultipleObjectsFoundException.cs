@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace CF.Library.Core.Exceptions
 {
 	/// <summary>
-	/// The exception that is thrown when several objects were found where only one expected
+	/// The exception that is thrown when several objects were found where only one expected.
 	/// </summary>
 	[Serializable]
 	public class MultipleObjectsFoundException : BasicException

@@ -50,6 +50,8 @@
     <Compile Include="Attributes\ExcludeFromUnitTestCoverageAttribute.cs" />
     <Compile Include="DI\ConstructorArgument.cs" />
     <Compile Include="DI\IInstanceCreator.cs" />
+    <Compile Include="Exceptions\InvalidConfigurationException.cs" />
+    <Compile Include="Exceptions\RequiredSettingIsMissingException.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Facades\ConsoleFacade.cs" />
     <Compile Include="Facades\FileSystemFacade.cs" />

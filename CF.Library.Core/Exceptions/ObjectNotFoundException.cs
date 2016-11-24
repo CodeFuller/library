@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace CF.Library.Core.Exceptions
 {
 	/// <summary>
-	/// The exception that is thrown when requested object is not found
+	/// The exception that is thrown when requested object is not found.
 	/// </summary>
 	[Serializable]
 	public class ObjectNotFoundException : BasicException

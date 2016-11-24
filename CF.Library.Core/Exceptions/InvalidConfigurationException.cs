@@ -4,22 +4,22 @@ using System.Runtime.Serialization;
 namespace CF.Library.Core.Exceptions
 {
 	/// <summary>
-	/// The exception that is thrown when server response contains unexpected data.
+	/// The exception that is thrown when application configuration is invalid.
 	/// </summary>
 	[Serializable]
-	public class UnexpectedServerDataException : BasicException
+	public class InvalidConfigurationException : BasicException
 	{
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public UnexpectedServerDataException()
+		public InvalidConfigurationException()
 		{
 		}
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public UnexpectedServerDataException(string message)
+		public InvalidConfigurationException(string message)
 			: base(message)
 		{
 		}
@@ -27,7 +27,7 @@ namespace CF.Library.Core.Exceptions
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public UnexpectedServerDataException(string message, Exception innerException)
+		public InvalidConfigurationException(string message, Exception innerException)
 			: base(message, innerException)
 		{
 		}
@@ -35,7 +35,7 @@ namespace CF.Library.Core.Exceptions
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		protected UnexpectedServerDataException(SerializationInfo info, StreamingContext context)
+		protected InvalidConfigurationException(SerializationInfo info, StreamingContext context)
 			: base(info, context)
 		{
 		}

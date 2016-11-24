@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace CF.Library.Core.Exceptions
 {
 	/// <summary>
-	/// The exception that is thrown when some system call (e.g. Windows API) fails
+	/// The exception that is thrown when some system call (e.g. Windows API) fails.
 	/// </summary>
 	[Serializable]
 	public class SystemCallFailedException : BasicException

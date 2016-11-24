@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace CF.Library.Core.Exceptions
 {
 	/// <summary>
-	/// The exception that is thrown when unexpected enum value is encountered
+	/// The exception that is thrown when unexpected enum value is encountered.
 	/// </summary>
 	[Serializable]
 	public class UnexpectedEnumValueException : BasicException

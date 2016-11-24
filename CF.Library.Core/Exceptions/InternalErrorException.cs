@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace CF.Library.Core.Exceptions
 {
 	/// <summary>
-	/// The exception that is thrown when some internal error occurs in the program
+	/// The exception that is thrown when some internal error occurs in the program.
 	/// </summary>
 	[Serializable]
 	public class InternalErrorException : BasicException
@@ -19,7 +19,6 @@ namespace CF.Library.Core.Exceptions
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		/// <param name="message"></param>
 		public InternalErrorException(string message)
 			: base(message)
 		{
