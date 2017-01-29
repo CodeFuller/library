@@ -39,8 +39,8 @@
     <CodeAnalysisRuleSet>..\..\CodeFuller.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CF.Library.Core, Version=0.1.6143.39459, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CF.Library.Core.0.1.6143.39459\lib\net462\CF.Library.Core.dll</HintPath>
+    <Reference Include="CF.Library.Core, Version=0.1.6235.35218, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CF.Library.Core.0.1.6235.35218\lib\net462\CF.Library.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -54,8 +54,12 @@
     <Compile Include="CacheAsync.cs" />
     <Compile Include="Internal\WeakReferenceDictionary.cs" />
     <Compile Include="Internal\WeakReferenceMap.cs" />
+    <Compile Include="IPeriodicTask.cs" />
+    <Compile Include="IProcessStateManager.cs" />
     <Compile Include="MultilayerEventArgs.cs" />
     <Compile Include="MultilayerEventManager.cs" />
+    <Compile Include="PeriodicTask.cs" />
+    <Compile Include="ProcessStateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
