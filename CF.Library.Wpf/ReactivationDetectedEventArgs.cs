@@ -3,17 +3,17 @@
 namespace CF.Library.Wpf
 {
 	/// <summary>
-	/// Contains event data for ReactivationDetected event
+	/// Contains event data for Reactivated event.
 	/// </summary>
 	public class ReactivationDetectedEventArgs : EventArgs
 	{
 		/// <summary>
-		/// User inactivity duration
+		/// User inactivity duration.
 		/// </summary>
 		public TimeSpan InactivitySpan { get; set; }
 
 		/// <summary>
-		/// Constructor
+		/// Constructor.
 		/// </summary>
 		public ReactivationDetectedEventArgs(TimeSpan inactivitySpan)
 		{

@@ -29,7 +29,7 @@ namespace CF.Library.Patterns
 		/// <summary>
 		/// Stops periodic task execution.
 		/// </summary>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", Justification = "Stop name is the best in current semantics.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1716:IdentifiersShouldNotMatchKeywords", Justification = "'Stop' is the best name in current semantics.")]
 		void Stop();
 	}
 }

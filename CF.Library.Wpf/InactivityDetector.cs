@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Timers;
 using CF.Library.Core.Exceptions;
-using CF.Library.Logging;
+using CF.Library.Core.Facades;
 
 namespace CF.Library.Wpf
 {
@@ -20,36 +19,41 @@ namespace CF.Library.Wpf
 	}
 
 	/// <summary>
-	/// Detects user inactivity (no keyboard presses and no mouse move/clicks during some period of time)
+	/// Implementation for IInactivityDetector.
 	/// </summary>
-	public class InactivityDetector : IDisposable
+	public class InactivityDetector : IInactivityDetector, IDisposable
 	{
-		private readonly Timer tickTimer = new Timer();
-
 		private bool deactivated;
 
 		/// <summary>
-		/// Max user inactivity duration after which InactivationDetected is fired
+		/// Property Injection for IProcessStateManager.
 		/// </summary>
-		public TimeSpan Threshold { get; set; }
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Justification = "Setter could be used by Unit tests from assembly for which internals are visible.")]
+		internal ITimerFacade Timer { get; set; } = new TimerFacade();
 
 		/// <summary>
-		/// Event that is fired when user is inactive during Threshold period
+		/// Max user inactivity duration after which Deactivated is fired.
 		/// </summary>
-		public event EventHandler<InactivationDetectedEventArgs> InactivationDetected;
+		public TimeSpan InactivityThreshold { get; set; }
+
 		/// <summary>
-		/// Event that is fired after user returns to work after some period of inactivity
+		/// Event that is fired when user is inactive during InactivityThreshold period.
 		/// </summary>
-		public event EventHandler<ReactivationDetectedEventArgs> ReactivationDetected;
+		public event EventHandler<InactivationDetectedEventArgs> Deactivated;
+
+		/// <summary>
+		/// Event that is fired after user returns to work after some period of inactivity.
+		/// </summary>
+		public event EventHandler<ReactivationDetectedEventArgs> Reactivated;
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public InactivityDetector(TimeSpan threshold)
+		public InactivityDetector(TimeSpan inactivityThreshold)
 		{
-			Threshold = threshold;
-			tickTimer.Elapsed += (sender, e) => this.OnTick();
-			tickTimer.Interval = 1000;
+			InactivityThreshold = inactivityThreshold;
+			Timer.Elapsed += (sender, e) => this.OnTick();
+			Timer.Interval = 1000;
 		}
 
 		/// <summary>
@@ -57,9 +61,8 @@ namespace CF.Library.Wpf
 		/// </summary>
 		public void Start()
 		{
-			Logger.Debug("Started inactivity detector");
 			deactivated = false;
-			tickTimer.Start();
+			Timer.Start();
 		}
 
 		/// <summary>
@@ -67,53 +70,33 @@ namespace CF.Library.Wpf
 		/// </summary>
 		public void Stop()
 		{
-			Logger.Debug("Stopped inactivity detector");
-			tickTimer.Stop();
+			Timer.Stop();
 		}
 
 		/// <summary>
-		/// Returns true if inactivity detection is running
+		/// Returns true if detector is in active state.
 		/// </summary>
-		public bool IsRunning()
-		{
-			return tickTimer.Enabled;
-		}
-
-		/// <summary>
-		/// Returns true if user is active
-		/// </summary>
-		public bool IsActive()
-		{
-			return IsRunning() && !deactivated;
-		}
+		public bool IsActive => Timer.Enabled && !deactivated;
 
 		private void OnTick()
 		{
-			try
-			{
-				var inactivitySpan = GetInactivitySpan();
+			var inactivitySpan = GetInactivitySpan();
 
-				if (!deactivated)
+			if (!deactivated)
+			{
+				if (inactivitySpan >= InactivityThreshold)
 				{
-					if (inactivitySpan >= Threshold)
-					{
-						deactivated = true;
-						OnInactivition(inactivitySpan);
-					}
-				}
-				else
-				{
-					if (inactivitySpan < Threshold)
-					{
-						deactivated = false;
-						OnReactivation(inactivitySpan);
-					}
+					deactivated = true;
+					OnInactivition(inactivitySpan);
 				}
 			}
-			catch (Exception e)
+			else
 			{
-				Logger.Error(e);
-				throw;
+				if (inactivitySpan < InactivityThreshold)
+				{
+					deactivated = false;
+					OnReactivation(inactivitySpan);
+				}
 			}
 		}
 
@@ -122,20 +105,15 @@ namespace CF.Library.Wpf
 		/// </summary>
 		protected virtual void OnInactivition(TimeSpan inactivitySpan)
 		{
-			if (InactivationDetected != null)
-			{
-				InactivationDetected(this, new InactivationDetectedEventArgs(inactivitySpan));
-			}
+			Deactivated?.Invoke(this, new InactivationDetectedEventArgs(inactivitySpan));
 		}
+
 		/// <summary>
 		/// Is called when user returns to work after some period of inactivity
 		/// </summary>
 		protected virtual void OnReactivation(TimeSpan inactivitySpan)
 		{
-			if (ReactivationDetected != null)
-			{
-				ReactivationDetected(this, new ReactivationDetectedEventArgs(inactivitySpan));
-			}
+			Reactivated?.Invoke(this, new ReactivationDetectedEventArgs(inactivitySpan));
 		}
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Interoperability", "CA1404:CallGetLastErrorImmediatelyAfterPInvoke", Justification = "False Positive: GetLastWin32Error() is called after GetLastInputInfo() in case of error, not after TimeSpan.FromMilliseconds()")]
@@ -167,14 +145,12 @@ namespace CF.Library.Wpf
 		/// <summary>
 		/// Releases object resources
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2213:DisposableFieldsShouldBeDisposed", Justification = "False positive. See http://stackoverflow.com/q/34583417/5740031 for details.")]
 		protected virtual void Dispose(bool disposing)
 		{
 			if (disposing)
 			{
-				if (tickTimer != null)
-				{
-					tickTimer.Dispose();
-				}
+				Timer?.Dispose();
 			}
 		}
 	}
