@@ -4,44 +4,21 @@ using static System.FormattableString;
 namespace CF.Library.Patterns
 {
 	/// <summary>
-	/// Possible values of process state.
-	/// </summary>
-	public enum ProcessState
-	{
-		/// <summary>
-		/// Process is in undefined state.
-		/// </summary>
-		Undefined,
-
-		/// <summary>
-		/// Process is in stopped state.
-		/// </summary>
-		Stopped,
-
-		/// <summary>
-		/// Process is in running state.
-		/// </summary>
-		Running,
-
-		/// <summary>
-		/// Process is in paused state.
-		/// </summary>
-		Paused,
-	}
-
-	/// <summary>
 	/// Manages process state and switching between states, e.g. stopped, running, paused.
 	/// </summary>
 	public class ProcessStateManager : IProcessStateManager
 	{
-		private ProcessState state;
+		/// <summary>
+		/// Returns current state of the process.
+		/// </summary>
+		public ProcessState State { get; private set; }
 
 		/// <summary>
 		/// Constructor.
 		/// </summary>
 		public ProcessStateManager()
 		{
-			state = ProcessState.Stopped;
+			State = ProcessState.Stopped;
 		}
 
 		/// <summary>
@@ -49,12 +26,12 @@ namespace CF.Library.Patterns
 		/// </summary>
 		public void Start()
 		{
-			if (state != ProcessState.Stopped && state != ProcessState.Paused)
+			if (State != ProcessState.Stopped && State != ProcessState.Paused)
 			{
-				throw new InvalidOperationException(Invariant($"Could not start while in '{state}' state"));
+				throw new InvalidOperationException(Invariant($"Could not start while in '{State}' state"));
 			}
 
-			state = ProcessState.Running;
+			State = ProcessState.Running;
 		}
 
 		/// <summary>
@@ -62,12 +39,12 @@ namespace CF.Library.Patterns
 		/// </summary>
 		public void Stop()
 		{
-			if (state != ProcessState.Running)
+			if (State != ProcessState.Running)
 			{
-				throw new InvalidOperationException(Invariant($"Could not stop while in '{state}' state"));
+				throw new InvalidOperationException(Invariant($"Could not stop while in '{State}' state"));
 			}
 
-			state = ProcessState.Stopped;
+			State = ProcessState.Stopped;
 		}
 
 		/// <summary>
@@ -75,12 +52,12 @@ namespace CF.Library.Patterns
 		/// </summary>
 		public void Pause()
 		{
-			if (state != ProcessState.Running)
+			if (State != ProcessState.Running)
 			{
-				throw new InvalidOperationException(Invariant($"Could not pause while in '{state}' state"));
+				throw new InvalidOperationException(Invariant($"Could not pause while in '{State}' state"));
 			}
 
-			state = ProcessState.Paused;
+			State = ProcessState.Paused;
 		}
 	}
 }
