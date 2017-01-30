@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Timers;
+using CF.Library.Core.Events;
 using CF.Library.Core.Facades;
 
 namespace CF.Library.Patterns
@@ -13,6 +14,11 @@ namespace CF.Library.Patterns
 		private readonly IProcessStateManager stateManager;
 		private readonly ITimerFacade timer;
 		private TimeSpan taskInterval;
+
+		/// <summary>
+		/// Event that is fired when exception is thrown by task action.
+		/// </summary>
+		public event EventHandler<ExceptionThrownEventArgs> ExceptionThrown;
 
 		/// <summary>
 		/// Interval between task executions.
@@ -81,10 +87,17 @@ namespace CF.Library.Patterns
 
 		private async void Timer_Tick(object sender, ElapsedEventArgs e)
 		{
-			// Restoring original task interval.
-			timer.Interval = Interval.TotalMilliseconds;
+			try
+			{
+				// Restoring original task interval.
+				timer.Interval = Interval.TotalMilliseconds;
 
-			await TaskAction();
+				await TaskAction();
+			}
+			catch (Exception exception)
+			{
+				ExceptionThrown?.Invoke(this, new ExceptionThrownEventArgs(exception));
+			}
 		}
 	}
 }

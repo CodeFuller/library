@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using CF.Library.Core.Events;
 
 namespace CF.Library.Patterns
 {
@@ -11,6 +9,11 @@ namespace CF.Library.Patterns
 	/// </summary>
 	public interface IPeriodicTask
 	{
+		/// <summary>
+		/// Event that is fired when exception is thrown by task action.
+		/// </summary>
+		event EventHandler<ExceptionThrownEventArgs> ExceptionThrown;
+
 		/// <summary>
 		/// Interval between task executions.
 		/// </summary>
