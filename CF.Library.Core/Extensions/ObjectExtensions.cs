@@ -10,7 +10,7 @@ namespace CF.Library.Core.Extensions
 		/// <summary>
 		/// Safe ToString() that correctly handles null objects.
 		/// </summary>
-		public static string Stringify(this Uri uri)
+		public static string Stringify(this Object uri)
 		{
 			return uri?.ToString() ?? "<null>";
 		}
