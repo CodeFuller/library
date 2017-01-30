@@ -1,5 +1,6 @@
-﻿using System.Windows;
-using CF.Library.Logging;
+﻿using System;
+using System.Windows;
+using static System.FormattableString;
 
 namespace CF.Library.Wpf
 {
@@ -9,10 +10,15 @@ namespace CF.Library.Wpf
 	public static class WpfHelpers
 	{
 		/// <summary>
-		/// Shows message box and logs it together with user choice
+		/// Shows message box and logs it together with user choice.
 		/// </summary>
-		public static MessageBoxResult ShowLoggedMessageBox(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon)
+		public static MessageBoxResult ShowLoggedMessageBox(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Action<string> writeLog)
 		{
+			if (writeLog == null)
+			{
+				throw new ArgumentNullException(nameof(writeLog));
+			}
+
 			var separator = "---------------------------";
 
 			string windowLogEntry = "";
@@ -24,9 +30,9 @@ namespace CF.Library.Wpf
 			windowLogEntry += GetMessageBoxButtonsLogEntry(button) + "\n";
 			windowLogEntry += separator + "\n";
 
-			Logger.Info("Showing message box:\n\n{0}", windowLogEntry);
-			var result = System.Windows.MessageBox.Show(messageBoxText, caption, button, icon);
-			Logger.Info("User pressed [{0}]", GetMessageBoxResultLogEntry(result));
+			writeLog("Showing message box:\n\n" + windowLogEntry);
+			var result = MessageBox.Show(messageBoxText, caption, button, icon);
+			writeLog(Invariant($"User pressed [{GetMessageBoxResultLogEntry(result)}]"));
 
 			return result;
 		}
