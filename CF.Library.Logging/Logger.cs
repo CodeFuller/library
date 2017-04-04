@@ -91,7 +91,7 @@ namespace CF.Library.Logging
 			var exeFilename = System.Reflection.Assembly.GetEntryAssembly().Location;
 			var directoryPath = Path.GetDirectoryName(exeFilename);
 			var rawName = Path.GetFileNameWithoutExtension(exeFilename);
-			var logFilenamePattern = FormattableString.Invariant($"{directoryPath}\\logs\\{rawName}-%date{{yyyy_MM_dd_HH_mm_ss}}.log");
+			var logFilenamePattern = FormattableString.Invariant($"{directoryPath}\\logs\\{rawName} - %env{{COMPUTERNAME}} - %date{{yyyy_MM_dd_HH_mm_ss}}.log");
 
 			appender.File = (new PatternString(logFilenamePattern)).Format();
 			appender.AppendToFile = false;
