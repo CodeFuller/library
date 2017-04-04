@@ -52,6 +52,7 @@
     <Compile Include="DI\IInstanceCreator.cs" />
     <Compile Include="Events\ExceptionThrownEventArgs.cs" />
     <Compile Include="Exceptions\InvalidConfigurationException.cs" />
+    <Compile Include="Exceptions\InvalidInputDataException.cs" />
     <Compile Include="Exceptions\RequiredSettingIsMissingException.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Facades\ConsoleFacade.cs" />
