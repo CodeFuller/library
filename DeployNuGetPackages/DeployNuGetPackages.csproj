@@ -9,7 +9,7 @@
     <OutputPath>bin\NuGet\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <NuGetExecutable>"d:\bin\dotNet\NuGet.exe"</NuGetExecutable>
+    <NuGetExecutable>"d:\Dropbox\bin\dotNet\NuGet.exe"</NuGetExecutable>
     <NuGetPackCommand>$(NugetExecutable) pack -OutputDirectory $(OutputPath) -Build -Properties Configuration=Release</NuGetPackCommand>
     <NuGetDeployDir>d:\Dropbox\NuGet</NuGetDeployDir>
   </PropertyGroup>
