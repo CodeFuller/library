@@ -48,6 +48,9 @@
     <Compile Include="Attributes\ExcludeFromlTestCoverageBasicAttribute.cs" />
     <Compile Include="Attributes\ExcludeFromTestCoverageAttribute.cs" />
     <Compile Include="Attributes\ExcludeFromUnitTestCoverageAttribute.cs" />
+    <Compile Include="Bootstrap\ConsoleApplication.cs" />
+    <Compile Include="Bootstrap\IApplicationLogic.cs" />
+    <Compile Include="Bootstrap\IConsoleApplication.cs" />
     <Compile Include="DI\ConstructorArgument.cs" />
     <Compile Include="DI\IInstanceCreator.cs" />
     <Compile Include="Events\ExceptionThrownEventArgs.cs" />
@@ -73,7 +76,7 @@
     </Compile>
     <Compile Include="FileLogger.cs" />
     <Compile Include="Extensions\FormattableStringExtensions.cs" />
-    <Compile Include="Interfaces\IBootstrapper.cs" />
+    <Compile Include="Bootstrap\IBootstrapper.cs" />
     <Compile Include="Interfaces\IObjectFactory.cs" />
     <Compile Include="LockableValue.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Extensions\TaskExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
