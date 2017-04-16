@@ -58,6 +58,7 @@
     <Compile Include="InactivityDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReactivationDetectedEventArgs.cs" />
+    <Compile Include="ValueConverters\InverseBooleanConverter.cs" />
     <Compile Include="WpfApplication.cs" />
     <Compile Include="WpfHelpers.cs" />
   </ItemGroup>
