@@ -58,6 +58,7 @@
     <Compile Include="Exceptions\InvalidInputDataException.cs" />
     <Compile Include="Exceptions\RequiredSettingIsMissingException.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="Facades\ConsoleFacade.cs" />
     <Compile Include="Facades\FileSystemFacade.cs" />
     <Compile Include="Facades\IClock.cs" />
