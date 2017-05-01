@@ -67,6 +67,16 @@ namespace CF.Library.Core.Facades
 		void CreateDirectory(string path);
 
 		/// <summary>
+		/// Copies an existing file to a new file. Overwriting a file of the same name is not allowed.
+		/// </summary>
+		void CopyFile(string sourceFileName, string destFileName);
+
+		/// <summary>
+		/// Moves a specified file to a new location.
+		/// </summary>
+		void MoveFile(string sourceFileName, string destFileName);
+		
+		/// <summary>
 		/// Returns executable file name of current process.
 		/// </summary>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "The method is not suitable for converting into property")]
@@ -111,6 +121,22 @@ namespace CF.Library.Core.Facades
 		public void CreateDirectory(string path)
 		{
 			Directory.CreateDirectory(path);
+		}
+
+		/// <summary>
+		/// Copies an existing file to a new file. Overwriting a file of the same name is not allowed.
+		/// </summary>
+		public void CopyFile(string sourceFileName, string destFileName)
+		{
+			File.Copy(sourceFileName, destFileName);
+		}
+
+		/// <summary>
+		/// Moves a specified file to a new location.
+		/// </summary>
+		public void MoveFile(string sourceFileName, string destFileName)
+		{
+			File.Move(sourceFileName, destFileName);
 		}
 
 		/// <summary>
