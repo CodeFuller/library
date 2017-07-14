@@ -92,6 +92,16 @@ namespace CF.Library.Core.Facades
 		/// Creates instance of IStreamWriterFacade for given path.
 		/// </summary>
 		IStreamWriterFacade CreateStreamWriter(string path, bool append, Encoding encoding, bool autoFlush);
+
+		/// <summary>
+		/// Clears Read-only attribute for the file.
+		/// </summary>
+		void ClearReadOnlyAttribute(string fileName);
+
+		/// <summary>
+		/// Sets Read-only attribute for the file.
+		/// </summary>
+		void SetReadOnlyAttribute(string fileName);
 	}
 
 	/// <summary>
@@ -166,6 +176,24 @@ namespace CF.Library.Core.Facades
 			{
 				AutoFlush = autoFlush
 			};
+		}
+
+		/// <summary>
+		/// Clears Read-only attribute for the file.
+		/// </summary>
+		public void ClearReadOnlyAttribute(string fileName)
+		{
+			FileInfo fileInfo = new FileInfo(fileName);
+			fileInfo.IsReadOnly = false;
+		}
+
+		/// <summary>
+		/// Sets Read-only attribute for the file.
+		/// </summary>
+		public void SetReadOnlyAttribute(string fileName)
+		{
+			FileInfo fileInfo = new FileInfo(fileName);
+			fileInfo.IsReadOnly = true;
 		}
 	}
 }
