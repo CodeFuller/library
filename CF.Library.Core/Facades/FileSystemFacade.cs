@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -67,6 +68,26 @@ namespace CF.Library.Core.Facades
 		void CreateDirectory(string path);
 
 		/// <summary>
+		/// Returns an enumerable collection of directory names in a specified path.
+		/// </summary>
+		IEnumerable<string> EnumerateDirectories(string path);
+
+		/// <summary>
+		/// Returns an enumerable collection of file names in a specified path.
+		/// </summary>
+		IEnumerable<string> EnumerateFiles(string path);
+
+		/// <summary>
+		/// Deletes an empty directory from a specified path.
+		/// </summary>
+		void DeleteDirectory(string path);
+
+		/// <summary>
+		/// Deletes the specified directory and, if indicated, any subdirectories and files in the directory.
+		/// </summary>
+		void DeleteDirectory(string path, bool recursive);
+
+		/// <summary>
 		/// Copies an existing file to a new file. Overwriting a file of the same name is not allowed.
 		/// </summary>
 		void CopyFile(string sourceFileName, string destFileName);
@@ -131,6 +152,38 @@ namespace CF.Library.Core.Facades
 		public void CreateDirectory(string path)
 		{
 			Directory.CreateDirectory(path);
+		}
+
+		/// <summary>
+		/// Returns an enumerable collection of directory names in a specified path.
+		/// </summary>
+		public IEnumerable<string> EnumerateDirectories(string path)
+		{
+			return Directory.EnumerateDirectories(path);
+		}
+
+		/// <summary>
+		/// Returns an enumerable collection of file names in a specified path.
+		/// </summary>
+		public IEnumerable<string> EnumerateFiles(string path)
+		{
+			return Directory.EnumerateFiles(path);
+		}
+
+		/// <summary>
+		/// Deletes an empty directory from a specified path.
+		/// </summary>
+		public void DeleteDirectory(string path)
+		{
+			Directory.Delete(path);
+		}
+
+		/// <summary>
+		/// Deletes the specified directory and, if indicated, any subdirectories and files in the directory.
+		/// </summary>
+		public void DeleteDirectory(string path, bool recursive)
+		{
+			Directory.Delete(path, recursive);
 		}
 
 		/// <summary>
