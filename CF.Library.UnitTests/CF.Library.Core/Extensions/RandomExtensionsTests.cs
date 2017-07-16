@@ -2,7 +2,7 @@
 using CF.Library.Core.Extensions;
 using NUnit.Framework;
 
-namespace CF.Library.UnitTests.CF.Library.Core
+namespace CF.Library.UnitTests.CF.Library.Core.Extensions
 {
 	class RandomLowerBound : Random
 	{

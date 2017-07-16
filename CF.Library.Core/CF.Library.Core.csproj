@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceProcess" />
   </ItemGroup>
@@ -54,6 +55,13 @@
     <Compile Include="Bootstrap\IConsoleApplication.cs" />
     <Compile Include="Bootstrap\IServiceApplication.cs" />
     <Compile Include="Bootstrap\ServiceApplication.cs" />
+    <Compile Include="Configuration\AppSettings.cs" />
+    <Compile Include="Configuration\BasicSettingsProvider.cs" />
+    <Compile Include="Configuration\DataSize.cs" />
+    <Compile Include="Configuration\FileSettingsProvider.cs" />
+    <Compile Include="Configuration\ISettingsProvider.cs" />
+    <Compile Include="Configuration\ISettingValueParser.cs" />
+    <Compile Include="Configuration\SettingValueParser.cs" />
     <Compile Include="DI\ConstructorArgument.cs" />
     <Compile Include="DI\IInstanceCreator.cs" />
     <Compile Include="Events\ExceptionThrownEventArgs.cs" />

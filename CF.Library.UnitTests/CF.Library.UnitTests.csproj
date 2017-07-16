@@ -67,11 +67,15 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="CF.Library.Core\Bootstrap\ServiceApplicationTests.cs" />
-    <Compile Include="CF.Library.Core\CollectionExtensionsTests.cs" />
+    <Compile Include="CF.Library.Core\Configuration\AppSettingsTests.cs" />
+    <Compile Include="CF.Library.Core\Configuration\BasicSettingsProviderTests.cs" />
+    <Compile Include="CF.Library.Core\Configuration\DataSizeTests.cs" />
+    <Compile Include="CF.Library.Core\Configuration\SettingValueParserTests.cs" />
     <Compile Include="CF.Library.Core\FileLoggerTests.cs" />
     <Compile Include="CF.Library.Core\LockableValueTests.cs" />
-    <Compile Include="CF.Library.Core\RandomExtensionsTests.cs" />
-    <Compile Include="CF.Library.Core\StringExtensionsTests.cs" />
+    <Compile Include="CF.Library.Core\Extensions\CollectionExtensionsTests.cs" />
+    <Compile Include="CF.Library.Core\Extensions\RandomExtensionsTests.cs" />
+    <Compile Include="CF.Library.Core\Extensions\StringExtensionsTests.cs" />
     <Compile Include="CF.Library.Database\DataReaderExtensionsTests.cs" />
     <Compile Include="CF.Library.Database\DbAssertTests.cs" />
     <Compile Include="CF.Library.Patterns\MultilayerEventManagerTests.cs" />
