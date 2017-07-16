@@ -9,24 +9,48 @@ namespace CF.Library.Unity
 	/// </summary>
 	public abstract class UnityBootstrapper<TApplication> : IBootstrapper<TApplication>
 	{
+		private bool executed;
+
 		/// <summary>
 		/// Property Injection for IUnityContainer.
 		/// </summary>
-		public IUnityContainer DIContainer { get; set; } = new UnityContainer();
+		protected IUnityContainer DIContainer { get; set; } = new UnityContainer();
 
 		/// <summary>
 		/// Registers all dependencies required for application object.
 		/// </summary>
-		protected abstract void RegisterDependencies(IUnityContainer container);
+		protected abstract void RegisterDependencies();
 
 		/// <summary>
 		/// Bootstraps application and returns instance of application object.
 		/// </summary>
 		public TApplication Run()
 		{
-			RegisterDependencies(DIContainer);
+			if (executed)
+			{
+				throw new InvalidOperationException("Bootstrapper should be launched only once");
+			}
+			executed = true;
+
+			OnDependenciesRegistering();
+			RegisterDependencies();
+			OnDependenciesRegistered();
 
 			return DIContainer.Resolve<TApplication>();
+		}
+
+		/// <summary>
+		/// Called before dependencies are registered in DI container.
+		/// </summary>
+		protected virtual void OnDependenciesRegistering()
+		{
+		}
+
+		/// <summary>
+		/// Called after dependencies are registered in DI container.
+		/// </summary>
+		protected virtual void OnDependenciesRegistered()
+		{
 		}
 
 		/// <summary>

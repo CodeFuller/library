@@ -40,6 +40,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Global\GlobalAssemblyInfo.cs">
@@ -51,6 +52,8 @@
     <Compile Include="Bootstrap\ConsoleApplication.cs" />
     <Compile Include="Bootstrap\IApplicationLogic.cs" />
     <Compile Include="Bootstrap\IConsoleApplication.cs" />
+    <Compile Include="Bootstrap\IServiceApplication.cs" />
+    <Compile Include="Bootstrap\ServiceApplication.cs" />
     <Compile Include="DI\ConstructorArgument.cs" />
     <Compile Include="DI\IInstanceCreator.cs" />
     <Compile Include="Events\ExceptionThrownEventArgs.cs" />
@@ -72,6 +75,10 @@
     <Compile Include="Exceptions\SystemCallFailedException.cs" />
     <Compile Include="Exceptions\UnexpectedEnumValueException.cs" />
     <Compile Include="Exceptions\UnexpectedServerDataException.cs" />
+    <Compile Include="Facades\IServiceFacade.cs" />
+    <Compile Include="Facades\ServiceFacade.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Facades\TimerFacade.cs">
       <SubType>Component</SubType>
     </Compile>
