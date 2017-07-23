@@ -53,6 +53,7 @@
     <Compile Include="..\Global\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AsyncRelayCommand.cs" />
     <Compile Include="IInactivityDetector.cs" />
     <Compile Include="InactivationDetectedEventArgs.cs" />
     <Compile Include="InactivityDetector.cs" />
