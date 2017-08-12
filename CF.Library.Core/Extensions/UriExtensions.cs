@@ -44,7 +44,13 @@ namespace CF.Library.Core.Extensions
 				throw new ArgumentNullException(nameof(uri));
 			}
 
-			return uri.ToString().Split(UriSeparatorChar);
+			var uriString = uri.ToString();
+			if (uriString == UriSeparatorString)
+			{
+				return Array.Empty<string>();
+			}
+
+			return uriString.Split(UriSeparatorChar);
 		}
 
 		/// <summary>
