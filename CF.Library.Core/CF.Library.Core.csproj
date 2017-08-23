@@ -96,6 +96,8 @@
     <Compile Include="Interfaces\IObjectFactory.cs" />
     <Compile Include="LockableValue.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Logging\ConsoleLogger.cs" />
+    <Compile Include="Logging\IMessageLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\RandomExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
