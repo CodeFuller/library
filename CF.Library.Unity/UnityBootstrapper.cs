@@ -1,5 +1,7 @@
 ﻿using System;
+using CF.Library.Core;
 using CF.Library.Core.Bootstrap;
+using CF.Library.Core.Logging;
 using Microsoft.Practices.Unity;
 
 namespace CF.Library.Unity
@@ -35,6 +37,11 @@ namespace CF.Library.Unity
 			OnDependenciesRegistering();
 			RegisterDependencies();
 			OnDependenciesRegistered();
+
+			if (DIContainer.IsRegistered<IMessageLogger>())
+			{
+				Application.Logger = DIContainer.Resolve<IMessageLogger>();
+			}
 
 			return DIContainer.Resolve<TApplication>();
 		}
