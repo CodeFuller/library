@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -78,6 +79,11 @@ namespace CF.Library.Core.Facades
 		IEnumerable<string> EnumerateFiles(string path);
 
 		/// <summary>
+		/// Checks whether specified directory is empty.
+		/// </summary>
+		bool DirectoryIsEmpty(string path);
+
+		/// <summary>
 		/// Deletes an empty directory from a specified path.
 		/// </summary>
 		void DeleteDirectory(string path);
@@ -96,7 +102,12 @@ namespace CF.Library.Core.Facades
 		/// Moves a specified file to a new location.
 		/// </summary>
 		void MoveFile(string sourceFileName, string destFileName);
-		
+
+		/// <summary>
+		/// Deletes specified file.
+		/// </summary>
+		void DeleteFile(string fileName);
+
 		/// <summary>
 		/// Returns executable file name of current process.
 		/// </summary>
@@ -171,6 +182,14 @@ namespace CF.Library.Core.Facades
 		}
 
 		/// <summary>
+		/// Checks whether specified directory is empty.
+		/// </summary>
+		public bool DirectoryIsEmpty(string path)
+		{
+			return Directory.EnumerateFileSystemEntries(path).Any();
+		}
+
+		/// <summary>
 		/// Deletes an empty directory from a specified path.
 		/// </summary>
 		public void DeleteDirectory(string path)
@@ -200,6 +219,14 @@ namespace CF.Library.Core.Facades
 		public void MoveFile(string sourceFileName, string destFileName)
 		{
 			File.Move(sourceFileName, destFileName);
+		}
+
+		/// <summary>
+		/// Deletes specified file.
+		/// </summary>
+		public void DeleteFile(string fileName)
+		{
+			File.Delete(fileName);
 		}
 
 		/// <summary>
