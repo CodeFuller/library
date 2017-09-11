@@ -59,5 +59,22 @@ namespace CF.Library.Core.Configuration
 		{
 			return SettingsProvider.GetOptionalValue<T>(key);
 		}
+
+		/// <summary>
+		/// Returns required setting value specific for current user.
+		/// Throws RequiredSettingIsMissingException if setting is missing.
+		/// </summary>
+		public static T GetPrivateRequiredValue<T>(string key)
+		{
+			return SettingsProvider.GetPrivateRequiredValue<T>(key);
+		}
+
+		/// <summary>
+		/// Returns optional value specific for current user or default(T) if setting is missing.
+		/// </summary>
+		public static T GetPrivateOptionalValue<T>(string key) where T : class
+		{
+			return SettingsProvider.GetPrivateOptionalValue<T>(key);
+		}
 	}
 }
