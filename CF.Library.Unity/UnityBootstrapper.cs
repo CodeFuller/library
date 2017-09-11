@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Configuration;
 using CF.Library.Core;
 using CF.Library.Core.Bootstrap;
+using CF.Library.Core.Configuration;
 using CF.Library.Core.Logging;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
 
 namespace CF.Library.Unity
 {
@@ -33,6 +36,15 @@ namespace CF.Library.Unity
 				throw new InvalidOperationException("Bootstrapper should be launched only once");
 			}
 			executed = true;
+
+			if (ConfigurationManager.GetSection("unity") != null)
+			{
+				DIContainer.LoadConfiguration();
+				if (DIContainer.IsRegistered<ISettingsProvider>())
+				{
+					AppSettings.SettingsProvider = DIContainer.Resolve<ISettingsProvider>();
+				}
+			}
 
 			OnDependenciesRegistering();
 			RegisterDependencies();
