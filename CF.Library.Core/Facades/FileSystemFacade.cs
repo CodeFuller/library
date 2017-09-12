@@ -186,7 +186,7 @@ namespace CF.Library.Core.Facades
 		/// </summary>
 		public bool DirectoryIsEmpty(string path)
 		{
-			return Directory.EnumerateFileSystemEntries(path).Any();
+			return !Directory.EnumerateFileSystemEntries(path).Any();
 		}
 
 		/// <summary>
