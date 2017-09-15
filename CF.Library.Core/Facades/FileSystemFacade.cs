@@ -134,6 +134,11 @@ namespace CF.Library.Core.Facades
 		/// Sets Read-only attribute for the file.
 		/// </summary>
 		void SetReadOnlyAttribute(string fileName);
+
+		/// <summary>
+		/// Returns value of Read-only attribute for the file.
+		/// </summary>
+		bool GetReadOnlyAttribute(string fileName);
 	}
 
 	/// <summary>
@@ -274,6 +279,15 @@ namespace CF.Library.Core.Facades
 		{
 			FileInfo fileInfo = new FileInfo(fileName);
 			fileInfo.IsReadOnly = true;
+		}
+
+		/// <summary>
+		/// Returns value of Read-only attribute for the file.
+		/// </summary>
+		public bool GetReadOnlyAttribute(string fileName)
+		{
+			FileInfo fileInfo = new FileInfo(fileName);
+			return fileInfo.IsReadOnly;
 		}
 	}
 }
