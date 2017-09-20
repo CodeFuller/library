@@ -84,6 +84,11 @@ namespace CF.Library.Core.Facades
 		bool DirectoryIsEmpty(string path);
 
 		/// <summary>
+		/// Moves a directory to new location.
+		/// </summary>
+		void MoveDirectory(string sourceDirName, string destDirName);
+
+		/// <summary>
 		/// Deletes an empty directory from a specified path.
 		/// </summary>
 		void DeleteDirectory(string path);
@@ -192,6 +197,14 @@ namespace CF.Library.Core.Facades
 		public bool DirectoryIsEmpty(string path)
 		{
 			return !Directory.EnumerateFileSystemEntries(path).Any();
+		}
+
+		/// <summary>
+		/// Moves a directory to new location.
+		/// </summary>
+		public void MoveDirectory(string sourceDirName, string destDirName)
+		{
+			Directory.Move(sourceDirName, destDirName);
 		}
 
 		/// <summary>
