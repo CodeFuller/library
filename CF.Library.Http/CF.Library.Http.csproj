@@ -38,6 +38,10 @@
     <DocumentationFile>bin\Release\CF.Library.Http.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CF.Library.Core, Version=0.1.6472.39302, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CF.Library.Core.0.1.6472.39302\lib\net462\CF.Library.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -50,10 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CF.Library.Core\CF.Library.Core.csproj">
-      <Project>{d31250e4-f1f8-41c8-91c9-c1c32aff6d14}</Project>
-      <Name>CF.Library.Core</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

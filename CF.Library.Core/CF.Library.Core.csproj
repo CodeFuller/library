@@ -65,6 +65,9 @@
     <Compile Include="Configuration\SettingValueParser.cs" />
     <Compile Include="DI\ConstructorArgument.cs" />
     <Compile Include="DI\IInstanceCreator.cs" />
+    <Compile Include="Enums\ShowMessageBoxButton.cs" />
+    <Compile Include="Enums\ShowMessageBoxIcon.cs" />
+    <Compile Include="Enums\ShowMessageBoxResult.cs" />
     <Compile Include="Events\ExceptionThrownEventArgs.cs" />
     <Compile Include="Exceptions\InvalidConfigurationException.cs" />
     <Compile Include="Exceptions\InvalidInputDataException.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="Extensions\FormattableStringExtensions.cs" />
     <Compile Include="Bootstrap\IBootstrapper.cs" />
     <Compile Include="Interfaces\IObjectFactory.cs" />
+    <Compile Include="Interfaces\IWindowService.cs" />
     <Compile Include="LockableValue.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Logging\ConsoleLogger.cs" />

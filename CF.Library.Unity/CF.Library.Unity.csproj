@@ -38,6 +38,10 @@
     <CodeAnalysisRuleSet>..\..\CodeFuller.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CF.Library.Core, Version=0.1.6472.39302, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CF.Library.Core.0.1.6472.39302\lib\net462\CF.Library.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -71,12 +75,6 @@
     <Compile Include="UnityBootstrapper.cs" />
     <Compile Include="UnityBasedObjectFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CF.Library.Core\CF.Library.Core.csproj">
-      <Project>{D31250E4-F1F8-41C8-91C9-C1C32AFF6D14}</Project>
-      <Name>CF.Library.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
