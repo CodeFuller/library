@@ -144,6 +144,26 @@ namespace CF.Library.Core.Facades
 		/// Returns value of Read-only attribute for the file.
 		/// </summary>
 		bool GetReadOnlyAttribute(string fileName);
+
+		/// <summary>
+		/// Opens a text file, reads all lines of the file, and then closes the file.
+		/// </summary>
+		string ReadAllText(string path);
+
+		/// <summary>
+		/// Opens a file, reads all lines of the file with the specified encoding, and then closes the file.
+		/// </summary>
+		string ReadAllText(string path, Encoding encoding);
+
+		/// <summary>
+		/// Creates a new file, writes the specified string to the file, and then closes the file. If the target file already exists, it is overwritten.
+		/// </summary>
+		void WriteAllText(string path, string contents);
+
+		/// <summary>
+		/// Creates a new file, writes the specified string to the file using the specified encoding, and then closes the file. If the target file already exists, it is overwritten.
+		/// </summary>
+		void WriteAllText(string path, string contents, Encoding encoding);
 	}
 
 	/// <summary>
@@ -301,6 +321,38 @@ namespace CF.Library.Core.Facades
 		{
 			FileInfo fileInfo = new FileInfo(fileName);
 			return fileInfo.IsReadOnly;
+		}
+
+		/// <summary>
+		/// Opens a text file, reads all lines of the file, and then closes the file.
+		/// </summary>
+		public string ReadAllText(string path)
+		{
+			return File.ReadAllText(path);
+		}
+
+		/// <summary>
+		/// Opens a file, reads all lines of the file with the specified encoding, and then closes the file.
+		/// </summary>
+		public string ReadAllText(string path, Encoding encoding)
+		{
+			return File.ReadAllText(path, encoding);
+		}
+
+		/// <summary>
+		/// Creates a new file, writes the specified string to the file, and then closes the file. If the target file already exists, it is overwritten.
+		/// </summary>
+		public void WriteAllText(string path, string contents)
+		{
+			File.WriteAllText(path, contents);
+		}
+
+		/// <summary>
+		/// Creates a new file, writes the specified string to the file using the specified encoding, and then closes the file. If the target file already exists, it is overwritten.
+		/// </summary>
+		public void WriteAllText(string path, string contents, Encoding encoding)
+		{
+			File.WriteAllText(path, contents, encoding);
 		}
 	}
 }
