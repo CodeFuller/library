@@ -169,6 +169,11 @@ namespace CF.Library.Core.Facades
 		/// Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
 		/// </summary>
 		string GetTempFileName();
+
+		/// <summary>
+		/// Returns file size, in bytes.
+		/// </summary>
+		long GetFileSize(string fileName);
 	}
 
 	/// <summary>
@@ -366,6 +371,14 @@ namespace CF.Library.Core.Facades
 		public string GetTempFileName()
 		{
 			return Path.GetTempFileName();
+		}
+
+		/// <summary>
+		/// Returns file size, in bytes.
+		/// </summary>
+		public long GetFileSize(string fileName)
+		{
+			return new FileInfo(fileName).Length;
 		}
 	}
 }
