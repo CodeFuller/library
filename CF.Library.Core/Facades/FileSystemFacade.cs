@@ -164,6 +164,11 @@ namespace CF.Library.Core.Facades
 		/// Creates a new file, writes the specified string to the file using the specified encoding, and then closes the file. If the target file already exists, it is overwritten.
 		/// </summary>
 		void WriteAllText(string path, string contents, Encoding encoding);
+
+		/// <summary>
+		/// Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
+		/// </summary>
+		string GetTempFileName();
 	}
 
 	/// <summary>
@@ -353,6 +358,14 @@ namespace CF.Library.Core.Facades
 		public void WriteAllText(string path, string contents, Encoding encoding)
 		{
 			File.WriteAllText(path, contents, encoding);
+		}
+
+		/// <summary>
+		/// Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
+		/// </summary>
+		public string GetTempFileName()
+		{
+			return Path.GetTempFileName();
 		}
 	}
 }
