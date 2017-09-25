@@ -166,6 +166,17 @@ namespace CF.Library.Core.Facades
 		void WriteAllText(string path, string contents, Encoding encoding);
 
 		/// <summary>
+		/// Opens a binary file, reads the contents of the file into a byte array, and then closes the file.
+		/// </summary>
+		byte[] ReadAllBytes(string path);
+
+		/// <summary>
+		/// Creates a new file, writes the specified byte array to the file, and then closes the file. If the target file already exists, it is overwritten.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "bytes", Justification = "Using the same parameter name as in original method")]
+		void WriteAllBytes(string path, byte[] bytes);
+
+		/// <summary>
 		/// Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
 		/// </summary>
 		string GetTempFileName();
@@ -363,6 +374,22 @@ namespace CF.Library.Core.Facades
 		public void WriteAllText(string path, string contents, Encoding encoding)
 		{
 			File.WriteAllText(path, contents, encoding);
+		}
+
+		/// <summary>
+		/// Opens a binary file, reads the contents of the file into a byte array, and then closes the file.
+		/// </summary>
+		public byte[] ReadAllBytes(string path)
+		{
+			return File.ReadAllBytes(path);
+		}
+
+		/// <summary>
+		/// Creates a new file, writes the specified byte array to the file, and then closes the file. If the target file already exists, it is overwritten.
+		/// </summary>
+		public void WriteAllBytes(string path, byte[] bytes)
+		{
+			File.WriteAllBytes(path, bytes);
 		}
 
 		/// <summary>
