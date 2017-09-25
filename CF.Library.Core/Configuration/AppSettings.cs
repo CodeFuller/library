@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CF.Library.Core.Configuration
 {
@@ -58,6 +59,23 @@ namespace CF.Library.Core.Configuration
 		public static T GetOptionalValue<T>(string key) where T : class
 		{
 			return SettingsProvider.GetOptionalValue<T>(key);
+		}
+
+		/// <summary>
+		/// Returns list of optional values specified as key1, key2, ..., keyn.
+		/// </summary>
+		public static IEnumerable<T> GetOptionalValues<T>(string key) where T : class
+		{
+			for (var i = 1; ; ++i)
+			{
+				T currValue = GetOptionalValue<T>($"{key}{i}");
+				if (currValue == default(T))
+				{
+					yield break;
+				}
+
+				yield return currValue;
+			}
 		}
 
 		/// <summary>
