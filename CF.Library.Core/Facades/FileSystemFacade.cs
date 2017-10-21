@@ -74,9 +74,19 @@ namespace CF.Library.Core.Facades
 		IEnumerable<string> EnumerateDirectories(string path);
 
 		/// <summary>
+		/// Returns an enumerable collection of directory names that match a search pattern in a specified path, and optionally searches subdirectories.
+		/// </summary>
+		IEnumerable<string> EnumerateDirectories(string path, string searchPattern, SearchOption searchOption);
+
+		/// <summary>
 		/// Returns an enumerable collection of file names in a specified path.
 		/// </summary>
 		IEnumerable<string> EnumerateFiles(string path);
+
+		/// <summary>
+		/// Returns an enumerable collection of file names that match a search pattern in a specified path, and optionally searches subdirectories.
+		/// </summary>
+		IEnumerable<string> EnumerateFiles(string path, string searchPattern, SearchOption searchOption);
 
 		/// <summary>
 		/// Checks whether specified directory is empty.
@@ -97,6 +107,11 @@ namespace CF.Library.Core.Facades
 		/// Deletes the specified directory and, if indicated, any subdirectories and files in the directory.
 		/// </summary>
 		void DeleteDirectory(string path, bool recursive);
+
+		/// <summary>
+		/// Returns the parent directory of the specified path.
+		/// </summary>
+		string GetParentDirectory(string path);
 
 		/// <summary>
 		/// Copies an existing file to a new file. Overwriting a file of the same name is not allowed.
@@ -185,6 +200,11 @@ namespace CF.Library.Core.Facades
 		/// Returns file size, in bytes.
 		/// </summary>
 		long GetFileSize(string fileName);
+
+		/// <summary>
+		/// Returns the absolute path for the specified path string.
+		/// </summary>
+		string GetFullPath(string path);
 	}
 
 	/// <summary>
@@ -225,11 +245,27 @@ namespace CF.Library.Core.Facades
 		}
 
 		/// <summary>
+		/// Returns an enumerable collection of directory names that match a search pattern in a specified path, and optionally searches subdirectories.
+		/// </summary>
+		public IEnumerable<string> EnumerateDirectories(string path, string searchPattern, SearchOption searchOption)
+		{
+			return Directory.EnumerateDirectories(path, searchPattern, searchOption);
+		}
+
+		/// <summary>
 		/// Returns an enumerable collection of file names in a specified path.
 		/// </summary>
 		public IEnumerable<string> EnumerateFiles(string path)
 		{
 			return Directory.EnumerateFiles(path);
+		}
+
+		/// <summary>
+		/// Returns an enumerable collection of file names that match a search pattern in a specified path, and optionally searches subdirectories.
+		/// </summary>
+		public IEnumerable<string> EnumerateFiles(string path, string searchPattern, SearchOption searchOption)
+		{
+			return Directory.EnumerateFiles(path, searchPattern, searchOption);
 		}
 
 		/// <summary>
@@ -262,6 +298,14 @@ namespace CF.Library.Core.Facades
 		public void DeleteDirectory(string path, bool recursive)
 		{
 			Directory.Delete(path, recursive);
+		}
+
+		/// <summary>
+		/// Returns the parent directory of the specified path.
+		/// </summary>
+		public string GetParentDirectory(string path)
+		{
+			return Directory.GetParent(path)?.FullName;
 		}
 
 		/// <summary>
@@ -406,6 +450,14 @@ namespace CF.Library.Core.Facades
 		public long GetFileSize(string fileName)
 		{
 			return new FileInfo(fileName).Length;
+		}
+
+		/// <summary>
+		/// Returns the absolute path for the specified path string.
+		/// </summary>
+		public string GetFullPath(string path)
+		{
+			return Path.GetFullPath(path);
 		}
 	}
 }
