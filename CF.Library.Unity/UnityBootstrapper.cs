@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Configuration;
 using CF.Library.Core;
 using CF.Library.Core.Bootstrap;
 using CF.Library.Core.Configuration;
 using CF.Library.Core.Logging;
-using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
+using Unity;
 
 namespace CF.Library.Unity
 {
@@ -37,13 +35,9 @@ namespace CF.Library.Unity
 			}
 			executed = true;
 
-			if (ConfigurationManager.GetSection("unity") != null)
+			if (DIContainer.IsRegistered<ISettingsProvider>())
 			{
-				DIContainer.LoadConfiguration();
-				if (DIContainer.IsRegistered<ISettingsProvider>())
-				{
-					AppSettings.SettingsProvider = DIContainer.Resolve<ISettingsProvider>();
-				}
+				AppSettings.SettingsProvider = DIContainer.Resolve<ISettingsProvider>();
 			}
 
 			OnDependenciesRegistering();

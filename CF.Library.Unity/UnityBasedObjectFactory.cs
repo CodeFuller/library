@@ -1,6 +1,6 @@
 ﻿using System;
 using CF.Library.Core.Interfaces;
-using Microsoft.Practices.Unity;
+using Unity;
 
 namespace CF.Library.Unity
 {
