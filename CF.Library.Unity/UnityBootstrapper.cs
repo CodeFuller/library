@@ -35,12 +35,13 @@ namespace CF.Library.Unity
 			}
 			executed = true;
 
+			OnDependenciesRegistering();
+
 			if (DIContainer.IsRegistered<ISettingsProvider>())
 			{
 				AppSettings.SettingsProvider = DIContainer.Resolve<ISettingsProvider>();
 			}
 
-			OnDependenciesRegistering();
 			RegisterDependencies();
 			OnDependenciesRegistered();
 
