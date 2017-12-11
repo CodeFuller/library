@@ -9,10 +9,15 @@ namespace CF.Library.Core.Exceptions
 	[Serializable]
 	public class ApiCallFailedException : BasicException
 	{
+		public Uri RequestUri { get; set; }
+
+		public int? HttpStatusCode { get; set; }
+
 		/// <summary>
 		/// Internal API error id
 		/// </summary>
-		public int ApiErrorId { get; set; }
+		public int? ApiErrorId { get; set; }
+		
 		/// <summary>
 		/// Internal API error name
 		/// </summary>
@@ -63,6 +68,8 @@ namespace CF.Library.Core.Exceptions
 				throw new ArgumentNullException(nameof(info));
 			}
 
+			info.AddValue(nameof(RequestUri), RequestUri);
+			info.AddValue(nameof(HttpStatusCode), HttpStatusCode);
 			info.AddValue(nameof(ApiErrorId), ApiErrorId);
 			info.AddValue(nameof(ApiErrorName), ApiErrorName);
 			info.AddValue(nameof(ApiErrorMessage), ApiErrorMessage);
