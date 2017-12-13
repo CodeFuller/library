@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>CF.Library.Core</PackageId>
+    <PackageId>CF.Library.Json</PackageId>
     <Authors>CodeFuller</Authors>
     <Description>This package contains helpers and extensions for Json.NET</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
