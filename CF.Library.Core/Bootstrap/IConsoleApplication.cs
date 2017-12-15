@@ -8,6 +8,6 @@
 		/// <summary>
 		/// Runs Console Application.
 		/// </summary>
-		void Run(string[] args);
+		int Run(string[] args);
 	}
 }

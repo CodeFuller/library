@@ -27,7 +27,7 @@ namespace CF.Library.Unity
 		/// <summary>
 		/// Bootstraps application and returns instance of application object.
 		/// </summary>
-		public TApplication Run()
+		public TApplication Run(params string[] commandLineArgs)
 		{
 			if (executed)
 			{

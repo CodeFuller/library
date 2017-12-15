@@ -15,28 +15,24 @@ namespace CF.Library.Core.Bootstrap
 		/// </summary>
 		public ConsoleApplication(IBootstrapper<IApplicationLogic> bootstrapper)
 		{
-			if (bootstrapper == null)
-			{
-				throw new ArgumentNullException(nameof(bootstrapper));
-			}
-
-			this.bootstrapper = bootstrapper;
+			this.bootstrapper = bootstrapper ?? throw new ArgumentNullException(nameof(bootstrapper));
 		}
 
 		/// <summary>
 		/// Runs console application.
 		/// </summary>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "All exceptions are caught and logged by this top-level application routine")]
-		public void Run(string[] args)
+		public int Run(string[] args)
 		{
 			try
 			{
-				IApplicationLogic appLogic = bootstrapper.Run();
-				appLogic.Run(args);
+				IApplicationLogic appLogic = bootstrapper.Run(args);
+				return appLogic.Run(args);
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine(Current($"Exception caught: {e}"));
+				return 1;
 			}
 		}
 	}

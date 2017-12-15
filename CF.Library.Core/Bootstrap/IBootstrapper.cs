@@ -10,6 +10,6 @@ namespace CF.Library.Core.Bootstrap
 		/// <summary>
 		/// Bootstraps application and returns instance of application object.
 		/// </summary>
-		TApplication Run();
+		TApplication Run(params string[] commandLineArgs);
 	}
 }
