@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using static CF.Library.Core.Extensions.FormattableStringExtensions;
 
 namespace CF.Library.Core.Bootstrap
@@ -27,7 +29,15 @@ namespace CF.Library.Core.Bootstrap
 			try
 			{
 				IApplicationLogic appLogic = bootstrapper.Run(args);
-				return appLogic.Run(args);
+
+				CancellationTokenSource cts = new CancellationTokenSource();
+
+				Console.CancelKeyPress += delegate {
+					cts.Cancel();
+				};
+
+				Console.WriteLine("Application started. Press Ctrl+C for exit.");
+				return appLogic.Run(args, cts.Token);
 			}
 			catch (Exception e)
 			{
