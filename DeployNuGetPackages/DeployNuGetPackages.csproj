@@ -9,19 +9,22 @@
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Core\bin\Release&quot;     &quot;$(DeployDir)&quot; CF.Library.Core.*.nupkg     /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
-    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Database\bin\Release&quot; &quot;$(DeployDir)&quot; CF.Library.Database.*.nupkg /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
-    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Json\bin\Release&quot;     &quot;$(DeployDir)&quot; CF.Library.Json.*.nupkg     /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
-    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Patterns\bin\Release&quot; &quot;$(DeployDir)&quot; CF.Library.Patterns.*.nupkg /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
-    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Testing\bin\Release&quot;  &quot;$(DeployDir)&quot; CF.Library.Testing.*.nupkg  /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
-    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Unity\bin\Release&quot;    &quot;$(DeployDir)&quot; CF.Library.Unity.*.nupkg    /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
-    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Wpf\bin\Release&quot;      &quot;$(DeployDir)&quot; CF.Library.Wpf.*.nupkg      /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
+    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Core\bin\Release&quot;        &quot;$(DeployDir)&quot; CF.Library.Core.*.nupkg        /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
+    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Database\bin\Release&quot;    &quot;$(DeployDir)&quot; CF.Library.Database.*.nupkg    /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
+    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Json\bin\Release&quot;        &quot;$(DeployDir)&quot; CF.Library.Json.*.nupkg        /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
+    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Logging\bin\Release&quot;     &quot;$(DeployDir)&quot; CF.Library.Logging.*.nupkg     /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
+    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Patterns\bin\Release&quot;    &quot;$(DeployDir)&quot; CF.Library.Patterns.*.nupkg    /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
+    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Testing\bin\Release&quot;     &quot;$(DeployDir)&quot; CF.Library.Testing.*.nupkg     /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
+    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Unity\bin\Release&quot;       &quot;$(DeployDir)&quot; CF.Library.Unity.*.nupkg       /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
+    <Exec Command="(robocopy &quot;$(SolutionDir)CF.Library.Wpf\bin\Release&quot;         &quot;$(DeployDir)&quot; CF.Library.Wpf.*.nupkg         /XC /XN /XO) ^&amp; IF %ERRORLEVEL% LEQ 1 exit 0" />
   </Target>
 
   <ItemGroup>
     <ProjectReference Include="..\CF.Library.Core\CF.Library.Core.csproj" />
     <ProjectReference Include="..\CF.Library.Database\CF.Library.Database.csproj" />
     <ProjectReference Include="..\CF.Library.Json\CF.Library.Json.csproj" />
+    <ProjectReference Include="..\CF.Library.Logging\CF.Library.Logging.csproj" />
+    <ProjectReference Include="..\CF.Library.Patterns\CF.Library.Patterns.csproj" />
     <ProjectReference Include="..\CF.Library.Testing\CF.Library.Testing.csproj" />
     <ProjectReference Include="..\CF.Library.Unity\CF.Library.Unity.csproj" />
     <ProjectReference Include="..\CF.Library.Wpf\CF.Library.Wpf.csproj" />

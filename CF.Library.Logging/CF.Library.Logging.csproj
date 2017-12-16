@@ -5,19 +5,21 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>CF.Library.Database</PackageId>
+    <PackageId>CF.Library.Logging</PackageId>
     <Authors>CodeFuller</Authors>
-    <Description>This package contains useful extensions and helpers for database related functionality</Description>
+    <Description>This package contains Logging functionality for CF.Library</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © 2016-2017</Copyright>
-    <PackageTags>CodeFuller Library Database</PackageTags>
+    <Copyright>Copyright © 2017</Copyright>
+    <PackageTags>CodeFuller Library Logging</PackageTags>
     <Company>CodeFuller</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CF.Library.Core" Version="2.1.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
   </ItemGroup>
 
 </Project>

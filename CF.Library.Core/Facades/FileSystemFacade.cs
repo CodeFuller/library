@@ -12,6 +12,8 @@ namespace CF.Library.Core.Facades
 	/// </summary>
 	public interface IStreamWriterFacade : IDisposable
 	{
+		StreamWriter StreamWriter { get; }
+
 		/// <summary>
 		/// Facade method for StreamWriter.Write(string value).
 		/// </summary>
@@ -34,6 +36,8 @@ namespace CF.Library.Core.Facades
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly", Justification = "False positive. See http://stackoverflow.com/a/8926598/5740031 for details.")]
 	public class StreamWriterFacade : StreamWriter, IStreamWriterFacade
 	{
+		public StreamWriter StreamWriter => this;
+
 		/// <summary>
 		/// Constructor.
 		/// </summary>

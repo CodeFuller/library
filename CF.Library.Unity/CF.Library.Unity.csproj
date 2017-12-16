@@ -13,12 +13,16 @@
     <PackageTags>CodeFuller Library Unity</PackageTags>
     <Company>CodeFuller</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.0</Version>
+    <Version>3.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CF.Library.Core" Version="2.0.1" />
+    <PackageReference Include="CF.Library.Core" Version="2.1.0" />
     <PackageReference Include="Unity" Version="5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CF.Library.Logging\CF.Library.Logging.csproj" />
   </ItemGroup>
 
 </Project>

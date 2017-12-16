@@ -1,6 +1,6 @@
 ﻿using System;
-using CF.Library.Core;
-using CF.Library.Core.Logging;
+using CF.Library.Logging;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Unity;
@@ -38,11 +38,11 @@ namespace CF.Library.Unity.Tests
 		}
 
 		[TestMethod]
-		public void Run_IfIMessageLoggerIsRegistered_SetsApplicationMessageLogger()
+		public void Run_IfILoggerIsRegistered_FillsLoggerInLogHolder()
 		{
 			//	Arrange
 
-			IMessageLogger logger = Substitute.For<IMessageLogger>();
+			ILogger logger = Substitute.For<ILogger>();
 			//	We can't use Substitute for IUnityContainer here because NSubstitute can't stub extension methods.
 			IUnityContainer diContainerStub = new UnityContainer();
 			diContainerStub.RegisterInstance(logger);
@@ -55,7 +55,7 @@ namespace CF.Library.Unity.Tests
 
 			//	Assert
 
-			Assert.AreSame(logger, Application.Logger);
+			Assert.AreSame(logger, LogHolder.Logger);
 		}
 
 		[TestMethod]
