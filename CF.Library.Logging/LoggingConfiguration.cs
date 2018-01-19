@@ -74,13 +74,10 @@ namespace CF.Library.Logging
 			return this;
 		}
 
-		public Microsoft.Extensions.Logging.ILogger BuildLogger(string categoryName)
+		public ILoggingBuilder AddLogging(ILoggingBuilder loggingBuilder)
 		{
 			Log.Logger = configuration.CreateLogger();
-			ILoggerFactory loggerFactory = new LoggerFactory();
-			loggerFactory.AddSerilog();
-
-			return LogHolder.Logger = loggerFactory.CreateLogger(categoryName);
+			return loggingBuilder.AddSerilog();
 		}
 
 		private static LogEventLevel CovertLogLevel(LogLevel logLevel)

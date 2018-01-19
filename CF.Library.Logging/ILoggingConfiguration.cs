@@ -13,6 +13,6 @@ namespace CF.Library.Logging
 
 		ILoggingConfiguration LoadSettings(LoggingSettings settings);
 
-		Microsoft.Extensions.Logging.ILogger BuildLogger(string categoryName);
+		ILoggingBuilder AddLogging(ILoggingBuilder loggingBuilder);
 	}
 }

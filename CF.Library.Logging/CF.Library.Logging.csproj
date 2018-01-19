@@ -9,11 +9,11 @@
     <Authors>CodeFuller</Authors>
     <Description>This package contains Logging functionality for CF.Library</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © 2017</Copyright>
+    <Copyright>Copyright © 2017-2018</Copyright>
     <PackageTags>CodeFuller Library Logging</PackageTags>
     <Company>CodeFuller</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
