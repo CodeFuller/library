@@ -80,6 +80,12 @@ namespace CF.Library.Logging
 			return loggingBuilder.AddSerilog();
 		}
 
+		public ILoggerFactory AddLogging(ILoggerFactory loggerFactory)
+		{
+			Log.Logger = configuration.CreateLogger();
+			return loggerFactory.AddSerilog();
+		}
+
 		private static LogEventLevel CovertLogLevel(LogLevel logLevel)
 		{
 			switch (logLevel)

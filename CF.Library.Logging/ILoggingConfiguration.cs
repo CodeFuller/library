@@ -14,5 +14,7 @@ namespace CF.Library.Logging
 		ILoggingConfiguration LoadSettings(LoggingSettings settings);
 
 		ILoggingBuilder AddLogging(ILoggingBuilder loggingBuilder);
+
+		ILoggerFactory AddLogging(ILoggerFactory loggerFactory);
 	}
 }
