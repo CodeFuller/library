@@ -27,6 +27,11 @@ namespace CF.Library.Core.Facades
 		double Interval { get; set; }
 
 		/// <summary>
+		/// Facade property for Timer.AutoReset.
+		/// </summary>
+		bool AutoReset { get; set; }
+
+		/// <summary>
 		/// Facade method for Timer.Start().
 		/// </summary>
 		void Start();

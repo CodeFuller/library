@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CF.Library.Core" Version="2.1.0" />
+    <PackageReference Include="CF.Library.Core" Version="2.4.0" />
   </ItemGroup>
 
 </Project>

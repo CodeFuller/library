@@ -73,6 +73,7 @@ namespace CF.Library.Patterns
 			//	Setting interval to smallest value for initial instant update.
 			//	Interval will be set to requested interval on first tick.
 			timer.Interval = 1;
+			timer.AutoReset = false;
 			timer.Start();
 		}
 
@@ -91,6 +92,7 @@ namespace CF.Library.Patterns
 			{
 				// Restoring original task interval.
 				timer.Interval = Interval.TotalMilliseconds;
+				timer.AutoReset = true;
 
 				await TaskAction();
 			}
