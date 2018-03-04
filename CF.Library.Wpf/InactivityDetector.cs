@@ -24,6 +24,7 @@ namespace CF.Library.Wpf
 	public class InactivityDetector : IInactivityDetector, IDisposable
 	{
 		private bool deactivated;
+		private DateTimeOffset? inactivationTimeStamp;
 
 		/// <summary>
 		/// Property Injection for IProcessStateManager.
@@ -87,6 +88,7 @@ namespace CF.Library.Wpf
 				if (inactivitySpan >= InactivityThreshold)
 				{
 					deactivated = true;
+					inactivationTimeStamp = DateTimeOffset.Now;
 					OnInactivition(inactivitySpan);
 				}
 			}
@@ -95,7 +97,9 @@ namespace CF.Library.Wpf
 				if (inactivitySpan < InactivityThreshold)
 				{
 					deactivated = false;
-					OnReactivation(inactivitySpan);
+					var periodOfInactivity = DateTimeOffset.Now - inactivationTimeStamp ?? TimeSpan.Zero;
+					inactivationTimeStamp = null;
+					OnReactivation(periodOfInactivity);
 				}
 			}
 		}
