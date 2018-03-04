@@ -91,8 +91,12 @@ namespace CF.Library.Patterns
 			try
 			{
 				// Restoring original task interval.
-				timer.Interval = Interval.TotalMilliseconds;
-				timer.AutoReset = true;
+				if (!timer.AutoReset)
+				{
+					timer.Interval = Interval.TotalMilliseconds;
+					timer.AutoReset = true;
+					timer.Enabled = true;
+				}
 
 				await TaskAction();
 			}
