@@ -1,41 +1,36 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using CF.Library.Core.Exceptions;
 using CF.Library.Core.Facades;
+using Microsoft.Extensions.Logging;
+using static CF.Library.Core.Extensions.FormattableStringExtensions;
 
 namespace CF.Library.Wpf
 {
-	internal static class NativeMethods
-	{
-		public struct LASTINPUTINFO
-		{
-			public uint cbSize;
-			public uint dwTime;
-		}
-
-		[DllImport("user32.dll")]
-		[return: MarshalAs(UnmanagedType.Bool)]
-		public static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
-	}
-
 	/// <summary>
 	/// Implementation for IInactivityDetector.
 	/// </summary>
 	public class InactivityDetector : IInactivityDetector, IDisposable
 	{
 		private bool deactivated;
-		private DateTimeOffset? inactivationTimeStamp;
+		private DateTimeOffset? inactivationTimestamp;
+
+		private readonly TimeSpan inactivityThreshold;
+
+		private readonly ITimerFacade timer;
+		private readonly ILogger<InactivityDetector> logger;
 
 		/// <summary>
-		/// Property Injection for IProcessStateManager.
+		/// Property Injection for IDateTimeOffsetFacade.
 		/// </summary>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Justification = "Setter could be used by Unit tests from assembly for which internals are visible.")]
-		internal ITimerFacade Timer { get; set; } = new TimerFacade();
+		internal IDateTimeOffsetFacade DateTimeOffsetFacade { get; set; } = new DateTimeOffsetFacade();
 
 		/// <summary>
-		/// Max user inactivity duration after which Deactivated is fired.
+		/// Property Injection for ISystemApi.
 		/// </summary>
-		public TimeSpan InactivityThreshold { get; set; }
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Justification = "Setter could be used by Unit tests from assembly for which internals are visible.")]
+		internal ISystemApi SystemApi { get; set; } = new SystemApi();
+
+		internal IPostHibernationGuard PostHibernationGuard { get; set; }
 
 		/// <summary>
 		/// Event that is fired when user is inactive during InactivityThreshold period.
@@ -48,13 +43,22 @@ namespace CF.Library.Wpf
 		public event EventHandler<ReactivationDetectedEventArgs> Reactivated;
 
 		/// <summary>
+		/// Returns true if detector is in active state.
+		/// </summary>
+		public bool IsActive => timer.Enabled && !deactivated;
+
+		/// <summary>
 		/// Constructor
 		/// </summary>
-		public InactivityDetector(TimeSpan inactivityThreshold)
+		public InactivityDetector(ITimerFacade timer, ILogger<InactivityDetector> logger, TimeSpan inactivityThreshold)
 		{
-			InactivityThreshold = inactivityThreshold;
-			Timer.Elapsed += (sender, e) => this.OnTick();
-			Timer.Interval = 1000;
+			this.timer = timer ?? throw new ArgumentNullException(nameof(timer));
+			this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+			this.inactivityThreshold = inactivityThreshold;
+			this.timer.Elapsed += (sender, e) => OnTick();
+			this.timer.Interval = 1000;
+
+			PostHibernationGuard = new PostHibernationGuard(logger, inactivityThreshold);
 		}
 
 		/// <summary>
@@ -63,7 +67,7 @@ namespace CF.Library.Wpf
 		public void Start()
 		{
 			deactivated = false;
-			Timer.Start();
+			timer.Start();
 		}
 
 		/// <summary>
@@ -71,34 +75,37 @@ namespace CF.Library.Wpf
 		/// </summary>
 		public void Stop()
 		{
-			Timer.Stop();
+			timer.Stop();
 		}
-
-		/// <summary>
-		/// Returns true if detector is in active state.
-		/// </summary>
-		public bool IsActive => Timer.Enabled && !deactivated;
 
 		private void OnTick()
 		{
-			var inactivitySpan = GetInactivitySpan();
+			var currentTime = DateTimeOffsetFacade.Now;
+			var inactivitySpan = SystemApi.GetUserInactivitySpan();
+
+			PostHibernationGuard.RegisterTick(currentTime, inactivitySpan);
+			if (PostHibernationGuard.IsInPostHibernationMode)
+			{
+				logger.LogDebug(Current($"User is still inactive after hibernation, keeping AfterHibernation mode"));
+				return;
+			}
 
 			if (!deactivated)
 			{
-				if (inactivitySpan >= InactivityThreshold)
+				if (inactivitySpan >= inactivityThreshold)
 				{
 					deactivated = true;
-					inactivationTimeStamp = DateTimeOffset.Now;
+					inactivationTimestamp = currentTime;
 					OnInactivition(inactivitySpan);
 				}
 			}
 			else
 			{
-				if (inactivitySpan < InactivityThreshold)
+				if (inactivitySpan < inactivityThreshold)
 				{
 					deactivated = false;
-					var periodOfInactivity = DateTimeOffset.Now - inactivationTimeStamp ?? TimeSpan.Zero;
-					inactivationTimeStamp = null;
+					var periodOfInactivity = currentTime - inactivationTimestamp ?? TimeSpan.Zero;
+					inactivationTimestamp = null;
 					OnReactivation(periodOfInactivity);
 				}
 			}
@@ -120,23 +127,6 @@ namespace CF.Library.Wpf
 			Reactivated?.Invoke(this, new ReactivationDetectedEventArgs(inactivitySpan));
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Interoperability", "CA1404:CallGetLastErrorImmediatelyAfterPInvoke", Justification = "False Positive: GetLastWin32Error() is called after GetLastInputInfo() in case of error, not after TimeSpan.FromMilliseconds()")]
-		private static TimeSpan GetInactivitySpan()
-		{
-			var lastInputInfo = new NativeMethods.LASTINPUTINFO();
-			lastInputInfo.cbSize = (uint)Marshal.SizeOf(lastInputInfo);
-			lastInputInfo.dwTime = 0;
-
-			if (NativeMethods.GetLastInputInfo(ref lastInputInfo))
-			{
-				return TimeSpan.FromMilliseconds(Environment.TickCount - (int)lastInputInfo.dwTime);
-			}
-			else
-			{
-				throw new SystemCallFailedException(Marshal.GetLastWin32Error());
-			}
-		}
-
 		/// <summary>
 		/// Implementation for IDisposable.Dispose()
 		/// </summary>
@@ -154,7 +144,7 @@ namespace CF.Library.Wpf
 		{
 			if (disposing)
 			{
-				Timer?.Dispose();
+				timer?.Dispose();
 			}
 		}
 	}

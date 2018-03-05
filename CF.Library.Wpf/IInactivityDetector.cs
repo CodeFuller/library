@@ -8,11 +8,6 @@ namespace CF.Library.Wpf
 	public interface IInactivityDetector
 	{
 		/// <summary>
-		/// Max user inactivity duration after which Deactivated is fired.
-		/// </summary>
-		TimeSpan InactivityThreshold { get; set; }
-
-		/// <summary>
 		/// Event that is fired when user is inactive during InactivityThreshold period.
 		/// </summary>
 		event EventHandler<InactivationDetectedEventArgs> Deactivated;
