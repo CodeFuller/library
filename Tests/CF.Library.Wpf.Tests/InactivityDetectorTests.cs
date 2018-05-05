@@ -324,8 +324,6 @@ namespace CF.Library.Wpf.Tests
 		{
 			//	Arrange
 
-			bool deactivated = false;
-
 			var timerStub = Substitute.For<ITimerFacade>();
 			var dateTimeStub = Substitute.For<IDateTimeOffsetFacade>();
 			dateTimeStub.Now.Returns(new DateTimeOffset(2018, 3, 5, 15, 9, 0, TimeSpan.Zero));
