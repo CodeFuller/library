@@ -8,6 +8,6 @@ namespace CF.Library.Logging
 	{
 		public LogLevel DefaultLogLevel { get; set; }
 
-		public IReadOnlyCollection<TargetConfiguration> Targets { get; set; } = new Collection<TargetConfiguration>();
+		public ICollection<TargetConfiguration> Targets { get; set; } = new Collection<TargetConfiguration>();
 	}
 }
