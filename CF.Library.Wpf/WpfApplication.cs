@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using CF.Library.Core.Bootstrap;
+using CF.Library.Bootstrap;
 
 namespace CF.Library.Wpf
 {
@@ -9,22 +9,11 @@ namespace CF.Library.Wpf
 	/// </summary>
 	public abstract class WpfApplication<TRootViewModel> : Application
 	{
-		/// <summary>
-		/// Application bootstrapper.
-		/// </summary>
-		protected IBootstrapper<TRootViewModel> Bootstrapper { get; }
+		private readonly BasicApplicationBootstrapper<TRootViewModel> bootstrapper;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		protected WpfApplication(IBootstrapper<TRootViewModel> bootstrapper)
+		protected WpfApplication(BasicApplicationBootstrapper<TRootViewModel> bootstrapper)
 		{
-			if (bootstrapper == null)
-			{
-				throw new ArgumentNullException(nameof(bootstrapper));
-			}
-
-			Bootstrapper = bootstrapper;
+			this.bootstrapper = bootstrapper ?? throw new ArgumentNullException(nameof(bootstrapper));
 		}
 
 		/// <summary>
@@ -39,7 +28,7 @@ namespace CF.Library.Wpf
 		{
 			base.OnStartup(e);
 
-			TRootViewModel rootViewModel = Bootstrapper.Run();
+			TRootViewModel rootViewModel = bootstrapper.Bootstrap(new string[0]);
 			Run(rootViewModel);
 		}
 	}
