@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace CF.Library.ConsoleApplication
+namespace CF.Library.Bootstrap
 {
 	public interface IApplicationLogic
 	{

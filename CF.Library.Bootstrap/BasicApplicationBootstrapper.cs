@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace CF.Library.ConsoleApplication
+namespace CF.Library.Bootstrap
 {
 	public abstract class BasicApplicationBootstrapper<TRoot>
 	{

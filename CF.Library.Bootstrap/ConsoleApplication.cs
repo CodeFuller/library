@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace CF.Library.ConsoleApplication
+namespace CF.Library.Bootstrap
 {
 	public class ConsoleApplication
 	{

@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>CF.Library.ConsoleApplication</PackageId>
+    <PackageId>CF.Library.Bootstrap</PackageId>
     <Authors>CodeFuller</Authors>
-    <Description>This package contains skeleton of Console Application</Description>
+    <Description>This package contains types and logic for application bootstrap</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright © 2018</Copyright>
-    <PackageTags>CodeFuller Library Console Application</PackageTags>
+    <PackageTags>CodeFuller Library Bootstrap</PackageTags>
     <Company>CodeFuller</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.0.0</Version>
