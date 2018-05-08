@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Wpf.Tests", "Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Configuration", "CF.Library.Configuration\CF.Library.Configuration.csproj", "{40E3E7FA-2CDA-4B9A-8952-8802F7C76795}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.ConsoleApplication", "CF.Library.ConsoleApplication\CF.Library.ConsoleApplication.csproj", "{FEB166E1-0C13-4911-800C-E4B3FA330165}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{40E3E7FA-2CDA-4B9A-8952-8802F7C76795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40E3E7FA-2CDA-4B9A-8952-8802F7C76795}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40E3E7FA-2CDA-4B9A-8952-8802F7C76795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEB166E1-0C13-4911-800C-E4B3FA330165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEB166E1-0C13-4911-800C-E4B3FA330165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEB166E1-0C13-4911-800C-E4B3FA330165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEB166E1-0C13-4911-800C-E4B3FA330165}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
