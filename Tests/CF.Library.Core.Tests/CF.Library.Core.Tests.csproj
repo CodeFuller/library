@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\CF.Library.Core\CF.Library.Core.csproj" />
-    <ProjectReference Include="..\..\CF.Library.Testing\CF.Library.Testing.csproj" />
   </ItemGroup>
 
 </Project>

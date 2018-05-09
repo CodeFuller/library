@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Patterns", "CF.L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Wpf", "CF.Library.Wpf\CF.Library.Wpf.csproj", "{23A873CF-232D-45ED-930F-2D0A4D804D7C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Testing", "CF.Library.Testing\CF.Library.Testing.csproj", "{43392AB1-FA59-47F4-9A1C-734C1E6D5471}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Json", "CF.Library.Json\CF.Library.Json.csproj", "{0FA59EB9-DCFD-44C3-892F-D4F568509FE7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Database", "CF.Library.Database\CF.Library.Database.csproj", "{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}"
@@ -49,10 +47,6 @@ Global
 		{23A873CF-232D-45ED-930F-2D0A4D804D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23A873CF-232D-45ED-930F-2D0A4D804D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23A873CF-232D-45ED-930F-2D0A4D804D7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43392AB1-FA59-47F4-9A1C-734C1E6D5471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43392AB1-FA59-47F4-9A1C-734C1E6D5471}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43392AB1-FA59-47F4-9A1C-734C1E6D5471}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43392AB1-FA59-47F4-9A1C-734C1E6D5471}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0FA59EB9-DCFD-44C3-892F-D4F568509FE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0FA59EB9-DCFD-44C3-892F-D4F568509FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FA59EB9-DCFD-44C3-892F-D4F568509FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -100,7 +94,7 @@ Global
 		{896A8786-6724-4AF6-B31F-8C37F3F25EE7} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {841597E8-F2D2-4ADC-AC89-763EBFDD08A7}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
+		SolutionGuid = {841597E8-F2D2-4ADC-AC89-763EBFDD08A7}
 	EndGlobalSection
 EndGlobal
