@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\CF.Library.Logging\CF.Library.Logging.csproj" />
-    <ProjectReference Include="..\..\CF.Library.Unity\CF.Library.Unity.csproj" />
   </ItemGroup>
 
 </Project>

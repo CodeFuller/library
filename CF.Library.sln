@@ -15,15 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Json", "CF.Libra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Database", "CF.Library.Database\CF.Library.Database.csproj", "{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Unity", "CF.Library.Unity\CF.Library.Unity.csproj", "{092BE6C8-0345-4D88-B50A-D6CB73225D09}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3512B90C-D6F0-49C8-BB9B-8CA839D51D12}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Core.Tests", "Tests\CF.Library.Core.Tests\CF.Library.Core.Tests.csproj", "{3F79DE0B-719A-4A23-A297-4705B32F1F25}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Database.Tests", "Tests\CF.Library.Database.Tests\CF.Library.Database.Tests.csproj", "{B20C582A-07DE-45BB-86CC-C6FA8CD7674B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Unity.Tests", "Tests\CF.Library.Unity.Tests\CF.Library.Unity.Tests.csproj", "{3368A8D8-E4BD-4155-8062-41739D8E6DD5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Library.Logging", "CF.Library.Logging\CF.Library.Logging.csproj", "{E89B1BCF-08E3-416D-B6FA-B7AC3D71F523}"
 EndProject
@@ -65,10 +61,6 @@ Global
 		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD57B0E8-D49A-4E0B-98B2-8AACEE1A2764}.Release|Any CPU.Build.0 = Release|Any CPU
-		{092BE6C8-0345-4D88-B50A-D6CB73225D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{092BE6C8-0345-4D88-B50A-D6CB73225D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{092BE6C8-0345-4D88-B50A-D6CB73225D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{092BE6C8-0345-4D88-B50A-D6CB73225D09}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,10 +69,6 @@ Global
 		{B20C582A-07DE-45BB-86CC-C6FA8CD7674B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B20C582A-07DE-45BB-86CC-C6FA8CD7674B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B20C582A-07DE-45BB-86CC-C6FA8CD7674B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3368A8D8-E4BD-4155-8062-41739D8E6DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3368A8D8-E4BD-4155-8062-41739D8E6DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3368A8D8-E4BD-4155-8062-41739D8E6DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3368A8D8-E4BD-4155-8062-41739D8E6DD5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E89B1BCF-08E3-416D-B6FA-B7AC3D71F523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E89B1BCF-08E3-416D-B6FA-B7AC3D71F523}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E89B1BCF-08E3-416D-B6FA-B7AC3D71F523}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -108,12 +96,11 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3F79DE0B-719A-4A23-A297-4705B32F1F25} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 		{B20C582A-07DE-45BB-86CC-C6FA8CD7674B} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
-		{3368A8D8-E4BD-4155-8062-41739D8E6DD5} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 		{544512B8-138B-4679-815A-134C1DD96DD1} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 		{896A8786-6724-4AF6-B31F-8C37F3F25EE7} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 		SolutionGuid = {841597E8-F2D2-4ADC-AC89-763EBFDD08A7}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal
