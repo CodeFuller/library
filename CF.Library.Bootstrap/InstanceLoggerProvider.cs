@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace CF.Library.Logging
+namespace CF.Library.Bootstrap
 {
 	public sealed class InstanceLoggerProvider : ILoggerProvider
 	{

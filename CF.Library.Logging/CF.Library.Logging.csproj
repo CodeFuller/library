@@ -13,7 +13,7 @@
     <PackageTags>CodeFuller Library Logging</PackageTags>
     <Company>CodeFuller</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.3.0</Version>
+    <Version>2.2.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
