@@ -30,11 +30,19 @@ namespace CF.Library.Logging
 		public ILoggingConfiguration AddRollingFileTarget(LogLevel logLevel, string logPath, string fileNamePattern, string firstFileNamePattern,
 			string fileNameExtension, long rollSize, bool jsonOutput, string messageFormat)
 		{
-			var entryAssemblyPath = Assembly.GetEntryAssembly().Location;
-			logPath = logPath ?? Path.Combine(Path.GetDirectoryName(entryAssemblyPath), "logs");
-			string baseLogFileName = $"{Path.GetFileNameWithoutExtension(entryAssemblyPath)} - {{YYYY}}_{{MM}}_{{DD}} - {{HH}}_{{mm}}_{{SS}} - {{PID}}";
+			var entryAssemblyPath = Assembly.GetEntryAssembly()?.Location;
+			if (logPath == null)
+			{
+				var appDirectory = Path.GetDirectoryName(entryAssemblyPath);
+				logPath = String.IsNullOrEmpty(appDirectory) ? "logs" : Path.Combine(appDirectory, "logs");
+			}
 
-			fileNamePattern = fileNamePattern ?? baseLogFileName;
+			if (fileNamePattern == null)
+			{
+				var prefix = String.IsNullOrEmpty(entryAssemblyPath) ? String.Empty : $"{Path.GetFileNameWithoutExtension(entryAssemblyPath)} - ";
+				fileNamePattern = $"{prefix}{{YYYY}}_{{MM}}_{{DD}} - {{HH}}_{{mm}}_{{SS}} - {{PID}}";
+			}
+
 			firstFileNamePattern = firstFileNamePattern ?? $"{fileNamePattern} - START";
 
 			var formatter = jsonOutput ? new JsonFormatter() as ITextFormatter : new MessageTemplateTextFormatter(messageFormat, null);
