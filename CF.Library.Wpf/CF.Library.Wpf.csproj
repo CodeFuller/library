@@ -11,11 +11,11 @@
     <Authors>CodeFuller</Authors>
     <Description>This package contains helpers and extensions for WPF-related functionality</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © 2016-2017</Copyright>
+    <Copyright>Copyright © 2016-2018</Copyright>
     <PackageTags>CodeFuller Library WPF</PackageTags>
     <Company>CodeFuller</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.2.0</Version>
+    <Version>4.3.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
