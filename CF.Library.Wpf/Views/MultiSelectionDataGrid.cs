@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace CF.Library.Wpf.Views
 {
@@ -19,11 +20,20 @@ namespace CF.Library.Wpf.Views
 		public MultiSelectionDataGrid()
 		{
 			SelectionChanged += CustomDataGrid_SelectionChanged;
+			KeyUp += DataGrid_KeyUp;
 		}
 
 		private void CustomDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			SelectedItemsList = SelectedItems;
+		}
+
+		private void DataGrid_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Escape)
+			{
+				(sender as DataGrid)?.UnselectAll();
+			}
 		}
 	}
 }

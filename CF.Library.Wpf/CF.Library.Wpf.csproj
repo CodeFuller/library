@@ -15,7 +15,7 @@
     <PackageTags>CodeFuller Library WPF</PackageTags>
     <Company>CodeFuller</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.3.0</Version>
+    <Version>4.4.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
