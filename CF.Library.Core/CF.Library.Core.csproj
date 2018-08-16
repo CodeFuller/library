@@ -9,11 +9,11 @@
     <Authors>CodeFuller</Authors>
     <Description>This package contains core CF.Library classes</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © 2016-2017</Copyright>
+    <Copyright>Copyright © 2016-2018</Copyright>
     <PackageTags>CodeFuller Library Core</PackageTags>
     <Company>CodeFuller</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.0.0</Version>
+    <Version>4.0.0</Version>
   </PropertyGroup>
 
 </Project>
