@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 
 namespace CF.Library.Logging
 {
-	public class TargetSettings : Dictionary<string, string>
+	public class TargetSettings : ConfigurationSafeDictionary<string>
 	{
 		public T Get<T>(string key)
 		{
@@ -33,6 +32,16 @@ namespace CF.Library.Logging
 			if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>))
 			{
 				t = Nullable.GetUnderlyingType(t);
+			}
+
+			if (t == typeof(TimeSpan))
+			{
+				return (T)(object)TimeSpan.Parse(value, CultureInfo.InvariantCulture);
+			}
+
+			if (t?.BaseType == typeof(Enum))
+			{
+				return (T)Enum.Parse(t, value, true);
 			}
 
 			return (T)Convert.ChangeType(value, t, CultureInfo.InvariantCulture);
