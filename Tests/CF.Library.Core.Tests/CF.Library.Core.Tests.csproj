@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CF.Library.Core\CF.Library.Core.csproj" />
+    <ProjectReference Include="..\..\src\CF.Library.Core\CF.Library.Core.csproj" />
   </ItemGroup>
 
 </Project>

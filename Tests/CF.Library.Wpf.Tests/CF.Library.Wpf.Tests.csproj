@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CF.Library.Wpf\CF.Library.Wpf.csproj" />
+    <ProjectReference Include="..\..\src\CF.Library.Wpf\CF.Library.Wpf.csproj" />
   </ItemGroup>
 
 </Project>
