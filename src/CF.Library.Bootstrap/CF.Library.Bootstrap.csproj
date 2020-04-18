@@ -13,8 +13,8 @@
 
   <ItemGroup>
     <PackageReference Include="CF.Library.Configuration" Version="$(LibraryPackageDependencyVersion)" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="$(CrossCuttingPackagesVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="$(CrossCuttingPackagesVersion)" />
   </ItemGroup>
 
   <ItemGroup>

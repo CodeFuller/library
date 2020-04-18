@@ -19,7 +19,6 @@
   <ItemGroup>
     <PackageReference Include="CF.Library.Bootstrap" Version="$(LibraryPackageDependencyVersion)" />
     <PackageReference Include="CF.Library.Core" Version="$(LibraryPackageDependencyVersion)" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
