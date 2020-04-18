@@ -1,6 +1,11 @@
 <Project>
   <PropertyGroup>
     <CurrentLibraryVersion>6.0.0</CurrentLibraryVersion>
+    <TargetFrameworkForTestProjects>netcoreapp3.1</TargetFrameworkForTestProjects>
+    <TestSdkVersion>16.5.0</TestSdkVersion>
+    <TestAdapterVersion>2.1.0</TestAdapterVersion>
+    <TestFrameworkVersion>2.1.0</TestFrameworkVersion>
+    <NSubstitutekVersion>3.1.0</NSubstitutekVersion>
 
     <!-- PackageVersionSuffix is set to 'preview' by CI server for non-default branches -->
     <PackageVersionSuffix></PackageVersionSuffix>
