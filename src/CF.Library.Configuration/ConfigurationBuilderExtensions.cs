@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Configuration;
 
@@ -6,26 +9,29 @@ namespace CF.Library.Configuration
 {
 	public static class ConfigurationBuilderExtensions
 	{
-		private const string DefaultSettingsFileName = "AppSettings.json";
-
-		public static IConfigurationBuilder LoadSettings(this IConfigurationBuilder configurationBuilder, string[] args)
+		public static IConfigurationBuilder LoadSettings(this IConfigurationBuilder configurationBuilder, string configDirectoryName, string[] args)
 		{
-			return configurationBuilder.LoadSettings(DefaultSettingsFileName, true, args);
+			AddJsonConfigs(configurationBuilder, configDirectoryName);
+
+			var restArgs = AddConfigFilesFromCommandLine(configurationBuilder, args);
+
+			return configurationBuilder
+				.AddEnvironmentVariables()
+				.AddCommandLine(restArgs);
 		}
 
-		public static IConfigurationBuilder LoadSettings(this IConfigurationBuilder configurationBuilder, string configFileName, string[] args)
+		private static void AddJsonConfigs(IConfigurationBuilder configurationBuilder, string configDirectoryName)
 		{
-			return configurationBuilder.LoadSettings(configFileName, false, args);
-		}
+			var exeDirectoryPath = Path.GetDirectoryName(AppContext.BaseDirectory);
 
-		private static IConfigurationBuilder LoadSettings(this IConfigurationBuilder configurationBuilder,
-			string configFileName, bool configFileIsOptional, string[] args)
-		{
-			configurationBuilder.AddJsonFile(configFileName, configFileIsOptional);
+			var confDir = Path.Combine(exeDirectoryPath ?? String.Empty, configDirectoryName);
+			var jsonConfigFiles = Directory.EnumerateFiles(confDir, "*.json*", SearchOption.TopDirectoryOnly)
+				.OrderBy(x => x);
 
-			args = AddConfigFilesFromCommandLine(configurationBuilder, args);
-			return configurationBuilder.AddEnvironmentVariables()
-				.AddCommandLine(args);
+			foreach (var configFile in jsonConfigFiles)
+			{
+				configurationBuilder.AddJsonFile(configFile, false);
+			}
 		}
 
 		private static string[] AddConfigFilesFromCommandLine(IConfigurationBuilder configurationBuilder, string[] args)

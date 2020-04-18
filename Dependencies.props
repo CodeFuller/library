@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <CurrentLibraryVersion>5.0.0</CurrentLibraryVersion>
+    <CurrentLibraryVersion>6.0.0</CurrentLibraryVersion>
 
     <!-- PackageVersionSuffix is set to 'preview' by CI server for non-default branches -->
     <PackageVersionSuffix></PackageVersionSuffix>

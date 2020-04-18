@@ -46,7 +46,7 @@ namespace CF.Library.Bootstrap
 
 		protected virtual void BootstrapConfiguration(IConfigurationBuilder configurationBuilder, string[] commandLineArgs)
 		{
-			configurationBuilder.LoadSettings("AppSettings.json", commandLineArgs);
+			configurationBuilder.LoadSettings("conf", commandLineArgs);
 		}
 
 		protected virtual ILoggerFactory BootstrapLogging(IConfiguration configuration)
