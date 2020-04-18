@@ -1,19 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+  <ImportGroup Label="Properties">
+    <Import Project="..\..\Dependencies.props" />
+    <Import Project="..\..\Packages.props" />
+  </ImportGroup>
 
   <PropertyGroup>
+    <VersionPrefix>$(JsonPackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Json</PackageId>
-    <Authors>CodeFuller</Authors>
     <Description>This package contains helpers and extensions for Json.NET</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © 2016-2017</Copyright>
     <PackageTags>CodeFuller Library json</PackageTags>
-    <Company>CodeFuller</Company>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

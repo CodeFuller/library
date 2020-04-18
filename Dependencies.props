@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup Label="Package Versions">
+    <BootstrapPackageVersion>1.1.0</BootstrapPackageVersion>
+    <ConfigurationPackageVersion>1.0.0</ConfigurationPackageVersion>
+    <CorePackageVersion>4.0.0</CorePackageVersion>
+    <DatabasePackageVersion>1.0.2</DatabasePackageVersion>
+    <JsonPackageVersion>1.0.0</JsonPackageVersion>
+    <LoggingPackageVersion>2.2.4</LoggingPackageVersion>
+    <PatternsPackageVersion>1.0.5</PatternsPackageVersion>
+    <WpfPackageVersion>5.0.0</WpfPackageVersion>
+
+    <BootstrapPackageDependencyVersion Condition="'$(PackageVersionSuffix)' == ''">$(BootstrapPackageVersion)</BootstrapPackageDependencyVersion>
+    <BootstrapPackageDependencyVersion Condition="'$(PackageVersionSuffix)' != ''">$(BootstrapPackageVersion)-$(PackageVersionSuffix)</BootstrapPackageDependencyVersion>
+
+    <CorePackageDependencyVersion Condition="'$(PackageVersionSuffix)' == ''">$(CorePackageVersion)</CorePackageDependencyVersion>
+    <CorePackageDependencyVersion Condition="'$(PackageVersionSuffix)' != ''">$(CorePackageVersion)-$(PackageVersionSuffix)</CorePackageDependencyVersion>
+
+    <ConfigurationPackageDependencyVersion Condition="'$(PackageVersionSuffix)' == ''">$(ConfigurationPackageVersion)</ConfigurationPackageDependencyVersion>
+    <ConfigurationPackageDependencyVersion Condition="'$(PackageVersionSuffix)' != ''">$(ConfigurationPackageVersion)-$(PackageVersionSuffix)</ConfigurationPackageDependencyVersion>
+
+  </PropertyGroup>
+</Project>

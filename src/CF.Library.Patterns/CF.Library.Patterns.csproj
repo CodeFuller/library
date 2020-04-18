@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+  <ImportGroup Label="Properties">
+    <Import Project="..\..\Dependencies.props" />
+    <Import Project="..\..\Packages.props" />
+  </ImportGroup>
 
   <PropertyGroup>
+    <VersionPrefix>$(PatternsPackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Patterns</PackageId>
-    <Authors>CodeFuller</Authors>
     <Description>This package contains implementation for reusable patterns and structures</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © 2016-2017</Copyright>
     <PackageTags>CodeFuller Library patterns</PackageTags>
-    <Company>CodeFuller</Company>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.5</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CF.Library.Core" Version="2.4.0" />
+    <PackageReference Include="CF.Library.Core" Version="$(CorePackageDependencyVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CF.Library.Core\CF.Library.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+  <ImportGroup Label="Properties">
+    <Import Project="..\..\Dependencies.props" />
+    <Import Project="..\..\Packages.props" />
+  </ImportGroup>
 
   <PropertyGroup>
+    <VersionPrefix>$(LoggingPackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Logging</PackageId>
-    <Authors>CodeFuller</Authors>
     <Description>This package contains Logging functionality for CF.Library</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © 2017-2018</Copyright>
     <PackageTags>CodeFuller Library Logging</PackageTags>
-    <Company>CodeFuller</Company>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.2.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CF.Library.Core" Version="2.4.0" />
+    <PackageReference Include="CF.Library.Core" Version="$(CorePackageDependencyVersion)" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.0.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CF.Library.Core\CF.Library.Core.csproj" />
   </ItemGroup>
 
 </Project>

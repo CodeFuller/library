@@ -1,25 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+  <ImportGroup Label="Properties">
+    <Import Project="..\..\Dependencies.props" />
+    <Import Project="..\..\Packages.props" />
+  </ImportGroup>
 
   <PropertyGroup>
+    <VersionPrefix>$(BootstrapPackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Bootstrap</PackageId>
-    <Authors>CodeFuller</Authors>
     <Description>This package contains types and logic for application bootstrap</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © 2018</Copyright>
     <PackageTags>CodeFuller Library Bootstrap</PackageTags>
-    <Company>CodeFuller</Company>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CF.Library.Configuration" Version="1.0.0" />
+    <PackageReference Include="CF.Library.Configuration" Version="$(ConfigurationPackageDependencyVersion)" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CF.Library.Configuration\CF.Library.Configuration.csproj" />
   </ItemGroup>
 
 </Project>
