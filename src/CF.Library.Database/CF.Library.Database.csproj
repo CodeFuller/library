@@ -6,14 +6,13 @@
   </ImportGroup>
 
   <PropertyGroup>
-    <VersionPrefix>$(DatabasePackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Database</PackageId>
     <Description>This package contains useful extensions and helpers for database related functionality</Description>
     <PackageTags>CodeFuller Library Database</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CF.Library.Core" Version="$(CorePackageDependencyVersion)" />
+    <PackageReference Include="CF.Library.Core" Version="$(LibraryPackageDependencyVersion)" />
   </ItemGroup>
 
   <ItemGroup>

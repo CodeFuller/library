@@ -6,14 +6,13 @@
   </ImportGroup>
 
   <PropertyGroup>
-    <VersionPrefix>$(BootstrapPackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Bootstrap</PackageId>
     <Description>This package contains types and logic for application bootstrap</Description>
     <PackageTags>CodeFuller Library Bootstrap</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CF.Library.Configuration" Version="$(ConfigurationPackageDependencyVersion)" />
+    <PackageReference Include="CF.Library.Configuration" Version="$(LibraryPackageDependencyVersion)" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
   </ItemGroup>

@@ -6,7 +6,6 @@
   </ImportGroup>
 
   <PropertyGroup>
-    <VersionPrefix>$(CorePackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Core</PackageId>
     <Description>This package contains core CF.Library classes</Description>
     <PackageTags>CodeFuller Library Core</PackageTags>

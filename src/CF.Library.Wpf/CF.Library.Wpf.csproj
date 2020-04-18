@@ -11,15 +11,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>$(WpfPackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Wpf</PackageId>
     <Description>This package contains helpers and extensions for WPF-related functionality</Description>
     <PackageTags>CodeFuller Library WPF</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CF.Library.Bootstrap" Version="$(BootstrapPackageDependencyVersion)" />
-    <PackageReference Include="CF.Library.Core" Version="$(CorePackageDependencyVersion)" />
+    <PackageReference Include="CF.Library.Bootstrap" Version="$(LibraryPackageDependencyVersion)" />
+    <PackageReference Include="CF.Library.Core" Version="$(LibraryPackageDependencyVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0" />
   </ItemGroup>
 

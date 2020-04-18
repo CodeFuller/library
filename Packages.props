@@ -1,6 +1,7 @@
 <Project>
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <VersionPrefix>$(CurrentLibraryVersion)</VersionPrefix>
     <Authors>CodeFuller</Authors>
     <Company>CodeFuller</Company>
     <Copyright>Copyright © 2017-2020 CodeFuller</Copyright>

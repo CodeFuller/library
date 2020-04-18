@@ -6,7 +6,6 @@
   </ImportGroup>
 
   <PropertyGroup>
-    <VersionPrefix>$(JsonPackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Json</PackageId>
     <Description>This package contains helpers and extensions for Json.NET</Description>
     <PackageTags>CodeFuller Library json</PackageTags>

@@ -6,7 +6,6 @@
   </ImportGroup>
 
   <PropertyGroup>
-    <VersionPrefix>$(ConfigurationPackageVersion)</VersionPrefix>
     <PackageId>CF.Library.Configuration</PackageId>
     <Description>This package contains extensions for application configuration</Description>
     <PackageTags>CodeFuller Library Configuration</PackageTags>
