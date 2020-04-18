@@ -9,6 +9,10 @@
     <PatternsPackageVersion>1.0.5</PatternsPackageVersion>
     <WpfPackageVersion>5.0.0</WpfPackageVersion>
 
+    <!-- PackageVersionSuffix is set to 'preview' by CI server for non-default branches -->
+    <PackageVersionSuffix></PackageVersionSuffix>
+    <VersionSuffix>$(PackageVersionSuffix)</VersionSuffix>
+
     <BootstrapPackageDependencyVersion Condition="'$(PackageVersionSuffix)' == ''">$(BootstrapPackageVersion)</BootstrapPackageDependencyVersion>
     <BootstrapPackageDependencyVersion Condition="'$(PackageVersionSuffix)' != ''">$(BootstrapPackageVersion)-$(PackageVersionSuffix)</BootstrapPackageDependencyVersion>
 
