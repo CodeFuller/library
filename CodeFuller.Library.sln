@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3512B90C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFuller.Library.Core.UnitTests", "tests\CodeFuller.Library.Core.UnitTests\CodeFuller.Library.Core.UnitTests.csproj", "{3F79DE0B-719A-4A23-A297-4705B32F1F25}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFuller.Library.Database.UnitTests", "tests\CodeFuller.Library.Database.UnitTests\CodeFuller.Library.Database.UnitTests.csproj", "{B20C582A-07DE-45BB-86CC-C6FA8CD7674B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFuller.Library.Wpf.UnitTests", "tests\CodeFuller.Library.Wpf.UnitTests\CodeFuller.Library.Wpf.UnitTests.csproj", "{896A8786-6724-4AF6-B31F-8C37F3F25EE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{66C1590F-8A55-4823-AB62-99F78BAEE9B9}"
@@ -18,8 +16,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFuller.Library.Core", "src\CodeFuller.Library.Core\CodeFuller.Library.Core.csproj", "{5AED1D8C-6582-4806-8D4D-DB8464D3D14A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFuller.Library.Configuration", "src\CodeFuller.Library.Configuration\CodeFuller.Library.Configuration.csproj", "{A1397B60-2495-43C1-AD03-641375E97A12}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFuller.Library.Database", "src\CodeFuller.Library.Database\CodeFuller.Library.Database.csproj", "{906D9CFF-086C-4349-80A8-C887A0A78411}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFuller.Library.Json", "src\CodeFuller.Library.Json\CodeFuller.Library.Json.csproj", "{834C4CBB-8E7C-4EE4-A990-2ED82A981CF5}"
 EndProject
@@ -47,10 +43,6 @@ Global
 		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B20C582A-07DE-45BB-86CC-C6FA8CD7674B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B20C582A-07DE-45BB-86CC-C6FA8CD7674B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B20C582A-07DE-45BB-86CC-C6FA8CD7674B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B20C582A-07DE-45BB-86CC-C6FA8CD7674B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{896A8786-6724-4AF6-B31F-8C37F3F25EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{896A8786-6724-4AF6-B31F-8C37F3F25EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{896A8786-6724-4AF6-B31F-8C37F3F25EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,10 +59,6 @@ Global
 		{A1397B60-2495-43C1-AD03-641375E97A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1397B60-2495-43C1-AD03-641375E97A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1397B60-2495-43C1-AD03-641375E97A12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{906D9CFF-086C-4349-80A8-C887A0A78411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{906D9CFF-086C-4349-80A8-C887A0A78411}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{906D9CFF-086C-4349-80A8-C887A0A78411}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{906D9CFF-086C-4349-80A8-C887A0A78411}.Release|Any CPU.Build.0 = Release|Any CPU
 		{834C4CBB-8E7C-4EE4-A990-2ED82A981CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{834C4CBB-8E7C-4EE4-A990-2ED82A981CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{834C4CBB-8E7C-4EE4-A990-2ED82A981CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -97,12 +85,10 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3F79DE0B-719A-4A23-A297-4705B32F1F25} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
-		{B20C582A-07DE-45BB-86CC-C6FA8CD7674B} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 		{896A8786-6724-4AF6-B31F-8C37F3F25EE7} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 		{896803A2-5767-4C36-AB51-52104B583997} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
 		{5AED1D8C-6582-4806-8D4D-DB8464D3D14A} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
 		{A1397B60-2495-43C1-AD03-641375E97A12} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
-		{906D9CFF-086C-4349-80A8-C887A0A78411} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
 		{834C4CBB-8E7C-4EE4-A990-2ED82A981CF5} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
 		{682DCCA4-8095-4D43-93AA-5820FBF310CD} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
 		{68035701-B3DE-4C9B-81EA-01424BEE2D59} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
@@ -110,7 +96,7 @@ Global
 		{7FDD44CB-1B3F-4AA3-AE51-394BCD8D5B86} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 		SolutionGuid = {841597E8-F2D2-4ADC-AC89-763EBFDD08A7}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal
