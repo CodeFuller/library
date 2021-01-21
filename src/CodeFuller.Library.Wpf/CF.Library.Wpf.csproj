@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <ImportGroup Label="Properties">
+    <Import Project="..\..\Dependencies.props" />
+    <Import Project="..\..\Packages.props" />
+  </ImportGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>CodeFuller.Library.Wpf</PackageId>
+    <Description>This package contains helpers and extensions for WPF-related functionality</Description>
+    <PackageTags>CodeFuller Library WPF</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CodeFuller.Library.Bootstrap" Version="$(LibraryPackageDependencyVersion)" />
+    <PackageReference Include="CodeFuller.Library.Core" Version="$(LibraryPackageDependencyVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CodeFuller.Library.Bootstrap\CodeFuller.Library.Bootstrap.csproj" />
+    <ProjectReference Include="..\CodeFuller.Library.Core\CodeFuller.Library.Core.csproj" />
+  </ItemGroup>
+
+</Project>

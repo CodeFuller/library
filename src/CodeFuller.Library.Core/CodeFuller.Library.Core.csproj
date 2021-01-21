@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ImportGroup Label="Properties">
+    <Import Project="..\..\Dependencies.props" />
+    <Import Project="..\..\Packages.props" />
+  </ImportGroup>
+
+  <PropertyGroup>
+    <PackageId>CodeFuller.Library.Core</PackageId>
+    <Description>This package contains core CodeFuller.Library classes</Description>
+    <PackageTags>CodeFuller Library Core</PackageTags>
+  </PropertyGroup>
+
+</Project>
