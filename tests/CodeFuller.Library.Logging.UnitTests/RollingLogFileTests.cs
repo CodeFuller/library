@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using CodeFuller.Library.Core.Facades;
+using CodeFuller.Library.Logging.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using static System.FormattableString;
