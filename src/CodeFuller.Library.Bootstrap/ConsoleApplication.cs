@@ -31,9 +31,9 @@ namespace CodeFuller.Library.Bootstrap
 				var application = bootstrapper.Bootstrap(args);
 				logger = bootstrapper.GetLogger<ConsoleApplication>();
 
-				var cts = new CancellationTokenSource();
+				using var cts = new CancellationTokenSource();
 
-				Console.CancelKeyPress += delegate
+				Console.CancelKeyPress += (_, _) =>
 				{
 					logger.LogInformation("CTRL + C is pressed");
 					cts.Cancel();
@@ -46,9 +46,13 @@ namespace CodeFuller.Library.Bootstrap
 				logger?.LogInformation("The program execution was aborted");
 				return 1;
 			}
+#pragma warning disable CA1031 // Do not catch general exception types
 			catch (Exception e)
+#pragma warning restore CA1031 // Do not catch general exception types
 			{
+#pragma warning disable CA1508 // Avoid dead conditional code
 				if (logger != null)
+#pragma warning restore CA1508 // Avoid dead conditional code
 				{
 					logger.LogCritical(e, "Exception caught");
 				}

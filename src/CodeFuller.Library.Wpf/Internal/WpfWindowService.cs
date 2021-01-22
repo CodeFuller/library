@@ -26,7 +26,7 @@ namespace CodeFuller.Library.Wpf.Internal
 				ShowMessageBoxButton.OkCancel => MessageBoxButton.OKCancel,
 				ShowMessageBoxButton.YesNoCancel => MessageBoxButton.YesNoCancel,
 				ShowMessageBoxButton.YesNo => MessageBoxButton.YesNo,
-				_ => throw new NotSupportedException($"The MessageBox button type {button} is not supported")
+				_ => throw new NotSupportedException($"The MessageBox button type {button} is not supported"),
 			};
 		}
 
@@ -40,7 +40,7 @@ namespace CodeFuller.Library.Wpf.Internal
 				ShowMessageBoxIcon.Error => MessageBoxImage.Error,
 				ShowMessageBoxIcon.Question => MessageBoxImage.Question,
 				ShowMessageBoxIcon.Exclamation => MessageBoxImage.Exclamation,
-				_ => throw new NotSupportedException($"The MessageBox icon type {icon} is not supported")
+				_ => throw new NotSupportedException($"The MessageBox icon type {icon} is not supported"),
 			};
 		}
 
@@ -53,7 +53,7 @@ namespace CodeFuller.Library.Wpf.Internal
 				MessageBoxResult.Cancel => ShowMessageBoxResult.Cancel,
 				MessageBoxResult.Yes => ShowMessageBoxResult.Yes,
 				MessageBoxResult.No => ShowMessageBoxResult.No,
-				_ => throw new NotSupportedException($"The MessageBox result type {result} is not supported")
+				_ => throw new NotSupportedException($"The MessageBox result type {result} is not supported"),
 			};
 		}
 	}

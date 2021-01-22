@@ -31,13 +31,14 @@ namespace CodeFuller.Library.Logging.Internal
 				else if (String.Equals(targetConfig.Type, "RollingFile", StringComparison.OrdinalIgnoreCase))
 				{
 					var targetSettings = targetConfig.Settings;
-					AddRollingFileTarget(targetLogLevel,
-						logPath: targetSettings.GetOptionalSetting<string>("logPath"),
-						fileNamePattern: targetSettings.GetOptionalSetting<string>("fileNamePattern"),
-						firstFileNamePattern: targetSettings.GetOptionalSetting<string>("firstFileNamePattern"),
-						fileNameExtension: targetSettings.GetOptionalSetting<string>("fileNameExtension"),
-						rollSize: targetSettings.GetOptionalSetting<long>("rollSize"),
-						messageFormat: targetSettings.GetOptionalSetting<string>("MessageFormat"));
+					AddRollingFileTarget(
+						targetLogLevel,
+						targetSettings.GetOptionalSetting<string>("logPath"),
+						targetSettings.GetOptionalSetting<string>("fileNamePattern"),
+						targetSettings.GetOptionalSetting<string>("firstFileNamePattern"),
+						targetSettings.GetOptionalSetting<string>("fileNameExtension"),
+						targetSettings.GetOptionalSetting<long>("rollSize"),
+						targetSettings.GetOptionalSetting<string>("messageFormat"));
 				}
 				else
 				{
@@ -78,7 +79,10 @@ namespace CodeFuller.Library.Logging.Internal
 			rollSize = rollSize > 0 ? rollSize : 4 * 1024 * 1024;
 			messageFormat ??= "{Timestamp:yyyy.MM.dd HH:mm:ss.fff} [{Level:u3}] [TID: {PrettyThreadId}] {Message}{NewLine}{Exception}";
 
+#pragma warning disable CA2000 // Dispose objects before losing scope
 			var rollingLogFile = new RollingLogFile(logPath, firstFileNamePattern, fileNamePattern, fileNameExtension, rollSize);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
 			var formatter = new MessageTemplateTextFormatter(messageFormat, null);
 			var sink = new RollingLogSink(formatter, rollingLogFile);
 			configuration.WriteTo.Sink(sink, CovertLogLevel(logLevel));

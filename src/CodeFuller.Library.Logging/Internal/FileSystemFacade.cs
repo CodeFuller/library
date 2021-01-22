@@ -25,7 +25,7 @@ namespace CodeFuller.Library.Logging.Internal
 		{
 			return new StreamWriterFacade(path, append, encoding)
 			{
-				AutoFlush = autoFlush
+				AutoFlush = autoFlush,
 			};
 		}
 	}

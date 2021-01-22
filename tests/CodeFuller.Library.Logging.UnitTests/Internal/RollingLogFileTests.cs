@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -14,24 +13,24 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 	[TestClass]
 	public class RollingLogFileTests
 	{
-		private static int Pid => Process.GetCurrentProcess().Id;
+		private static int Pid => Environment.ProcessId;
 
 		[TestMethod]
 		public void Write_ForFirstCall_CreatesLogDirectory()
 		{
-			//	Arrange
+			// Arrange
 
 			var fileSystemMock = CreateFileSystemFacade();
-			var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 128)
+			using var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 128)
 			{
-				FileSystemFacade = fileSystemMock
+				FileSystemFacade = fileSystemMock,
 			};
 
-			//	Act
+			// Act
 
 			target.Write("Some Message");
 
-			//	Assert
+			// Assert
 
 			fileSystemMock.Received(1).CreateDirectory(@"c:\logs");
 		}
@@ -39,65 +38,65 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 		[TestMethod]
 		public void Write_IfCurrentLogIsSmallerThanRollSize_WritesToCurrentFile()
 		{
-			//	Arrange
+			// Arrange
 
 			var fileSystemMock = CreateFileSystemFacade(0, 1024);
-			var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 4096)
+			using var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 4096)
 			{
-				FileSystemFacade = fileSystemMock
+				FileSystemFacade = fileSystemMock,
 			};
 
-			//	Act
+			// Act
 
 			target.Write("Message 1");
 			target.Write("Message 2");
 
-			//	Assert
+			// Assert
 
-			fileSystemMock.CreateStreamWriter(default, default, default, default).ReceivedWithAnyArgs(1);
+			fileSystemMock.ReceivedWithAnyArgs(1).CreateStreamWriter(default, default, default, default);
 		}
 
 		[TestMethod]
 		public void Write_IfCurrentLogIsBiggerThanRollSize_WritesToNewFile()
 		{
-			//	Arrange
+			// Arrange
 
 			var fileSystemMock = CreateFileSystemFacade(0, 1024);
-			var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 128)
+			using var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 128)
 			{
-				FileSystemFacade = fileSystemMock
+				FileSystemFacade = fileSystemMock,
 			};
 
-			//	Act
+			// Act
 
 			target.Write("Message 1");
 			target.Write("Message 2");
 
-			//	Assert
+			// Assert
 
-			fileSystemMock.CreateStreamWriter(default, default, default, default).ReceivedWithAnyArgs(2);
+			fileSystemMock.ReceivedWithAnyArgs(2).CreateStreamWriter(default, default, default, default);
 		}
 
 		[TestMethod]
 		public void Write_WritesDataCorrectly()
 		{
-			//	Arrange
+			// Arrange
 
 			var fileSystemStub = CreateFileSystemFacade(out var writtenStream);
-			var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 128)
+			using var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 128)
 			{
-				FileSystemFacade = fileSystemStub
+				FileSystemFacade = fileSystemStub,
 			};
 
-			//	Act
+			// Act
 
 			target.Write("Hello :)");
 
-			//	Assert
+			// Assert
 
 			writtenStream.Position = 0;
-			var sr = new StreamReader(writtenStream);
-			var writtenData = sr.ReadToEnd();
+			using var streamReader = new StreamReader(writtenStream);
+			var writtenData = streamReader.ReadToEnd();
 
 			Assert.AreEqual("Hello :)", writtenData);
 		}
@@ -105,24 +104,24 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 		[TestMethod]
 		public void Write_ForFirstLogFile_UsesCorrectFileName()
 		{
-			//	Arrange
+			// Arrange
 
 			var fileSystemMock = CreateFileSystemFacade();
 
 			var clockStub = Substitute.For<IClock>();
 			clockStub.Now.Returns(ParseDateTime("2016.04.03 13:33:27"));
 
-			var target = new RollingLogFile(@"c:\logs", "TestLog - {YYYY}_{MM}_{DD} - {HH}_{mm}_{SS} - {PID} - START", "TestLog - {YYYY}_{MM}_{DD} - {HH}_{mm}_{SS} - {PID}", "txt", 128)
+			using var target = new RollingLogFile(@"c:\logs", "TestLog - {YYYY}_{MM}_{DD} - {HH}_{mm}_{SS} - {PID} - START", "TestLog - {YYYY}_{MM}_{DD} - {HH}_{mm}_{SS} - {PID}", "txt", 128)
 			{
 				FileSystemFacade = fileSystemMock,
 				DateTimeFacade = clockStub,
 			};
 
-			//	Act
+			// Act
 
 			target.Write("Some Message");
 
-			//	Assert
+			// Assert
 
 			var expectedLogFilename = $@"c:\logs\TestLog - 2016_04_03 - 13_33_27 - {Pid} - START.txt";
 			fileSystemMock.Received(1).CreateStreamWriter(expectedLogFilename, Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
@@ -131,14 +130,14 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 		[TestMethod]
 		public void Write_ForSubsequentLogFile_UsesCorrectFileName()
 		{
-			//	Arrange
+			// Arrange
 
 			var fileSystemMock = CreateFileSystemFacade();
 
 			var clockStub = Substitute.For<IClock>();
 			clockStub.Now.Returns(ParseDateTime("2016.04.03 13:33:27"), ParseDateTime("2016.11.28 20:57:18"));
 
-			var target = new RollingLogFile(@"c:\logs", "TestLog - {YYYY}_{MM}_{DD} - {HH}_{mm}_{SS} - {PID} - START", "TestLog - {YYYY}_{MM}_{DD} - {HH}_{mm}_{SS} - {PID}", "txt", 128)
+			using var target = new RollingLogFile(@"c:\logs", "TestLog - {YYYY}_{MM}_{DD} - {HH}_{mm}_{SS} - {PID} - START", "TestLog - {YYYY}_{MM}_{DD} - {HH}_{mm}_{SS} - {PID}", "txt", 128)
 			{
 				FileSystemFacade = fileSystemMock,
 				DateTimeFacade = clockStub,
@@ -146,54 +145,54 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 
 			target.Write("First Message");
 
-			//	Act
+			// Act
 
 			target.Write("Second Message");
 
-			//	Assert
+			// Assert
 
 			var expectedLogFilename = $@"c:\logs\TestLog - 2016_11_28 - 20_57_18 - {Pid}.txt";
-			fileSystemMock.CreateStreamWriter(default, default, default, default).ReceivedWithAnyArgs(2);
-			fileSystemMock.CreateStreamWriter(expectedLogFilename, Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>()).Received(1);
+			fileSystemMock.ReceivedWithAnyArgs(2).CreateStreamWriter(default, default, default, default);
+			fileSystemMock.Received(1).CreateStreamWriter(expectedLogFilename, Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
 		}
 
 		[TestMethod]
 		public void Write_IfFileNameAlreadyExists_RetriesForFileNameWithCorrectSuffix()
 		{
-			//	Arrange
+			// Arrange
 
 			var fileSystemMock = CreateFileSystemFacade();
 			fileSystemMock.FileExists(default).ReturnsForAnyArgs(true, false);
 
-			var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 5)
+			using var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 5)
 			{
-				FileSystemFacade = fileSystemMock
+				FileSystemFacade = fileSystemMock,
 			};
 
-			//	Act
+			// Act
 
 			target.Write("Some Message");
 
-			//	Assert
+			// Assert
 
-			fileSystemMock.CreateStreamWriter(default, default, default, default).ReceivedWithAnyArgs(1);
-			fileSystemMock.CreateStreamWriter(@"c:\logs\TestLog.001.log", Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>()).Received(1);
+			fileSystemMock.ReceivedWithAnyArgs(1).CreateStreamWriter(default, default, default, default);
+			fileSystemMock.Received(1).CreateStreamWriter(@"c:\logs\TestLog.001.log", Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
 		}
 
 		[TestMethod]
-		public void FileLogger_IfFileNamesWithAllSuffixesExist_ThrowsInvalidOperationException()
+		public void Write_IfFileNamesWithAllSuffixesExist_ThrowsInvalidOperationException()
 		{
-			//	Arrange
+			// Arrange
 
 			var fileSystemStub = CreateFileSystemFacade();
 			fileSystemStub.FileExists(Arg.Any<string>()).Returns(true);
 
-			var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 5)
+			using var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 5)
 			{
-				FileSystemFacade = fileSystemStub
+				FileSystemFacade = fileSystemStub,
 			};
 
-			//	Act
+			// Act
 
 			void Call() => target.Write("Some Message");
 
@@ -205,23 +204,23 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 		[TestMethod]
 		public void Dispose_ForOpenedLogFile_DisposesFileStream()
 		{
-			//	Arrange
+			// Arrange
 
-			var fileSystemFacade = CreateFileSystemFacade();
-			var streamMock = fileSystemFacade.CreateStreamWriter(default, default, default, default);
+			var fileSystemStub = CreateFileSystemFacade();
+			var streamMock = fileSystemStub.CreateStreamWriter(default, default, default, default);
 
 			var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 5)
 			{
-				FileSystemFacade = fileSystemFacade
+				FileSystemFacade = fileSystemStub,
 			};
 
 			target.Write("Some Message");
 
-			//	Act
+			// Act
 
 			target.Dispose();
 
-			//	Assert
+			// Assert
 
 			streamMock.Received(1).Dispose();
 		}
@@ -246,10 +245,12 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 				streamWriter.Length.Returns(0, 1024);
 			}
 
+#pragma warning disable CA2000 // Dispose objects before losing scope
 			streamWriter.StreamWriter.Returns(new StreamWriter(writtenStream, Encoding.UTF8)
 			{
-				AutoFlush = true
+				AutoFlush = true,
 			});
+#pragma warning restore CA2000 // Dispose objects before losing scope
 
 			var fileSystemFacadeMock = Substitute.For<IFileSystemFacade>();
 			fileSystemFacadeMock.CreateStreamWriter(default, default, default, default).ReturnsForAnyArgs(streamWriter);

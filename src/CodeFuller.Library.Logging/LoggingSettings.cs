@@ -8,6 +8,6 @@ namespace CodeFuller.Library.Logging
 	{
 		public LogLevel DefaultLogLevel { get; set; }
 
-		public ICollection<TargetConfiguration> Targets { get; set; } = new Collection<TargetConfiguration>();
+		public ICollection<TargetConfiguration> Targets { get; } = new Collection<TargetConfiguration>();
 	}
 }

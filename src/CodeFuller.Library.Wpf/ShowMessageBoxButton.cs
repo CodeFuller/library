@@ -9,7 +9,7 @@
 		/// Default undefined value.
 		/// </summary>
 		None,
-		
+
 		/// <summary>
 		/// Message box contains OK button.
 		/// </summary>

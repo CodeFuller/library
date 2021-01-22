@@ -7,6 +7,7 @@
     <TestAdapterVersion>2.1.2</TestAdapterVersion>
     <TestFrameworkVersion>2.1.2</TestFrameworkVersion>
     <NSubstitutekVersion>4.2.2</NSubstitutekVersion>
+    <StyleCopAnalyzersVersion>1.2.0-beta.304</StyleCopAnalyzersVersion>
 
     <!-- PackageVersionSuffix is set to 'preview' by CI server for non-default branches -->
     <PackageVersionSuffix></PackageVersionSuffix>

@@ -38,7 +38,7 @@ namespace CodeFuller.Library.Wpf
 		}
 
 		/// <summary>
-		/// Defines the method to be called when the command is invoked. 
+		/// Defines the method to be called when the command is invoked.
 		/// </summary>
 		/// <param name="parameter">This parameter will always be ignored.</param>
 		public async void Execute(object parameter)

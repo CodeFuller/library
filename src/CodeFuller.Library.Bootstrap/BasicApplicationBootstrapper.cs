@@ -32,7 +32,7 @@ namespace CodeFuller.Library.Bootstrap
 			RegisterServices(services, configuration);
 
 			ServiceProvider = services.BuildServiceProvider();
-			
+
 			return ServiceProvider.GetRequiredService<TRoot>();
 		}
 
@@ -93,7 +93,7 @@ namespace CodeFuller.Library.Bootstrap
 		/// <param name="configuration">Application configuration.</param>
 		protected virtual void BootstrapLogging(ILoggerFactory loggerFactory, IConfiguration configuration)
 		{
-			//	No logging by default.
+			// No logging by default.
 		}
 
 		/// <summary>
