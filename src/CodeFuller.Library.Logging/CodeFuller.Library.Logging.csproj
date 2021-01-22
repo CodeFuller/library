@@ -12,14 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeFuller.Library.Core" Version="$(LibraryPackageDependencyVersion)" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="$(CrossCuttingPackagesVersion)" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CodeFuller.Library.Core\CodeFuller.Library.Core.csproj" />
   </ItemGroup>
 
 </Project>

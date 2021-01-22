@@ -18,12 +18,10 @@
 
   <ItemGroup>
     <PackageReference Include="CodeFuller.Library.Bootstrap" Version="$(LibraryPackageDependencyVersion)" />
-    <PackageReference Include="CodeFuller.Library.Core" Version="$(LibraryPackageDependencyVersion)" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CodeFuller.Library.Bootstrap\CodeFuller.Library.Bootstrap.csproj" />
-    <ProjectReference Include="..\CodeFuller.Library.Core\CodeFuller.Library.Core.csproj" />
   </ItemGroup>
 
 </Project>
