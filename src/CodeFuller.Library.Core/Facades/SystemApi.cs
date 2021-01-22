@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using CodeFuller.Library.Core.Exceptions;
 
 namespace CodeFuller.Library.Core.Facades
 {
@@ -19,7 +18,7 @@ namespace CodeFuller.Library.Core.Facades
 			}
 			else
 			{
-				throw new SystemCallFailedException(Marshal.GetLastWin32Error());
+				throw new InvalidOperationException($"GetLastInputInfo() has failed with error {Marshal.GetLastWin32Error()}");
 			}
 		}
 	}

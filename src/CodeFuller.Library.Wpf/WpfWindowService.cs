@@ -1,11 +1,11 @@
-﻿using System.Windows;
-using CodeFuller.Library.Core.Exceptions;
+﻿using System;
+using System.Windows;
 using CodeFuller.Library.Wpf.Interfaces;
 
 namespace CodeFuller.Library.Wpf
 {
 	/// <summary>
-	/// Implemetation of IWindowService for WPF.
+	/// Implementation of IWindowService for WPF.
 	/// </summary>
 	public class WpfWindowService : IWindowService
 	{
@@ -44,7 +44,7 @@ namespace CodeFuller.Library.Wpf
 					return MessageBoxButton.YesNo;
 
 				default:
-					throw new UnexpectedEnumValueException(button);
+					throw new NotSupportedException($"The MessageBox button type {button} is not supported");
 			}
 		}
 
@@ -71,7 +71,7 @@ namespace CodeFuller.Library.Wpf
 					return MessageBoxImage.Exclamation;
 
 				default:
-					throw new UnexpectedEnumValueException(icon);
+					throw new NotSupportedException($"The MessageBox icon type {icon} is not supported");
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace CodeFuller.Library.Wpf
 					return ShowMessageBoxResult.No;
 
 				default:
-					throw new UnexpectedEnumValueException(result);
+					throw new NotSupportedException($"The MessageBox result type {result} is not supported");
 			}
 		}
 	}

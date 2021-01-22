@@ -1,5 +1,4 @@
 ﻿using System;
-using CodeFuller.Library.Core.Exceptions;
 using Microsoft.Extensions.Logging;
 
 namespace CodeFuller.Library.Wpf.Logging
@@ -39,7 +38,7 @@ namespace CodeFuller.Library.Wpf.Logging
 					return "TRACE:  ";
 
 				default:
-					throw new UnexpectedEnumValueException(level);
+					throw new NotSupportedException($"The log level {level} is not supported");
 			}
 		}
 	}
