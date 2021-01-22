@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace CodeFuller.Library.Logging
+namespace CodeFuller.Library.Logging.Interfaces
 {
 	internal interface IRollingLogFile
 	{

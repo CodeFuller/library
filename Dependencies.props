@@ -3,6 +3,7 @@
     <CurrentLibraryVersion>6.0.0</CurrentLibraryVersion>
     <TargetFrameworkForTestProjects>netcoreapp3.1</TargetFrameworkForTestProjects>
     <CrossCuttingPackagesVersion>3.1.1</CrossCuttingPackagesVersion>
+    <LangVersion>latest</LangVersion>
     <TestSdkVersion>16.5.0</TestSdkVersion>
     <TestAdapterVersion>2.1.0</TestAdapterVersion>
     <TestFrameworkVersion>2.1.0</TestFrameworkVersion>

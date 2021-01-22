@@ -21,10 +21,4 @@
     <ProjectReference Include="..\..\src\CodeFuller.Library.Logging\CodeFuller.Library.Logging.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="conf\**">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>

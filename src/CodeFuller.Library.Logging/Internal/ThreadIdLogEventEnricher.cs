@@ -2,9 +2,9 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace CodeFuller.Library.Logging
+namespace CodeFuller.Library.Logging.Internal
 {
-	internal class ThreadIdEnricher : ILogEventEnricher
+	internal class ThreadIdLogEventEnricher : ILogEventEnricher
 	{
 		public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
 		{

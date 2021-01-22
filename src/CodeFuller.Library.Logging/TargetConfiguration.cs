@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace CodeFuller.Library.Logging
 {
@@ -8,6 +10,6 @@ namespace CodeFuller.Library.Logging
 
 		public LogLevel? LogLevel { get; set; }
 
-		public TargetSettings Settings { get; set; }
+		public IDictionary<string, string> Settings { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 	}
 }
