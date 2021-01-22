@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3512B90C-D6F0-49C8-BB9B-8CA839D51D12}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFuller.Library.Core.UnitTests", "tests\CodeFuller.Library.Core.UnitTests\CodeFuller.Library.Core.UnitTests.csproj", "{3F79DE0B-719A-4A23-A297-4705B32F1F25}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{66C1590F-8A55-4823-AB62-99F78BAEE9B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFuller.Library.Bootstrap", "src\CodeFuller.Library.Bootstrap\CodeFuller.Library.Bootstrap.csproj", "{896803A2-5767-4C36-AB51-52104B583997}"
@@ -33,10 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F79DE0B-719A-4A23-A297-4705B32F1F25}.Release|Any CPU.Build.0 = Release|Any CPU
 		{896803A2-5767-4C36-AB51-52104B583997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{896803A2-5767-4C36-AB51-52104B583997}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{896803A2-5767-4C36-AB51-52104B583997}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,7 +60,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3F79DE0B-719A-4A23-A297-4705B32F1F25} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 		{896803A2-5767-4C36-AB51-52104B583997} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
 		{5AED1D8C-6582-4806-8D4D-DB8464D3D14A} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
 		{A1397B60-2495-43C1-AD03-641375E97A12} = {66C1590F-8A55-4823-AB62-99F78BAEE9B9}
