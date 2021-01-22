@@ -5,6 +5,9 @@ using Microsoft.Extensions.Logging;
 
 namespace CodeFuller.Library.Bootstrap
 {
+	/// <summary>
+	/// Skeleton for console application.
+	/// </summary>
 	public class ConsoleApplication
 	{
 		private readonly BasicApplicationBootstrapper<IApplicationLogic> bootstrapper;
@@ -14,6 +17,11 @@ namespace CodeFuller.Library.Bootstrap
 			this.bootstrapper = bootstrapper ?? throw new ArgumentNullException(nameof(bootstrapper));
 		}
 
+		/// <summary>
+		/// Executes console application.
+		/// </summary>
+		/// <param name="args">Command line arguments.</param>
+		/// <returns>Exit code for the process.</returns>
 		public async Task<int> Run(string[] args)
 		{
 			ILogger<ConsoleApplication> logger = null;
@@ -23,7 +31,7 @@ namespace CodeFuller.Library.Bootstrap
 				var application = bootstrapper.Bootstrap(args);
 				logger = bootstrapper.GetLogger<ConsoleApplication>();
 
-				CancellationTokenSource cts = new CancellationTokenSource();
+				var cts = new CancellationTokenSource();
 
 				Console.CancelKeyPress += delegate
 				{
@@ -48,7 +56,8 @@ namespace CodeFuller.Library.Bootstrap
 				{
 					Console.Error.WriteLine(e);
 				}
-				return 1;
+
+				return e.HResult;
 			}
 		}
 	}
