@@ -15,8 +15,8 @@
 
   <PropertyGroup>
     <PackageId>CodeFuller.Library.Bootstrap</PackageId>
-    <Description>This package contains types and logic for application bootstrap</Description>
-    <PackageTags>CodeFuller Library Bootstrap</PackageTags>
+    <Description>Generic application bootstrapper and skeleton for console application.</Description>
+    <PackageTags>CodeFuller Library Bootstrap Console Application</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

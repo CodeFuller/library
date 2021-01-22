@@ -1,13 +1,21 @@
 <Project>
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <VersionPrefix>$(CurrentLibraryVersion)</VersionPrefix>
     <Authors>CodeFuller</Authors>
     <Company>CodeFuller</Company>
-    <Copyright>Copyright © 2017-2020 CodeFuller</Copyright>
+    <Copyright>Copyright © 2017-2021 CodeFuller</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIcon>CodeFullerLibrary.png</PackageIcon>
+    <RepositoryUrl>https://github.com/CodeFuller/library</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../icon/CodeFullerLibrary.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
 </Project>

@@ -15,7 +15,7 @@
 
   <PropertyGroup>
     <PackageId>CodeFuller.Library.Configuration</PackageId>
-    <Description>This package contains extensions for application configuration</Description>
+    <Description>Helper for adding configuration sources in the following order: JSON files from config directory, JSON files from command line, environment variables, command line arguments.</Description>
     <PackageTags>CodeFuller Library Configuration</PackageTags>
   </PropertyGroup>
 

@@ -15,8 +15,8 @@
 
   <PropertyGroup>
     <PackageId>CodeFuller.Library.Logging</PackageId>
-    <Description>This package contains Logging functionality for CodeFuller.Library</Description>
-    <PackageTags>CodeFuller Library Logging</PackageTags>
+    <Description>Sematic logging infrastructure based on Serilog. Provides support for console and rolling file sinks with easy configuration.</Description>
+    <PackageTags>CodeFuller Library Logging Semantic Serilog</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

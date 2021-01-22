@@ -9,6 +9,7 @@
     <NSubstitutekVersion>4.2.2</NSubstitutekVersion>
     <StyleCopAnalyzersVersion>1.2.0-beta.304</StyleCopAnalyzersVersion>
 
+    <VersionPrefix>$(CurrentLibraryVersion)</VersionPrefix>
     <!-- PackageVersionSuffix is set to 'preview' by CI server for non-default branches -->
     <PackageVersionSuffix></PackageVersionSuffix>
     <VersionSuffix>$(PackageVersionSuffix)</VersionSuffix>

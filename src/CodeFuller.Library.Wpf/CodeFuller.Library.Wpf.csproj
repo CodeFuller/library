@@ -20,8 +20,8 @@
 
   <PropertyGroup>
     <PackageId>CodeFuller.Library.Wpf</PackageId>
-    <Description>This package contains helpers and extensions for WPF-related functionality</Description>
-    <PackageTags>CodeFuller Library WPF</PackageTags>
+    <Description>Contains reusable functionality for WPF application: bootstrapper, window service (facade for MessageBox), AsyncRelayCommand.</Description>
+    <PackageTags>CodeFuller Library WPF Application Bootstrap</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
