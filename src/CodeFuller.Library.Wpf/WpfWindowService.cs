@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using CodeFuller.Library.Core.Enums;
 using CodeFuller.Library.Core.Exceptions;
-using CodeFuller.Library.Core.Interfaces;
+using CodeFuller.Library.Wpf.Interfaces;
 
 namespace CodeFuller.Library.Wpf
 {

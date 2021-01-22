@@ -1,6 +1,4 @@
-﻿using CodeFuller.Library.Core.Enums;
-
-namespace CodeFuller.Library.Core.Interfaces
+﻿namespace CodeFuller.Library.Wpf.Interfaces
 {
 	/// <summary>
 	/// Interface for window service.

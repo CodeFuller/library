@@ -1,4 +1,4 @@
-﻿namespace CodeFuller.Library.Core.Enums
+﻿namespace CodeFuller.Library.Wpf
 {
 	/// <summary>
 	/// Enumeration of possible outcomes of showing message box.
