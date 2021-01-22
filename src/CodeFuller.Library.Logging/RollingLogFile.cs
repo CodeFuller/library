@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using CodeFuller.Library.Core.Facades;
 using CodeFuller.Library.Logging.Interfaces;
 using CodeFuller.Library.Logging.Internal;
 
