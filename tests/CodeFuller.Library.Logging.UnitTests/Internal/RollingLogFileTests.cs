@@ -54,7 +54,7 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 
 			//	Assert
 
-			fileSystemMock.Received(1).CreateStreamWriter(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
+			fileSystemMock.CreateStreamWriter(default, default, default, default).ReceivedWithAnyArgs(1);
 		}
 
 		[TestMethod]
@@ -75,7 +75,7 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 
 			//	Assert
 
-			fileSystemMock.Received(2).CreateStreamWriter(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
+			fileSystemMock.CreateStreamWriter(default, default, default, default).ReceivedWithAnyArgs(2);
 		}
 
 		[TestMethod]
@@ -153,8 +153,8 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 			//	Assert
 
 			var expectedLogFilename = $@"c:\logs\TestLog - 2016_11_28 - 20_57_18 - {Pid}.txt";
-			fileSystemMock.Received(2).CreateStreamWriter(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
-			fileSystemMock.Received().CreateStreamWriter(expectedLogFilename, Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
+			fileSystemMock.CreateStreamWriter(default, default, default, default).ReceivedWithAnyArgs(2);
+			fileSystemMock.CreateStreamWriter(expectedLogFilename, Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>()).Received(1);
 		}
 
 		[TestMethod]
@@ -163,7 +163,7 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 			//	Arrange
 
 			var fileSystemMock = CreateFileSystemFacade();
-			fileSystemMock.FileExists(Arg.Any<string>()).Returns(true, false);
+			fileSystemMock.FileExists(default).ReturnsForAnyArgs(true, false);
 
 			var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 5)
 			{
@@ -176,8 +176,8 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 
 			//	Assert
 
-			fileSystemMock.Received(1).CreateStreamWriter(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
-			fileSystemMock.Received(1).CreateStreamWriter(@"c:\logs\TestLog.001.log", Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
+			fileSystemMock.CreateStreamWriter(default, default, default, default).ReceivedWithAnyArgs(1);
+			fileSystemMock.CreateStreamWriter(@"c:\logs\TestLog.001.log", Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>()).Received(1);
 		}
 
 		[TestMethod]
@@ -208,7 +208,7 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 			//	Arrange
 
 			var fileSystemFacade = CreateFileSystemFacade();
-			var streamMock = fileSystemFacade.CreateStreamWriter(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>());
+			var streamMock = fileSystemFacade.CreateStreamWriter(default, default, default, default);
 
 			var target = new RollingLogFile(@"c:\logs", "TestLog", "TestLog", "log", 5)
 			{
@@ -252,10 +252,10 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 			});
 
 			var fileSystemFacadeMock = Substitute.For<IFileSystemFacade>();
-			fileSystemFacadeMock.CreateStreamWriter(Arg.Any<string>(), Arg.Any<bool>(), Arg.Any<Encoding>(), Arg.Any<bool>()).Returns(streamWriter);
+			fileSystemFacadeMock.CreateStreamWriter(default, default, default, default).ReturnsForAnyArgs(streamWriter);
 
 			// Avoiding file name conflict.
-			fileSystemFacadeMock.FileExists(Arg.Any<string>()).Returns(false);
+			fileSystemFacadeMock.FileExists(default).ReturnsForAnyArgs(false);
 
 			return fileSystemFacadeMock;
 		}
