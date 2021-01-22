@@ -6,7 +6,7 @@
 	public enum ShowMessageBoxButton
 	{
 		/// <summary>
-		/// Undefined default value.
+		/// Default undefined value.
 		/// </summary>
 		None,
 		

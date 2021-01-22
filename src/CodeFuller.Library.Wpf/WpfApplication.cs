@@ -28,7 +28,7 @@ namespace CodeFuller.Library.Wpf
 		{
 			base.OnStartup(e);
 
-			TRootViewModel rootViewModel = bootstrapper.Bootstrap(new string[0]);
+			var rootViewModel = bootstrapper.Bootstrap(e.Args);
 			Run(rootViewModel);
 		}
 	}

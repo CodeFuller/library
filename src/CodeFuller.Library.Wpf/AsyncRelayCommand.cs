@@ -16,8 +16,8 @@ namespace CodeFuller.Library.Wpf
 		/// </summary>
 		public event EventHandler CanExecuteChanged
 		{
-			add { CommandManager.RequerySuggested += value; }
-			remove { CommandManager.RequerySuggested -= value; }
+			add => CommandManager.RequerySuggested += value;
+			remove => CommandManager.RequerySuggested -= value;
 		}
 
 		/// <summary>
@@ -25,12 +25,7 @@ namespace CodeFuller.Library.Wpf
 		/// </summary>
 		public AsyncRelayCommand(Func<Task> commandAction)
 		{
-			if (commandAction == null)
-			{
-				throw new ArgumentNullException(nameof(commandAction));
-			}
-
-			this.commandAction = commandAction;
+			this.commandAction = commandAction ?? throw new ArgumentNullException(nameof(commandAction));
 		}
 
 		/// <summary>

@@ -6,7 +6,7 @@
 	public enum ShowMessageBoxIcon
 	{
 		/// <summary>
-		/// Undefined default value.
+		/// Default undefined value.
 		/// </summary>
 		None,
 
