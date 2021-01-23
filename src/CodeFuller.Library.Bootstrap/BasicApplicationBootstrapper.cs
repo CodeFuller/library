@@ -43,9 +43,14 @@ namespace CodeFuller.Library.Bootstrap
 		/// <param name="configuration">Application configuration.</param>
 		protected abstract void RegisterServices(IServiceCollection services, IConfiguration configuration);
 
-		internal ILogger<TCategoryName> GetLogger<TCategoryName>()
+		/// <summary>
+		/// Gets the instance of <see cref="ILogger{TCategoryName}"/>.
+		/// </summary>
+		/// <typeparam name="TCategoryName">The type who's name is used for the logger category name.</typeparam>
+		/// <returns>The instance of <see cref="ILogger{TCategoryName}"/> or null if no logger configured.</returns>
+		public ILogger<TCategoryName> TryGetLogger<TCategoryName>()
 		{
-			return Resolve<ILogger<TCategoryName>>();
+			return ServiceProvider.GetService<ILogger<TCategoryName>>();
 		}
 
 		/// <summary>

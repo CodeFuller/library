@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Threading;
 using CodeFuller.Library.Bootstrap;
+using Microsoft.Extensions.Logging;
 
 namespace CodeFuller.Library.Wpf
 {
@@ -36,7 +38,26 @@ namespace CodeFuller.Library.Wpf
 			base.OnStartup(e);
 
 			var rootViewModel = bootstrapper.Bootstrap(e.Args);
+
+			// Catching all unhandled exceptions from the main UI thread.
+			Current.DispatcherUnhandledException += App_CaughtUnhandledUIException;
+
 			Run(rootViewModel);
+		}
+
+		private void App_CaughtUnhandledUIException(object sender, DispatcherUnhandledExceptionEventArgs e)
+		{
+			var exception = e.Exception;
+
+			Current.Dispatcher.Invoke(() =>
+			{
+				var logger = bootstrapper.TryGetLogger<WpfApplication<TRootViewModel>>();
+				logger?.LogError(exception, "Exception caught");
+
+				MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+			});
+
+			e.Handled = true;
 		}
 	}
 }

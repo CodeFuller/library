@@ -33,13 +33,13 @@ namespace CodeFuller.Library.Bootstrap
 			try
 			{
 				var application = bootstrapper.Bootstrap(args);
-				logger = bootstrapper.GetLogger<ConsoleApplication>();
+				logger = bootstrapper.TryGetLogger<ConsoleApplication>();
 
 				using var cts = new CancellationTokenSource();
 
 				Console.CancelKeyPress += (_, _) =>
 				{
-					logger.LogInformation("CTRL + C is pressed");
+					logger?.LogInformation("CTRL + C is pressed");
 					cts.Cancel();
 				};
 

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - MultiSelectionDataGrid control to CodeFuller.Library.Wpf package.
+- Catching of unhandled exceptions to WpfApplication class.
 
 ## [7.0.0] - 2021-01-23
 
