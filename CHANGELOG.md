@@ -23,4 +23,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Package CF.Library.Database.
 - Package CF.Library.Json.
 - Package CF.Library.Patterns.
-- Types and functionality, which is not shared accross the projects.
+- Types and functionality, which are not shared accross the projects.
