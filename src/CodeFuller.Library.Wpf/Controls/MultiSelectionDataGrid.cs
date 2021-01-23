@@ -6,7 +6,7 @@ using System.Windows.Input;
 namespace CodeFuller.Library.Wpf.Controls
 {
 	/// <summary>
-	/// Custom <see cref="DataGrid"/> with support of multi-select.
+	/// Custom <see cref="DataGrid"/> with property for multiple selected items.
 	/// </summary>
 	// https://stackoverflow.com/a/22908694/5740031
 	public class MultiSelectionDataGrid : DataGrid
