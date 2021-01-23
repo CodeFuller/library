@@ -21,8 +21,9 @@ namespace CodeFuller.Library.Wpf
 		}
 
 		/// <summary>
-		/// Constructs instance of the command for given async action.
+		/// Initializes a new instance of the <see cref="AsyncRelayCommand"/> class for a given async action.
 		/// </summary>
+		/// <param name="commandAction">Action to execute for the command.</param>
 		public AsyncRelayCommand(Func<Task> commandAction)
 		{
 			this.commandAction = commandAction ?? throw new ArgumentNullException(nameof(commandAction));
@@ -31,6 +32,7 @@ namespace CodeFuller.Library.Wpf
 		/// <summary>
 		/// Defines the method that determines whether the command can execute in its current state.
 		/// </summary>
+		/// <param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to null.</param>
 		/// <returns>True if the command could be executed; otherwise, false.</returns>
 		public bool CanExecute(object parameter)
 		{

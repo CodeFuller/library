@@ -21,7 +21,7 @@ namespace CodeFuller.Library.Logging.Internal
 
 		public LoggingConfiguration LoadSettings(LoggingSettings settings)
 		{
-			foreach (TargetConfiguration targetConfig in settings.Targets)
+			foreach (var targetConfig in settings.Targets)
 			{
 				var targetLogLevel = targetConfig.LogLevel ?? settings.DefaultLogLevel;
 				if (String.Equals(targetConfig.Type, "Console", StringComparison.OrdinalIgnoreCase))
@@ -104,29 +104,16 @@ namespace CodeFuller.Library.Logging.Internal
 
 		private static LogEventLevel CovertLogLevel(LogLevel logLevel)
 		{
-			switch (logLevel)
+			return logLevel switch
 			{
-				case LogLevel.Trace:
-					return LogEventLevel.Verbose;
-
-				case LogLevel.Debug:
-					return LogEventLevel.Debug;
-
-				case LogLevel.Information:
-					return LogEventLevel.Information;
-
-				case LogLevel.Warning:
-					return LogEventLevel.Warning;
-
-				case LogLevel.Error:
-					return LogEventLevel.Error;
-
-				case LogLevel.Critical:
-					return LogEventLevel.Fatal;
-
-				default:
-					throw new NotSupportedException($"Log level '{logLevel}' is not supported");
-			}
+				LogLevel.Trace => LogEventLevel.Verbose,
+				LogLevel.Debug => LogEventLevel.Debug,
+				LogLevel.Information => LogEventLevel.Information,
+				LogLevel.Warning => LogEventLevel.Warning,
+				LogLevel.Error => LogEventLevel.Error,
+				LogLevel.Critical => LogEventLevel.Fatal,
+				_ => throw new NotSupportedException($"Log level '{logLevel}' is not supported"),
+			};
 		}
 	}
 }

@@ -7,6 +7,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace CodeFuller.Library.Configuration
 {
+	/// <summary>
+	/// Extension methods for filling <see cref="IConfigurationBuilder"/> with application settings.
+	/// </summary>
 	public static class ConfigurationBuilderExtensions
 	{
 		/// <summary>
@@ -18,6 +21,10 @@ namespace CodeFuller.Library.Configuration
 		/// <item><description>Command line arguments (excluding --config values).</description></item>
 		/// </list>
 		/// </summary>
+		/// <param name="configurationBuilder">The <see cref="IConfigurationBuilder"/> to add to.</param>
+		/// <param name="configDirectoryPath">The path to directory with application configuration files.</param>
+		/// <param name="commandLineArgs">Command line arguments.</param>
+		/// <returns>The <see cref="IConfigurationBuilder"/> so that additional calls can be chained.</returns>
 		public static IConfigurationBuilder LoadSettings(this IConfigurationBuilder configurationBuilder, string configDirectoryPath, string[] commandLineArgs)
 		{
 			AddJsonConfigs(configurationBuilder, configDirectoryPath);

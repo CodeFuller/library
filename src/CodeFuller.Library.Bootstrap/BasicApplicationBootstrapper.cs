@@ -9,7 +9,7 @@ namespace CodeFuller.Library.Bootstrap
 	/// <summary>
 	/// Basic abstract class for application bootstrap.
 	/// </summary>
-	/// <typeparam name="TRoot"></typeparam>
+	/// <typeparam name="TRoot">The type of application root object.</typeparam>
 	public abstract class BasicApplicationBootstrapper<TRoot> : IDisposable
 	{
 		private ServiceProvider ServiceProvider { get; set; }
@@ -100,11 +100,16 @@ namespace CodeFuller.Library.Bootstrap
 		/// This method is used for Unit Test to check whether specific types (not instantiated by Composition Root) could be resolved.
 		/// </summary>
 		/// <typeparam name="T">The type of service object to get.</typeparam>
+		/// <returns>A service object of type T.</returns>
 		protected T Resolve<T>()
 		{
 			return ServiceProvider.GetRequiredService<T>();
 		}
 
+		/// <summary>
+		/// Disposes unmanaged resources.
+		/// </summary>
+		/// <param name="disposing">True if this object is being disposed, or false if it is finalizing.</param>
 		protected virtual void Dispose(bool disposing)
 		{
 			if (disposing)
@@ -114,6 +119,9 @@ namespace CodeFuller.Library.Bootstrap
 			}
 		}
 
+		/// <summary>
+		/// Disposes unmanaged resources.
+		/// </summary>
 		public void Dispose()
 		{
 			Dispose(true);

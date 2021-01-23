@@ -12,6 +12,10 @@ namespace CodeFuller.Library.Bootstrap
 	{
 		private readonly BasicApplicationBootstrapper<IApplicationLogic> bootstrapper;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ConsoleApplication"/> class with provided <see cref="BasicApplicationBootstrapper{TRoot}"/>.
+		/// </summary>
+		/// <param name="bootstrapper">Application bootstrapper.</param>
 		public ConsoleApplication(BasicApplicationBootstrapper<IApplicationLogic> bootstrapper)
 		{
 			this.bootstrapper = bootstrapper ?? throw new ArgumentNullException(nameof(bootstrapper));

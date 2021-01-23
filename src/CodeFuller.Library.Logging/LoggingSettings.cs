@@ -4,10 +4,19 @@ using Microsoft.Extensions.Logging;
 
 namespace CodeFuller.Library.Logging
 {
+	/// <summary>
+	/// Application logging settings.
+	/// </summary>
 	public class LoggingSettings
 	{
+		/// <summary>
+		/// Gets or sets default log level, which is used for the logging target if its log level is not specified.
+		/// </summary>
 		public LogLevel DefaultLogLevel { get; set; }
 
-		public ICollection<TargetConfiguration> Targets { get; } = new Collection<TargetConfiguration>();
+		/// <summary>
+		/// Gets collection of logging targets settings.
+		/// </summary>
+		public ICollection<LoggingTargetSettings> Targets { get; } = new Collection<LoggingTargetSettings>();
 	}
 }
