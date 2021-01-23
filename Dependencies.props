@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <CurrentLibraryVersion>6.0.0</CurrentLibraryVersion>
+    <CurrentLibraryVersion>7.0.0</CurrentLibraryVersion>
     <TargetFrameworkForTestProjects>net5.0</TargetFrameworkForTestProjects>
     <LangVersion>latest</LangVersion>
     <TestSdkVersion>16.8.3</TestSdkVersion>
