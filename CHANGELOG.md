@@ -31,3 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Package CF.Library.Json.
 - Package CF.Library.Patterns.
 - Types and functionality, which are not shared accross the projects.
+
+[7.1.0]: https://github.com/CodeFuller/library/compare/v7.0.0...v7.1.0
+[7.0.0]: https://github.com/CodeFuller/library/compare/v6.0.0...v7.0.0
