@@ -23,9 +23,8 @@ namespace CodeFuller.Library.Bootstrap
 		{
 			var configuration = BootstrapConfiguration(args);
 
-			// Registering ILoggerFactory via Func overload, so that it is disposed together with ServiceProvider.
 			var services = new ServiceCollection()
-				.AddSingleton<ILoggerFactory>(_ => BootstrapLogging(configuration))
+				.AddSingleton<ILoggerFactory>(sp => BootstrapLogging(sp, configuration))
 				.AddSingleton(typeof(ILogger<>), typeof(Logger<>))
 				.AddOptions();
 
@@ -80,9 +79,10 @@ namespace CodeFuller.Library.Bootstrap
 		/// <summary>
 		/// Bootstraps application logging.
 		/// </summary>
+		/// <param name="serviceProvider">The instance of <see cref="IServiceProvider"/>.</param>
 		/// <param name="configuration">Application configuration.</param>
 		/// <returns>Configured instance of <see cref="ILoggerFactory"/>.</returns>
-		protected virtual ILoggerFactory BootstrapLogging(IConfiguration configuration)
+		protected virtual ILoggerFactory BootstrapLogging(IServiceProvider serviceProvider, IConfiguration configuration)
 		{
 			var loggerFactory = new LoggerFactory();
 
