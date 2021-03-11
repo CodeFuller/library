@@ -1,0 +1,8 @@
+// Do not put this file to test_conf directory. It should be loaded with command line "config" switch.
+{
+	"someSection": {
+		"setting3": "Value from external_config.json",
+		"setting4": "Value from external_config.json",
+		"setting5": "Value from external_config.json"
+	}
+}

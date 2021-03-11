@@ -1,0 +1,9 @@
+{
+	"someSection": {
+		"setting1": "Value from config1.json",
+		"setting2": "Value from config1.json",
+		"setting3": "Value from config1.json",
+		"setting4": "Value from config1.json",
+		"setting5": "Value from config1.json"
+	}
+}
