@@ -6,16 +6,15 @@ using System.Windows.Input;
 namespace CodeFuller.Library.Wpf.Controls
 {
 	/// <summary>
-	/// Custom <see cref="DataGrid"/> with property for multiple selected items.
+	/// Custom <see cref="ListBox"/> with property for multiple selected items.
 	/// </summary>
-	// https://stackoverflow.com/a/22908694/5740031
-	public class MultiSelectionDataGrid : DataGrid
+	public class MultiSelectionListBox : ListBox
 	{
 		/// <summary>
 		/// Dependency property for <see cref="SelectedItemsList"/>.
 		/// </summary>
 		public static readonly DependencyProperty SelectedItemsListProperty =
-			DependencyProperty.Register(nameof(SelectedItemsList), typeof(IList), typeof(MultiSelectionDataGrid), new PropertyMetadata(null));
+			DependencyProperty.Register(nameof(SelectedItemsList), typeof(IList), typeof(MultiSelectionListBox), new PropertyMetadata(null));
 
 		/// <summary>
 		/// Gets or sets the list of selected items.
@@ -29,24 +28,24 @@ namespace CodeFuller.Library.Wpf.Controls
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="MultiSelectionDataGrid"/> class.
+		/// Initializes a new instance of the <see cref="MultiSelectionListBox"/> class.
 		/// </summary>
-		public MultiSelectionDataGrid()
+		public MultiSelectionListBox()
 		{
-			SelectionChanged += DataGrid_SelectionChanged;
-			KeyUp += DataGrid_KeyUp;
+			SelectionChanged += ListBox_SelectionChanged;
+			KeyUp += ListBox_KeyUp;
 		}
 
-		private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			SelectedItemsList = SelectedItems;
 		}
 
-		private static void DataGrid_KeyUp(object sender, KeyEventArgs e)
+		private static void ListBox_KeyUp(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Escape)
 			{
-				(sender as DataGrid)?.UnselectAll();
+				(sender as ListBox)?.UnselectAll();
 			}
 		}
 	}
