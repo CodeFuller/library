@@ -1,36 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <ImportGroup Label="Properties">
-    <Import Project="..\..\Dependencies.props" />
-    <Import Project="..\..\Packages.props" />
-  </ImportGroup>
+    <ImportGroup Label="Properties">
+        <Import Project="..\..\Dependencies.props" />
+        <Import Project="..\..\Packages.props" />
+    </ImportGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <AnalysisLevel>latest</AnalysisLevel>
-    <CodeAnalysisRuleSet>..\..\src.ruleset</CodeAnalysisRuleSet>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-  </PropertyGroup>
+    <PropertyGroup>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <CodeAnalysisRuleSet>..\..\src.ruleset</CodeAnalysisRuleSet>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <WarningsAsErrors />
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <PackageId>CodeFuller.Library.Wpf</PackageId>
-    <Description>Contains reusable functionality for WPF application: bootstrapper, window service (facade for MessageBox), AsyncRelayCommand.</Description>
-    <PackageTags>CodeFuller Library WPF Application Bootstrap</PackageTags>
-  </PropertyGroup>
+    <PropertyGroup>
+        <PackageId>CodeFuller.Library.Wpf</PackageId>
+        <Description>Contains reusable functionality for WPF application: bootstrapper, window service (facade for MessageBox), AsyncRelayCommand.</Description>
+        <PackageTags>CodeFuller Library WPF Application Bootstrap</PackageTags>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CodeFuller.Library.Bootstrap" Version="$(LibraryPackageDependencyVersion)" />
-    <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalyzersVersion)" PrivateAssets="all" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CodeFuller.Library.Bootstrap" Version="$(LibraryPackageDependencyVersion)" />
+        <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalyzersVersion)" PrivateAssets="all" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CodeFuller.Library.Bootstrap\CodeFuller.Library.Bootstrap.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\CodeFuller.Library.Bootstrap\CodeFuller.Library.Bootstrap.csproj" />
+    </ItemGroup>
 
 </Project>
