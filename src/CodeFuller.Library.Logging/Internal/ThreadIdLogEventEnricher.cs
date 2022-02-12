@@ -1,4 +1,4 @@
-﻿using System.Threading;
+﻿using System;
 using Serilog.Core;
 using Serilog.Events;
 
@@ -8,8 +8,10 @@ namespace CodeFuller.Library.Logging.Internal
 	{
 		public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
 		{
-			logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("ThreadId", Thread.CurrentThread.ManagedThreadId));
-			logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("PrettyThreadId", $"{Thread.CurrentThread.ManagedThreadId,3}"));
+			var treadId = Environment.CurrentManagedThreadId;
+
+			logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("ThreadId", treadId));
+			logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty("PrettyThreadId", $"{treadId,3}"));
 		}
 	}
 }

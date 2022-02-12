@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Rules for StyleCop.Analyzers" Description="Code analysis rules for projects with production code" ToolsVersion="15.0">
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.NetAnalyzers">
+    <Rule Id="CA1014" Action="None" /> <!-- Mark assemblies with CLSCompliantAttribute -->
+    <Rule Id="CA1062" Action="None" /> <!-- Validate arguments of public methods -->
+    <Rule Id="CA1303" Action="None" /> <!-- Do not pass literals as localized parameters -->
+    <Rule Id="CA1812" Action="None" /> <!-- Avoid uninstantiated internal classes -->
+    <Rule Id="CA1848" Action="None" /> <!-- For improved performance, use the LoggerMessage delegates -->
+    <Rule Id="CA2007" Action="None" /> <!-- Do not directly await a Task -->
+    <Rule Id="CA2254" Action="None" /> <!-- The logging message template should not vary between calls -->
+  </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <Rule Id="SA1027" Action="None" /> <!-- The code contains a tab or space character which is not consistent with the current project settings -->
     <Rule Id="SA1101" Action="None" /> <!-- A call to an instance member of the local class or a base class is not prefixed with 'this.', within a C# code file -->
@@ -12,12 +21,5 @@
     <Rule Id="SA1600" Action="None" /> <!-- A C# code element is missing a documentation header -->
     <Rule Id="SA1601" Action="None" /> <!-- A C# partial element is missing a documentation header -->
     <Rule Id="SA1633" Action="None" /> <!-- A C# code file is missing a standard file header -->
-  </Rules>
-  <Rules AnalyzerId="Microsoft.CodeAnalysis.FxCopAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.FxCopAnalyzers">
-    <Rule Id="CA1062" Action="None" /> <!-- Validate arguments of public methods -->
-    <Rule Id="CA1014" Action="None" /> <!-- Mark assemblies with CLSCompliantAttribute -->
-    <Rule Id="CA1303" Action="None" /> <!-- Do not pass literals as localized parameters -->
-    <Rule Id="CA1812" Action="None" /> <!-- Avoid uninstantiated internal classes -->
-    <Rule Id="CA2007" Action="None" /> <!-- Do not directly await a Task -->
   </Rules>
 </RuleSet>

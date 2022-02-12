@@ -62,7 +62,7 @@ namespace CodeFuller.Library.Bootstrap
 				}
 				else
 				{
-					Console.Error.WriteLine(e);
+					await Console.Error.WriteLineAsync(e.ToString());
 				}
 
 				return e.HResult;

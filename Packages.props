@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>CodeFuller</Authors>
     <Company>CodeFuller</Company>
-    <Copyright>Copyright © 2017-2021 CodeFuller</Copyright>
+    <Copyright>Copyright © 2017-2022 CodeFuller</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageIcon>CodeFullerLibrary.png</PackageIcon>
