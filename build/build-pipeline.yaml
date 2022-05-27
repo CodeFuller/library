@@ -1,0 +1,119 @@
+trigger: none
+
+pool:
+  name: Azure Pipelines
+  vmImage: windows-2022
+
+parameters:
+  - name: PublishPackages
+    displayName: Publish Packages
+    type: boolean
+    default: true
+
+variables:
+  - name: ReleaseBranchName
+    value: master
+    readonly: true
+
+stages:
+- stage: BuildStage
+  displayName: Build
+  jobs:
+  - job: BuildJob
+    displayName: Build
+    workspace:
+      clean: all
+    variables:
+      disable.coverage.autogenerate: true
+    steps:
+
+    # We need to persist credentials for later repository tagging.
+    - checkout: self
+      persistCredentials: true    
+
+    - powershell: |
+        $nugetVersion = ([xml](Get-Content 'Dependencies.props')).Project.PropertyGroup.CurrentLibraryVersion
+        if ($nugetVersion -eq $null) {
+            throw 'The package version is missing in the properties file'
+        }
+
+        if ('$(Build.SourceBranchName)' -ine '$(ReleaseBranchName)') {
+            $nugetVersionSuffix = "preview.$(Build.BuildId)"
+            $nugetVersion = "$nugetVersion-$nugetVersionSuffix"
+        } else {
+            $nugetVersionSuffix = ''
+        }
+
+        Write-Host "##vso[build.updatebuildnumber]$nugetVersion"
+        Write-Host "##vso[task.setvariable variable=NuGetVersion]$nugetVersion"
+        Write-Host "##vso[task.setvariable variable=NuGetVersionSuffix]$nugetVersionSuffix"
+      displayName: Define Build Version
+
+    - task: DotNetCoreCLI@2
+      displayName: Restore NuGet Packages
+      inputs:
+        command: restore
+        projects: CodeFuller.Library.sln
+        restoreArguments: '/p:VersionSuffix=$(NuGetVersionSuffix)'
+        feedsToUse: select
+        verbosityRestore: Minimal
+
+    - task: DotNetCoreCLI@2
+      displayName: Build NuGet Packages
+      inputs:
+        command: build
+        projects: CodeFuller.Library.sln
+        arguments: --no-restore --configuration Release
+
+    - task: DotNetCoreCLI@2
+      displayName: Run Tests
+      inputs:
+        command: test
+        projects: CodeFuller.Library.sln
+        arguments: --no-build --configuration Release --collect:"XPlat Code Coverage"
+
+    - task: reportgenerator@5
+      displayName: Merge Code Coverage Reports
+      inputs:
+        reports: $(Agent.TempDirectory)/**/coverage.cobertura.xml
+        sourcedirs: $(Build.SourcesDirectory)
+        targetdir: $(Build.ArtifactStagingDirectory)/TestResults/merged
+        reporttypes: HtmlInline_AzurePipelines;Cobertura
+        verbosity: Verbose
+
+    - task: PublishCodeCoverageResults@1
+      displayName: Publish Code Coverage
+      inputs:
+        codeCoverageTool: Cobertura
+        summaryFileLocation: $(Build.ArtifactStagingDirectory)/TestResults/merged/Cobertura.xml
+        reportDirectory: $(Build.ArtifactStagingDirectory)/TestResults/merged
+        failIfCoverageEmpty: true
+
+    - task: DotNetCoreCLI@2
+      displayName: Pack NuGet Packages
+      inputs:
+        command: pack
+        packagesToPack: CodeFuller.Library.sln
+        configuration: Release
+        nobuild: true
+        versioningScheme: off
+        buildProperties: VersionSuffix="$(NuGetVersionSuffix)"
+        packDirectory: $(Build.ArtifactStagingDirectory)/nugets
+        verbosityPack: Minimal
+
+    - task: NuGetCommand@2
+      displayName: Push NuGet Packages
+      condition: and(succeeded(), eq('${{ parameters.PublishPackages }}', 'true'))
+      inputs:
+        command: push
+        packagesToPush: $(Build.ArtifactStagingDirectory)/nugets/*.nupkg
+        nuGetFeedType: external
+        publishFeedCredentials: CodeFuller @ nuget.org
+
+    - task: CmdLine@2
+      displayName: Tag Repository
+      condition: and(succeeded(), eq('${{ parameters.PublishPackages }}', 'true'), eq('$(Build.SourceBranchName)', '$(ReleaseBranchName)'))
+      inputs:
+        script: |
+          git tag "v$(NuGetVersion)"
+          git push --tags origin
