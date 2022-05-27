@@ -37,14 +37,16 @@ stages:
             throw 'The package version is missing in the properties file'
         }
 
-        if ('$(Build.SourceBranchName)' -ine '$(ReleaseBranchName)') {
+        $isReleaseBuild = '$(Build.SourceBranchName)' -ieq '$(ReleaseBranchName)'
+        if ($isReleaseBuild) {
+            $nugetVersionSuffix = ''
+        } else {
             $nugetVersionSuffix = "preview.$(Build.BuildId)"
             $nugetVersion = "$nugetVersion-$nugetVersionSuffix"
-        } else {
-            $nugetVersionSuffix = ''
         }
 
         Write-Host "##vso[build.updatebuildnumber]$nugetVersion"
+        Write-Host "##vso[task.setvariable variable=IsReleaseBuild]$isReleaseBuild"
         Write-Host "##vso[task.setvariable variable=NuGetVersion]$nugetVersion"
         Write-Host "##vso[task.setvariable variable=NuGetVersionSuffix]$nugetVersionSuffix"
       displayName: Define Build Version
@@ -112,7 +114,7 @@ stages:
 
     - task: CmdLine@2
       displayName: Tag Repository
-      condition: and(succeeded(), eq('${{ parameters.PublishPackages }}', 'true'), eq('$(Build.SourceBranchName)', '$(ReleaseBranchName)'))
+      condition: and(succeeded(), eq('${{ parameters.PublishPackages }}', 'true'), eq(variables.IsReleaseBuild, 'true'))
       inputs:
         script: |
           git tag "v$(NuGetVersion)"
