@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.0] - 2023-06-30
+
+### Changed
+
+- Updated to .NET 7.0.
+
 ## [7.5.2] - 2022-05-27
 
 ### Changed
@@ -62,6 +68,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Package CF.Library.Patterns.
 - Types and functionality, which are not shared accross the projects.
 
+[8.0.0]: https://github.com/CodeFuller/library/compare/v7.5.2...v8.0.0
+[7.5.2]: https://github.com/CodeFuller/library/compare/v7.5.0...v7.5.2
 [7.5.0]: https://github.com/CodeFuller/library/compare/v7.4.0...v7.5.0
 [7.4.0]: https://github.com/CodeFuller/library/compare/v7.3.0...v7.4.0
 [7.3.0]: https://github.com/CodeFuller/library/compare/v7.2.0...v7.3.0

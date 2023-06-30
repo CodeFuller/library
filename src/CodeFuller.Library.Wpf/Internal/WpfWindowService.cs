@@ -4,7 +4,7 @@ using CodeFuller.Library.Wpf.Interfaces;
 
 namespace CodeFuller.Library.Wpf.Internal
 {
-	internal class WpfWindowService : IWindowService
+	internal sealed class WpfWindowService : IWindowService
 	{
 		public ShowMessageBoxResult ShowMessageBox(string message)
 		{

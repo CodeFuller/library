@@ -7,11 +7,11 @@ namespace CodeFuller.Library.Wpf.UnitTests.Extensions
 	[TestClass]
 	public class ObjectExtensionsTests
 	{
-		private class ViewModel1
+		private sealed class ViewModel1
 		{
 		}
 
-		private class ViewModel2
+		private sealed class ViewModel2
 		{
 		}
 

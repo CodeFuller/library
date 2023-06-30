@@ -1,13 +1,13 @@
 <Project>
   <PropertyGroup>
-    <CurrentLibraryVersion>7.5.2</CurrentLibraryVersion>
-    <TargetFrameworkForTestProjects>net5.0</TargetFrameworkForTestProjects>
+    <CurrentLibraryVersion>8.0.0</CurrentLibraryVersion>
+    <TargetFrameworkForTestProjects>net7.0</TargetFrameworkForTestProjects>
     <LangVersion>latest</LangVersion>
-    <TestSdkVersion>16.8.3</TestSdkVersion>
-    <TestAdapterVersion>2.1.2</TestAdapterVersion>
-    <TestFrameworkVersion>2.1.2</TestFrameworkVersion>
-    <NSubstitutekVersion>4.2.2</NSubstitutekVersion>
-    <StyleCopAnalyzersVersion>1.2.0-beta.304</StyleCopAnalyzersVersion>
+    <TestSdkVersion>17.6.3</TestSdkVersion>
+    <TestAdapterVersion>3.0.4</TestAdapterVersion>
+    <TestFrameworkVersion>3.0.4</TestFrameworkVersion>
+    <NSubstitutekVersion>5.0.0</NSubstitutekVersion>
+    <StyleCopAnalyzersVersion>1.2.0-beta.507</StyleCopAnalyzersVersion>
 
     <VersionPrefix>$(CurrentLibraryVersion)</VersionPrefix>
 

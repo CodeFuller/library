@@ -51,8 +51,11 @@ namespace CodeFuller.Library.Logging.Internal
 
 		private LoggingConfiguration AddConsoleTarget(LogLevel logLevel = LogLevel.Information)
 		{
-			configuration.WriteTo.Console(restrictedToMinimumLevel: CovertLogLevel(logLevel));
-			return this;
+#pragma warning disable CA1305 // Specify IFormatProvider
+            configuration.WriteTo.Console(restrictedToMinimumLevel: CovertLogLevel(logLevel));
+#pragma warning restore CA1305 // Specify IFormatProvider
+
+            return this;
 		}
 
 		private LoggingConfiguration AddRollingFileTarget(LogLevel logLevel, string logPath, string fileNamePattern,
