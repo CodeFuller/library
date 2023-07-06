@@ -16,6 +16,11 @@ namespace CodeFuller.Library.Wpf.ValueConverters
 		protected abstract Visibility DisabledControlVisibility { get; }
 
 		/// <summary>
+		/// Gets or sets a value indicating whether the visibility is inverted, i.e. control is visible if converted property is set to false.
+		/// </summary>
+		public bool InvertedVisibility { get; set; }
+
+		/// <summary>
 		/// Converts boolean value to <see cref="Visibility"/>.
 		/// </summary>
 		/// <param name="value">Boolean value indicating whether the control should be enabled or disabled.</param>
@@ -34,7 +39,7 @@ namespace CodeFuller.Library.Wpf.ValueConverters
 				return DependencyProperty.UnsetValue;
 			}
 
-			return isVisibleValue ? Visibility.Visible : DisabledControlVisibility;
+			return isVisibleValue && !InvertedVisibility ? Visibility.Visible : DisabledControlVisibility;
 		}
 
 		/// <summary>
