@@ -39,7 +39,7 @@ namespace CodeFuller.Library.Wpf.ValueConverters
 				return DependencyProperty.UnsetValue;
 			}
 
-			return isVisibleValue && !InvertedVisibility ? Visibility.Visible : DisabledControlVisibility;
+			return isVisibleValue ^ InvertedVisibility ? Visibility.Visible : DisabledControlVisibility;
 		}
 
 		/// <summary>
