@@ -41,6 +41,44 @@ namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
 		}
 
 		[TestMethod]
+		public void Convert_InInvertedModeIfParameterTypesAreCorrectAndValueIsTrue_ReturnsHiddenValue()
+		{
+			// Arrange
+
+			var target = new VisibilityHiddenValueConverter
+			{
+				InvertedVisibility = true,
+			};
+
+			// Act
+
+			var converted = target.Convert(true, typeof(Visibility), null, CultureInfo.InvariantCulture);
+
+			// Assert
+
+			Assert.AreEqual(Visibility.Hidden, converted);
+		}
+
+		[TestMethod]
+		public void Convert_InInvertedModeIfParameterTypesAreCorrectAndValueIsFalse_ReturnsVisibleValue()
+		{
+			// Arrange
+
+			var target = new VisibilityHiddenValueConverter
+			{
+				InvertedVisibility = true,
+			};
+
+			// Act
+
+			var converted = target.Convert(false, typeof(Visibility), null, CultureInfo.InvariantCulture);
+
+			// Assert
+
+			Assert.AreEqual(Visibility.Visible, converted);
+		}
+
+		[TestMethod]
 		public void Convert_IfParameterTypesAreCorrectAndValueIsNull_ReturnsUnsetValue()
 		{
 			// Arrange
