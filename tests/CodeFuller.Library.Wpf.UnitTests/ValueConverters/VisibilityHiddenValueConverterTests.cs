@@ -95,7 +95,7 @@ namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
 		}
 
 		[TestMethod]
-		public void Convert_IfValueIsNotNullableBoolean_ReturnsUnsetValue()
+		public void Convert_IfValueIsNotBoolean_ReturnsUnsetValue()
 		{
 			// Arrange
 
