@@ -69,7 +69,7 @@ namespace CodeFuller.Library.Configuration.UnitTests
 
 			// Act
 
-			configurationBuilder.LoadSettings(configDirectoryPath, new[] { "--config=missing_config.json" });
+			configurationBuilder.LoadSettings(configDirectoryPath, ["--config=missing_config.json"]);
 
 			// Assert
 

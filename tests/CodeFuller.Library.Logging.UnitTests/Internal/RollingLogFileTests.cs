@@ -236,7 +236,7 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 
 			var streamWriter = Substitute.For<IStreamWriterFacade>();
 
-			if (lengths.Any())
+			if (lengths.Length > 0)
 			{
 				streamWriter.Length.Returns(lengths[0], lengths.Skip(1).ToArray());
 			}

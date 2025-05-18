@@ -18,13 +18,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all" />
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
+        <PackageReference Include="coverlet.collector" Version="$(CoverletCollectorVersion)" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkVersion)" />
         <PackageReference Include="MSTest.TestAdapter" Version="$(TestAdapterVersion)" />
         <PackageReference Include="MSTest.TestFramework" Version="$(TestFrameworkVersion)" />
-        <PackageReference Include="NSubstitute" Version="$(NSubstitutekVersion)" />
+        <PackageReference Include="NSubstitute" Version="$(NSubstituteVersion)" />
         <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalyzersVersion)" PrivateAssets="all" />
     </ItemGroup>
 

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <ImportGroup Label="Properties">
         <Import Project="..\..\Dependencies.props" />
@@ -18,11 +18,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all" />
+        <PackageReference Include="coverlet.collector" Version="$(CoverletCollectorVersion)" PrivateAssets="all" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkVersion)" />
         <PackageReference Include="MSTest.TestAdapter" Version="$(TestAdapterVersion)" />
         <PackageReference Include="MSTest.TestFramework" Version="$(TestFrameworkVersion)" />
-        <PackageReference Include="NSubstitute" Version="$(NSubstitutekVersion)" />
+        <PackageReference Include="NSubstitute" Version="$(NSubstituteVersion)" />
         <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalyzersVersion)" PrivateAssets="all" />
     </ItemGroup>
 
