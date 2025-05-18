@@ -1,6 +1,7 @@
 <Project>
   <PropertyGroup>
     <CurrentLibraryVersion>9.0.0</CurrentLibraryVersion>
+    <TargetFrameworkForWpfProjects>net8.0-windows</TargetFrameworkForWpfProjects>
     <TargetFrameworkForTestProjects>net8.0</TargetFrameworkForTestProjects>
     <LangVersion>latest</LangVersion>
     <TestSdkVersion>17.13.0</TestSdkVersion>

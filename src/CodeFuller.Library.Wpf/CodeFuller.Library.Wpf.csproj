@@ -6,7 +6,7 @@
     </ImportGroup>
 
     <PropertyGroup>
-        <TargetFramework>net7.0-windows</TargetFramework>
+        <TargetFramework>$(TargetFrameworkForWpfProjects)</TargetFramework>
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
