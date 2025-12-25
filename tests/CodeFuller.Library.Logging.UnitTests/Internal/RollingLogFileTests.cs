@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using CodeFuller.Library.Logging.Interfaces;
 using CodeFuller.Library.Logging.Internal;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
@@ -194,11 +195,11 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 
 			// Act
 
-			void Call() => target.Write("Some Message");
+			var call = () => target.Write("Some Message");
 
 			// Assert
 
-			Assert.ThrowsException<InvalidOperationException>(Call);
+			call.Should().Throw<InvalidOperationException>();
 		}
 
 		[TestMethod]

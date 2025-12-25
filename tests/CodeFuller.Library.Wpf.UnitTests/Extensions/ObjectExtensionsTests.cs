@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using CodeFuller.Library.Wpf.Extensions;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CodeFuller.Library.Wpf.UnitTests.Extensions
@@ -40,12 +41,12 @@ namespace CodeFuller.Library.Wpf.UnitTests.Extensions
 
 			// Act
 
-			ViewModel2 Call() => target.GetViewModel<ViewModel2>();
+			var call = () => target.GetViewModel<ViewModel2>();
 
 			// Assert
 
-			var exception = Assert.ThrowsException<InvalidOperationException>(Call);
-			Assert.AreEqual("Unexpected type of DataContext: Expected CodeFuller.Library.Wpf.UnitTests.Extensions.ObjectExtensionsTests+ViewModel2, actual is CodeFuller.Library.Wpf.UnitTests.Extensions.ObjectExtensionsTests+ViewModel1", exception.Message);
+			call.Should().Throw<InvalidOperationException>()
+				.And.Message.Should().Be("Unexpected type of DataContext: Expected CodeFuller.Library.Wpf.UnitTests.Extensions.ObjectExtensionsTests+ViewModel2, actual is CodeFuller.Library.Wpf.UnitTests.Extensions.ObjectExtensionsTests+ViewModel1");
 		}
 
 		[TestMethod]
@@ -57,11 +58,11 @@ namespace CodeFuller.Library.Wpf.UnitTests.Extensions
 
 			// Act
 
-			ViewModel1 Call() => target.GetViewModel<ViewModel1>();
+			var call = () => target.GetViewModel<ViewModel1>();
 
 			// Assert
 
-			Assert.ThrowsException<ArgumentNullException>(Call);
+			call.Should().Throw<ArgumentNullException>();
 		}
 	}
 }

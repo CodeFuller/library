@@ -19,6 +19,7 @@
 
     <ItemGroup>
         <PackageReference Include="coverlet.collector" Version="$(CoverletCollectorVersion)" PrivateAssets="all" />
+        <PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkVersion)" />
         <PackageReference Include="MSTest.TestAdapter" Version="$(TestAdapterVersion)" />
         <PackageReference Include="MSTest.TestFramework" Version="$(TestFrameworkVersion)" />

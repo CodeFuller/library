@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
+using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -48,11 +49,11 @@ namespace CodeFuller.Library.Configuration.UnitTests
 
 			// Act
 
-			void Call() => configurationBuilder.LoadSettings("missing_directory", Array.Empty<string>());
+			var call = () => configurationBuilder.LoadSettings("missing_directory", Array.Empty<string>());
 
 			// Assert
 
-			Assert.ThrowsException<DirectoryNotFoundException>(Call);
+			call.Should().Throw<DirectoryNotFoundException>();
 		}
 
 		[TestMethod]
@@ -73,7 +74,8 @@ namespace CodeFuller.Library.Configuration.UnitTests
 
 			// Assert
 
-			Assert.ThrowsException<FileNotFoundException>(() => configurationBuilder.Build());
+			var call = () => configurationBuilder.Build();
+			call.Should().Throw<FileNotFoundException>();
 		}
 	}
 }

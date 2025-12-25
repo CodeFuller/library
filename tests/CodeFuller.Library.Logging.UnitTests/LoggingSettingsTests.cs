@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using CodeFuller.Library.Logging.Internal;
 using Microsoft.Extensions.Configuration;
@@ -33,7 +33,7 @@ namespace CodeFuller.Library.Logging.UnitTests
 
 			// Assert
 
-			Assert.AreEqual(1, loggingSettings.Targets.Count);
+			Assert.HasCount(1, loggingSettings.Targets);
 
 			var targetSettings = loggingSettings.Targets.Single();
 			var logPath = targetSettings.Settings.GetOptionalSetting<string>("LoGpaTh");
