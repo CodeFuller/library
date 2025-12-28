@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3512B90C-D6F0-49C8-BB9B-8CA839D51D12}"
 EndProject
@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{8B2B87BD
 	ProjectSection(SolutionItems) = preProject
 		build\build-pipeline.yaml = build\build-pipeline.yaml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFuller.Library.Bootstrap.UnitTests", "tests\CodeFuller.Library.Bootstrap.UnitTests\CodeFuller.Library.Bootstrap.UnitTests.csproj", "{463D8DFC-37F4-4D0B-98C3-466234BF23D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{AF88590D-83AC-4084-BED6-5A3EA1882408}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF88590D-83AC-4084-BED6-5A3EA1882408}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF88590D-83AC-4084-BED6-5A3EA1882408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{463D8DFC-37F4-4D0B-98C3-466234BF23D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{463D8DFC-37F4-4D0B-98C3-466234BF23D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{463D8DFC-37F4-4D0B-98C3-466234BF23D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{463D8DFC-37F4-4D0B-98C3-466234BF23D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,9 +85,10 @@ Global
 		{7FDD44CB-1B3F-4AA3-AE51-394BCD8D5B86} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 		{6B39437F-6604-4981-8405-D6BF28F70C07} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 		{AF88590D-83AC-4084-BED6-5A3EA1882408} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
+		{463D8DFC-37F4-4D0B-98C3-466234BF23D5} = {3512B90C-D6F0-49C8-BB9B-8CA839D51D12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {841597E8-F2D2-4ADC-AC89-763EBFDD08A7}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
+		SolutionGuid = {841597E8-F2D2-4ADC-AC89-763EBFDD08A7}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using CodeFuller.Library.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -63,7 +63,9 @@ namespace CodeFuller.Library.Bootstrap
 
 			BootstrapConfiguration(configurationBuilder, commandLineArgs);
 
-			return configurationBuilder.Build();
+			return configurationBuilder
+				.Build()
+				.FixOverridenArrays();
 		}
 
 		/// <summary>

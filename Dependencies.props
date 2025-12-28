@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <CurrentLibraryVersion>10.0.0</CurrentLibraryVersion>
+    <CurrentLibraryVersion>10.0.1</CurrentLibraryVersion>
     <TargetFrameworkForWpfProjects>net10.0-windows</TargetFrameworkForWpfProjects>
     <TargetFrameworkForTestProjects>net10.0</TargetFrameworkForTestProjects>
     <LangVersion>latest</LangVersion>
