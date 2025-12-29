@@ -32,7 +32,7 @@ stages:
       persistCredentials: true    
 
     - powershell: |
-        $nugetVersion = ([xml](Get-Content 'Dependencies.props')).Project.PropertyGroup.CurrentLibraryVersion
+        $nugetVersion = ([xml](Get-Content 'CodeFuller.Library.src.props')).Project.PropertyGroup | ForEach-Object { $_.CurrentLibraryVersion } |  Where-Object { $_ }
         if ($nugetVersion -eq $null) {
             throw 'The package version is missing in the properties file'
         }
