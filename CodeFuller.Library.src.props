@@ -21,6 +21,13 @@
     <None Include="../../LICENSE.txt" Pack="true" PackagePath="" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <CurrentLibraryVersion>10.0.1</CurrentLibraryVersion>
+    <VersionPrefix>$(CurrentLibraryVersion)</VersionPrefix>
+    <LibraryPackageDependencyVersion Condition="'$(VersionSuffix)' == ''">$(CurrentLibraryVersion)</LibraryPackageDependencyVersion>
+    <LibraryPackageDependencyVersion Condition="'$(VersionSuffix)' != ''">$(CurrentLibraryVersion)-$(VersionSuffix)</LibraryPackageDependencyVersion>
+  </PropertyGroup>
+
   <ImportGroup Label="Properties">
     <Import Project="CodeFuller.Library.props" />
   </ImportGroup>
