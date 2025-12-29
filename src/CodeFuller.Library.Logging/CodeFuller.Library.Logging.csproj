@@ -1,28 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <ImportGroup Label="Properties">
-        <Import Project="..\..\Dependencies.props" />
-        <Import Project="..\..\Packages.props" />
-    </ImportGroup>
+  <ImportGroup Label="Properties">
+    <Import Project="..\..\CodeFuller.Library.src.props" />
+  </ImportGroup>
 
-    <PropertyGroup>
-        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-        <AnalysisLevel>latest</AnalysisLevel>
-        <CodeAnalysisRuleSet>..\..\src.ruleset</CodeAnalysisRuleSet>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <WarningsAsErrors />
-    </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>CodeFuller.Library.Logging</PackageId>
+    <Description>Sematic logging infrastructure based on Serilog. Provides support for console and rolling file sinks with easy configuration.</Description>
+    <PackageTags>CodeFuller Library Logging Semantic Serilog</PackageTags>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <PackageId>CodeFuller.Library.Logging</PackageId>
-        <Description>Sematic logging infrastructure based on Serilog. Provides support for console and rolling file sinks with easy configuration.</Description>
-        <PackageTags>CodeFuller Library Logging Semantic Serilog</PackageTags>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
-        <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
-        <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalyzersVersion)" PrivateAssets="all" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
+  </ItemGroup>
 
 </Project>

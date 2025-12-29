@@ -1,9 +1,10 @@
 <Project>
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>CodeFuller</Authors>
     <Company>CodeFuller</Company>
-    <Copyright>Copyright © 2017-2022 CodeFuller</Copyright>
+    <Copyright>Copyright © 2017-2025 CodeFuller</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageIcon>CodeFullerLibrary.png</PackageIcon>
@@ -19,5 +20,13 @@
     <None Include="../../icon/CodeFullerLibrary.png" Pack="true" PackagePath="" />
     <None Include="../../LICENSE.txt" Pack="true" PackagePath="" />
   </ItemGroup>
+
+  <ImportGroup Label="Properties">
+    <Import Project="CodeFuller.Library.props" />
+  </ImportGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\CodeFuller.Library.src.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
 
 </Project>
