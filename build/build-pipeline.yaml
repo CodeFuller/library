@@ -29,7 +29,7 @@ stages:
 
     # We need to persist credentials for later repository tagging.
     - checkout: self
-      persistCredentials: true    
+      persistCredentials: true
 
     - powershell: |
         $nugetVersion = ([xml](Get-Content 'CodeFuller.Library.src.props')).Project.PropertyGroup | ForEach-Object { $_.CurrentLibraryVersion } |  Where-Object { $_ }
