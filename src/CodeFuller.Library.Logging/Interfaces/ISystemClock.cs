@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 namespace CodeFuller.Library.Logging.Interfaces
 {
-	internal interface IClock
+	internal interface ISystemClock
 	{
 		DateTime Now { get; }
 	}

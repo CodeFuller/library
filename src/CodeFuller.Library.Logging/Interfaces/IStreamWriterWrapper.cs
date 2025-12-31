@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace CodeFuller.Library.Logging.Interfaces
 {
-	internal interface IStreamWriterFacade : IDisposable
+	internal interface IStreamWriterWrapper : IDisposable
 	{
 		StreamWriter StreamWriter { get; }
 

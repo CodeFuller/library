@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -18,11 +18,11 @@ namespace CodeFuller.Library.Logging.Internal
 
 		private readonly int pid = Process.GetCurrentProcess().Id;
 
-		public IFileSystemFacade FileSystemFacade { get; set; } = new FileSystemFacade();
+		public IFileSystem FileSystem { get; set; } = new FileSystem();
 
-		public IClock DateTimeFacade { get; set; } = new SystemClock();
+		public ISystemClock SystemClock { get; set; } = new SystemClock();
 
-		private IStreamWriterFacade CurrentFileStream { get; set; }
+		private IStreamWriterWrapper CurrentFileStream { get; set; }
 
 		public StreamWriter StreamWriter
 		{
@@ -64,16 +64,16 @@ namespace CodeFuller.Library.Logging.Internal
 			CurrentFileStream = OpenNextFile(false);
 		}
 
-		private IStreamWriterFacade OpenNextFile(bool isFirstFile)
+		private IStreamWriterWrapper OpenNextFile(bool isFirstFile)
 		{
-			return FileSystemFacade.CreateStreamWriter(GetLogFileName(isFirstFile), true, Encoding.UTF8, true);
+			return FileSystem.CreateStreamWriter(GetLogFileName(isFirstFile), true, Encoding.UTF8, true);
 		}
 
 		private string GetLogFileName(bool isFirstFile)
 		{
 			if (isFirstFile)
 			{
-				FileSystemFacade.CreateDirectory(logPath);
+				FileSystem.CreateDirectory(logPath);
 			}
 
 			var logFileNamePart = BuildLogFileName(isFirstFile);
@@ -81,7 +81,7 @@ namespace CodeFuller.Library.Logging.Internal
 			for (var i = 0; i < MaxTriesForDuplicatedFileNames; ++i)
 			{
 				var currentFileName = BuildFullLogFilePath(logFileNamePart.ToString(), i);
-				if (!FileSystemFacade.FileExists(currentFileName))
+				if (!FileSystem.FileExists(currentFileName))
 				{
 					return currentFileName;
 				}
@@ -94,7 +94,7 @@ namespace CodeFuller.Library.Logging.Internal
 
 		private StringBuilder BuildLogFileName(bool isFirstFile)
 		{
-			var now = DateTimeFacade.Now;
+			var now = SystemClock.Now;
 
 			var logFileName = new StringBuilder(isFirstFile ? firstFileNamePattern : nextFileNamePattern);
 			logFileName.Replace("{YYYY}", $"{now.Year:0000}");
