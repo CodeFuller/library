@@ -29,7 +29,7 @@ namespace CodeFuller.Library.Wpf.UnitTests.Extensions
 
 			// Assert
 
-			Assert.AreSame(target, result);
+			result.Should().BeSameAs(target);
 		}
 
 		[TestMethod]

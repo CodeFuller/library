@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CodeFuller.Library.Logging.Internal;
+using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -33,11 +34,11 @@ namespace CodeFuller.Library.Logging.UnitTests
 
 			// Assert
 
-			Assert.HasCount(1, loggingSettings.Targets);
+			loggingSettings.Targets.Should().HaveCount(1);
 
 			var targetSettings = loggingSettings.Targets.Single();
 			var logPath = targetSettings.Settings.GetOptionalSetting<string>("LoGpaTh");
-			Assert.AreEqual("path2", logPath);
+			logPath.Should().Be("path2");
 		}
 	}
 }

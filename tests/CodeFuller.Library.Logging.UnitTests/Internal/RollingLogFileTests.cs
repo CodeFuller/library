@@ -99,7 +99,7 @@ namespace CodeFuller.Library.Logging.UnitTests.Internal
 			using var streamReader = new StreamReader(writtenStream);
 			var writtenData = streamReader.ReadToEnd();
 
-			Assert.AreEqual("Hello :)", writtenData);
+			writtenData.Should().Be("Hello :)");
 		}
 
 		[TestMethod]

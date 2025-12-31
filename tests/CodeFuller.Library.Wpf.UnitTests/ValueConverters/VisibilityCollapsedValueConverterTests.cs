@@ -1,6 +1,7 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Windows;
 using CodeFuller.Library.Wpf.ValueConverters;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
@@ -21,7 +22,7 @@ namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
 
 			// Assert
 
-			Assert.AreEqual(Visibility.Visible, converted);
+			converted.Should().Be(Visibility.Visible);
 		}
 
 		[TestMethod]
@@ -37,7 +38,7 @@ namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
 
 			// Assert
 
-			Assert.AreEqual(Visibility.Collapsed, converted);
+			converted.Should().Be(Visibility.Collapsed);
 		}
 
 		[TestMethod]
@@ -56,7 +57,7 @@ namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
 
 			// Assert
 
-			Assert.AreEqual(Visibility.Collapsed, converted);
+			converted.Should().Be(Visibility.Collapsed);
 		}
 
 		[TestMethod]
@@ -75,7 +76,7 @@ namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
 
 			// Assert
 
-			Assert.AreEqual(Visibility.Visible, converted);
+			converted.Should().Be(Visibility.Visible);
 		}
 
 		[TestMethod]
@@ -91,7 +92,7 @@ namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
 
 			// Assert
 
-			Assert.AreEqual(DependencyProperty.UnsetValue, converted);
+			converted.Should().Be(DependencyProperty.UnsetValue);
 		}
 
 		[TestMethod]
@@ -107,7 +108,7 @@ namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
 
 			// Assert
 
-			Assert.AreEqual(DependencyProperty.UnsetValue, converted);
+			converted.Should().Be(DependencyProperty.UnsetValue);
 		}
 
 		[TestMethod]
@@ -123,7 +124,7 @@ namespace CodeFuller.Library.Wpf.UnitTests.ValueConverters
 
 			// Assert
 
-			Assert.AreEqual(DependencyProperty.UnsetValue, converted);
+			converted.Should().Be(DependencyProperty.UnsetValue);
 		}
 	}
 }

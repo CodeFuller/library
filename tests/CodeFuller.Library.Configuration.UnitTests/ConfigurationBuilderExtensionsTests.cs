@@ -33,11 +33,11 @@ namespace CodeFuller.Library.Configuration.UnitTests
 			// Assert
 
 			var configuration = configurationBuilder.Build();
-			Assert.AreEqual("Value from config1.json", configuration["someSection:setting1"]);
-			Assert.AreEqual("Value from config2.json", configuration["someSection:setting2"]);
-			Assert.AreEqual("Value from external_config.json", configuration["someSection:setting3"]);
-			Assert.AreEqual("Value from environment variable", configuration["someSection:setting4"]);
-			Assert.AreEqual("Value from command line", configuration["someSection:setting5"]);
+			configuration["someSection:setting1"].Should().Be("Value from config1.json");
+			configuration["someSection:setting2"].Should().Be("Value from config2.json");
+			configuration["someSection:setting3"].Should().Be("Value from external_config.json");
+			configuration["someSection:setting4"].Should().Be("Value from environment variable");
+			configuration["someSection:setting5"].Should().Be("Value from command line");
 		}
 
 		[TestMethod]
@@ -64,7 +64,7 @@ namespace CodeFuller.Library.Configuration.UnitTests
 			const string configDirectoryPath = "test_conf";
 
 			// Sanity check
-			Assert.IsTrue(Directory.Exists(configDirectoryPath));
+			Directory.Exists(configDirectoryPath).Should().BeTrue();
 
 			var configurationBuilder = new ConfigurationBuilder();
 
